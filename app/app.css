@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  /* Blue Color Scheme for Troy Albers Campaign */
+  --color-primary: #003087;
+  --color-primary-dark: #001f5c;
+  --color-accent: #0077cc;
+  --color-blue-900: #001f5c;
+  --color-blue-800: #003087;
+  --color-blue-700: #0055b8;
+  --color-blue-600: #0077cc;
+  --color-blue-500: #0088ee;
+  --color-blue-200: #a5d8ff;
+}
+
+html,
+body {
+  @apply bg-white;
+  color-scheme: light;
+}
