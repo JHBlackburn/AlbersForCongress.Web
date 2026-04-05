@@ -84,4 +84,10 @@ This template comes with [Tailwind CSS](https://tailwindcss.com/) already config
 
 ---
 
+## Release Notes
+
+### 2026.04.04.02
+
+Adds site routing and scaffolding with ported content from previous site as placeholder for now. 
+
 Built with ❤️ using React Router.
