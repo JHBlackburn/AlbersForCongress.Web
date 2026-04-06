@@ -1,4 +1,5 @@
 import type { Route } from "./+types/home";
+import WordScrollAnimation from "../components/WordScrollAnimation"
 import { FiExternalLink } from "react-icons/fi";
 
 export function meta({}: Route.MetaArgs) {
@@ -12,6 +13,7 @@ export default function Home() {
   return (
     <div className="h-full">
       {/* Hero Section */}
+      <WordScrollAnimation />
       <div className="text-white relative overflow-hidden h-full">
         {/* Decorative background elements */}
         <div className="absolute inset-0 opacity-10">
