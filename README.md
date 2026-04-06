@@ -85,6 +85,9 @@ This template comes with [Tailwind CSS](https://tailwindcss.com/) already config
 ---
 
 ## Release Notes
+### 2026.04.06.01
+
+Adds Scaffolding for links and placeholder content.
 
 ### 2026.04.04.02
 
