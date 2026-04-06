@@ -18,7 +18,7 @@ export default function Home() {
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#B2C9A3] rounded-full blur-3xl"></div>
         </div>
 
-        <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
+        <div className="container mx-auto px-4 py-2 relative z-10">
           <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
             {/* Candidate Photo */}
             <div className="flex-1">
@@ -27,7 +27,7 @@ export default function Home() {
                 <img
                   src="/TroyAlbers4Congress.jpg"
                   alt="Troy Albers"
-                  className="rounded-lg shadow-2xl max-w-md mx-auto relative border-4 border-[#FFCC33] hover:border-[#B2C9A3] transition-all duration-300"
+                  className="rounded-lg shadow-2xl max-w-full mx-auto relative border-4 border-[#FFCC33] hover:border-[#B2C9A3] transition-all duration-300"
                 />
               </div>
             </div>
