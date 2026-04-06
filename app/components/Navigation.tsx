@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router";
+import { FiExternalLink } from "react-icons/fi";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -7,6 +8,8 @@ export default function Navigation() {
   const [isGetInvolvedOpen, setIsGetInvolvedOpen] = useState(false);
   const issuesRef = useRef<HTMLDivElement>(null);
   const getInvolvedRef = useRef<HTMLDivElement>(null);
+  const mobileIssuesRef = useRef<HTMLDivElement>(null);
+  const mobileGetInvolvedRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => {
@@ -18,17 +21,25 @@ export default function Navigation() {
   // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (issuesRef.current && !issuesRef.current.contains(event.target as Node)) {
+      const isInsideIssues =
+        (issuesRef.current && issuesRef.current.contains(event.target as Node)) ||
+        (mobileIssuesRef.current && mobileIssuesRef.current.contains(event.target as Node));
+
+      const isInsideGetInvolved =
+        (getInvolvedRef.current && getInvolvedRef.current.contains(event.target as Node)) ||
+        (mobileGetInvolvedRef.current && mobileGetInvolvedRef.current.contains(event.target as Node));
+
+      if (!isInsideIssues && isIssuesOpen) {
         setIsIssuesOpen(false);
       }
-      if (getInvolvedRef.current && !getInvolvedRef.current.contains(event.target as Node)) {
+      if (!isInsideGetInvolved && isGetInvolvedOpen) {
         setIsGetInvolvedOpen(false);
       }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
+  }, [isIssuesOpen, isGetInvolvedOpen]);
 
   // Handle keyboard navigation for Issues dropdown
   const handleIssuesKeyDown = (e: React.KeyboardEvent) => {
@@ -56,16 +67,6 @@ export default function Navigation() {
     }
   };
 
-  // Close Issues dropdown when hovering over Get Involved and vice versa
-  const handleIssuesEnter = () => {
-    setIsIssuesOpen(true);
-    setIsGetInvolvedOpen(false);
-  };
-
-  const handleGetInvolvedEnter = () => {
-    setIsGetInvolvedOpen(true);
-    setIsIssuesOpen(false);
-  };
 
   return (
     <nav className="bg-blue-900 text-white shadow-lg">
@@ -99,8 +100,6 @@ export default function Navigation() {
             <div
               ref={issuesRef}
               className="relative"
-              onMouseEnter={handleIssuesEnter}
-              onMouseLeave={() => setIsIssuesOpen(false)}
             >
               <button
                 onClick={() => setIsIssuesOpen(!isIssuesOpen)}
@@ -123,7 +122,6 @@ export default function Navigation() {
               {isIssuesOpen && (
                 <div
                   className="absolute top-full left-0 bg-blue-800 rounded shadow-lg py-2 min-w-[150px] z-50 border-t-2 border-[#FFCC33]"
-                  onMouseEnter={() => setIsIssuesOpen(true)}
                 >
                   <Link
                     to="/issues/national"
@@ -145,8 +143,6 @@ export default function Navigation() {
             <div
               ref={getInvolvedRef}
               className="relative"
-              onMouseEnter={handleGetInvolvedEnter}
-              onMouseLeave={() => setIsGetInvolvedOpen(false)}
             >
               <button
                 onClick={() => setIsGetInvolvedOpen(!isGetInvolvedOpen)}
@@ -169,7 +165,6 @@ export default function Navigation() {
               {isGetInvolvedOpen && (
                 <div
                   className="absolute top-full left-0 bg-blue-800 rounded shadow-lg py-2 min-w-[150px] z-50 border-t-2 border-[#FFCC33]"
-                  onMouseEnter={() => setIsGetInvolvedOpen(true)}
                 >
                   <Link
                     to="/events"
@@ -177,12 +172,15 @@ export default function Navigation() {
                   >
                     Events
                   </Link>
-                  <Link
-                    to="/donate"
-                    className="block px-4 py-2 hover:bg-blue-700 hover:text-[#FFCC33] transition-colors focus:outline-none focus:bg-blue-700 focus:ring-2 focus:ring-inset focus:ring-[#FFCC33]"
+                  <a
+                    href="https://secure.actblue.com/donate/troy-albers-1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 px-4 py-2 hover:bg-blue-700 hover:text-[#FFCC33] transition-colors focus:outline-none focus:bg-blue-700 focus:ring-2 focus:ring-inset focus:ring-[#FFCC33]"
                   >
                     Donate
-                  </Link>
+                    <FiExternalLink className="w-4 h-4" aria-hidden="true" />
+                  </a>
                   <Link
                     to="/volunteer"
                     className="block px-4 py-2 hover:bg-blue-700 hover:text-[#FFCC33] transition-colors focus:outline-none focus:bg-blue-700 focus:ring-2 focus:ring-inset focus:ring-[#FFCC33]"
@@ -259,10 +257,10 @@ export default function Navigation() {
             </Link>
 
             {/* Issues Dropdown */}
-            <div className="py-2 px-4">
+            <div ref={mobileIssuesRef}>
               <button
                 onClick={() => setIsIssuesOpen(!isIssuesOpen)}
-                className="w-full text-left flex justify-between items-center hover:text-[#FFCC33] focus:outline-none focus:text-[#FFCC33]"
+                className="w-full text-left flex justify-between items-center hover:text-[#FFCC33] focus:outline-none focus:text-[#FFCC33] py-2 px-4"
                 aria-expanded={isIssuesOpen}
               >
                 Issues
@@ -277,17 +275,15 @@ export default function Navigation() {
                 </svg>
               </button>
               {isIssuesOpen && (
-                <div className="mt-2 ml-4 space-y-2">
+                <div className="ml-4 space-y-2">
                   <Link
                     to="/issues/national"
-                    onClick={closeMenu}
                     className="block py-2 px-4 hover:bg-blue-800 hover:text-[#FFCC33] hover:border-l-4 hover:border-[#FFCC33] transition-all focus:outline-none focus:bg-blue-800 rounded"
                   >
                     National
                   </Link>
                   <Link
                     to="/issues/local"
-                    onClick={closeMenu}
                     className="block py-2 px-4 hover:bg-blue-800 hover:text-[#FFCC33] hover:border-l-4 hover:border-[#FFCC33] transition-all focus:outline-none focus:bg-blue-800 rounded"
                   >
                     Local
@@ -297,10 +293,10 @@ export default function Navigation() {
             </div>
 
             {/* Get Involved Dropdown */}
-            <div className="py-2 px-4">
+            <div ref={mobileGetInvolvedRef}>
               <button
                 onClick={() => setIsGetInvolvedOpen(!isGetInvolvedOpen)}
-                className="w-full text-left flex justify-between items-center hover:text-[#FFCC33] focus:outline-none focus:text-[#FFCC33]"
+                className="w-full text-left flex justify-between items-center hover:text-[#FFCC33] focus:outline-none focus:text-[#FFCC33] py-2 px-4"
                 aria-expanded={isGetInvolvedOpen}
               >
                 Get Involved
@@ -315,24 +311,24 @@ export default function Navigation() {
                 </svg>
               </button>
               {isGetInvolvedOpen && (
-                <div className="mt-2 ml-4 space-y-2">
+                <div className="ml-4 space-y-2">
                   <Link
                     to="/events"
-                    onClick={closeMenu}
                     className="block py-2 px-4 hover:bg-blue-800 hover:text-[#FFCC33] hover:border-l-4 hover:border-[#FFCC33] transition-all focus:outline-none focus:bg-blue-800 rounded"
                   >
                     Events
                   </Link>
-                  <Link
-                    to="/donate"
-                    onClick={closeMenu}
-                    className="block py-2 px-4 hover:bg-blue-800 hover:text-[#FFCC33] hover:border-l-4 hover:border-[#FFCC33] transition-all focus:outline-none focus:bg-blue-800 rounded"
+                  <a
+                    href="https://secure.actblue.com/donate/troy-albers-1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 py-2 px-4 hover:bg-blue-800 hover:text-[#FFCC33] hover:border-l-4 hover:border-[#FFCC33] transition-all focus:outline-none focus:bg-blue-800 rounded"
                   >
                     Donate
-                  </Link>
+                    <FiExternalLink className="w-4 h-4" aria-hidden="true" />
+                  </a>
                   <Link
                     to="/volunteer"
-                    onClick={closeMenu}
                     className="block py-2 px-4 hover:bg-blue-800 hover:text-[#FFCC33] hover:border-l-4 hover:border-[#FFCC33] transition-all focus:outline-none focus:bg-blue-800 rounded"
                   >
                     Volunteer

@@ -1,4 +1,5 @@
 import type { Route } from "./+types/home";
+import { FiExternalLink } from "react-icons/fi";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -47,9 +48,10 @@ export default function Home() {
                   href="https://secure.actblue.com/donate/troy-albers-1"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-lg px-8 py-4 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
+                  className="inline-flex items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-lg px-8 py-4 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
                 >
                   Donate to Troy Albers
+                  <FiExternalLink className="w-5 h-5" aria-hidden="true" />
                 </a>
               </div>
             </div>
