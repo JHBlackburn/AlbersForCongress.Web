@@ -11,7 +11,7 @@ export default function AccessibilityStatement() {
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-4xl font-bold text-blue-900 mb-6">Accessibility Statement</h1>
+        <h1 className="text-4xl font-bold text-white mb-6">Accessibility Statement</h1>
         <div className="bg-blue-50 border-l-4 border-blue-900 p-6 rounded">
           <p className="text-lg text-gray-700 mb-4">
             The Troy Albers for Congress campaign is committed to ensuring digital accessibility for people with disabilities.
