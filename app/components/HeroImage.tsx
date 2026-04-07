@@ -14,7 +14,7 @@ export default function HeroImage() {
       />
 
       {/* Overlay on bottom third */}
-      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-black/40 rounded-b-lg p-6 flex flex-col items-center justify-end min-h-[33%]">
+      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-black/40 rounded-b-lg p-6 flex flex-col items-center justify-end min-h-[20%]">
         <p className="text-white text-xl md:text-2xl font-semibold mb-4 drop-shadow-lg">
           Troy works for YOU
         </p>
@@ -22,7 +22,7 @@ export default function HeroImage() {
           href="https://secure.actblue.com/donate/troy-albers-1"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-lg px-8 py-4 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
+          className="inline-flex items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-lg px-4  rounded-lg shadow-xl transition-all duration-200 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
         >
           Donate to Troy Albers
           <FiExternalLink className="w-5 h-5" aria-hidden="true" />
