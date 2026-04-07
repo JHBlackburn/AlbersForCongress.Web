@@ -121,7 +121,7 @@ const WordScrollAnimation = () => {
     <div className="flex flex-col items-start justify-center xl:justify-start w-full gap-2 text-left font-black tracking-[-2px] leading-none">
       {/* Line 1 – static "Hell" */}
       <motion.div
-        className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:pb-6 whitespace-nowrap"
+        className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl pb-3 xl:pb-6 whitespace-nowrap"
         style={{ color: '#FFCC33' }}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
