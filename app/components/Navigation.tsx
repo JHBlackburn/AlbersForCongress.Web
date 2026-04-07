@@ -78,7 +78,7 @@ export default function Navigation() {
             className="text-xl font-bold hover:text-blue-200 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 focus:ring-offset-blue-900 rounded"
             aria-label="Troy Albers for Congress - Home"
           >
-            Troy Albers for Congress
+            Troy <span className="hidden lg:inline">Albers </span>for Congress
           </Link>
 
           {/* Desktop Navigation */}

@@ -22,12 +22,8 @@ export default function Home() {
 
         <div className="w-full py-2 relative z-10 max-h-full pl-0 xl:pl-2">
           <div className="flex flex-col xl:flex-row items-center gap-2 xl:gap-3 max-h-full">
-            {/* Candidate Photo */}
-            <div className="flex-shrink-0 max-h-full flex items-center justify-start px-4 xl:px-3">
-              <HeroImage />
-            </div>
             {/* Text Content */}
-            <div className="flex-1 max-h-full flex items-center justify-start text-left w-full pl-[1.15rem] md:pl-24 pr-4 xl:pl-0 xl:pr-0">
+            <div className="flex-1 max-h-full flex items-center justify-start text-left w-full pl-[1.15rem] md:pl-24 pr-4 xl:pl-0 xl:pr-0 xl:order-2">
               <WordScrollAnimation />
               {/* <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">
                 Troy Albers for Congress
@@ -49,6 +45,10 @@ export default function Home() {
                   <FiExternalLink className="w-5 h-5" aria-hidden="true" />
                 </a>
               </div> */}
+            </div>
+            {/* Candidate Photo */}
+            <div className="flex-shrink-0 max-h-full flex items-center justify-start px-4 xl:px-3 xl:order-1">
+              <HeroImage />
             </div>
           </div>
         </div>
