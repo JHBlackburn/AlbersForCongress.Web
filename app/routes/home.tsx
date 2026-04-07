@@ -1,6 +1,6 @@
 import type { Route } from "./+types/home";
 import WordScrollAnimation from "../components/WordScrollAnimation"
-import { FiExternalLink } from "react-icons/fi";
+import HeroImage from "../components/HeroImage";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -24,14 +24,7 @@ export default function Home() {
           <div className="flex flex-col xl:flex-row items-center gap-2 xl:gap-3 max-h-full">
             {/* Candidate Photo */}
             <div className="flex-shrink-0 max-h-full flex items-center justify-start px-4 xl:px-3">
-              <div className="relative inline-block max-h-full">
-                <div className="absolute inset-0 bg-[#FFCC33] rounded-lg blur-xl opacity-30 animate-pulse"></div>
-                <img
-                  src="/TroyAlbers4Congress.jpg"
-                  alt="Troy Albers"
-                  className="rounded-lg shadow-2xl max-w-full max-h-[80vh] w-auto h-auto object-contain relative border-4 border-[#FFCC33] hover:border-[#B2C9A3] transition-all duration-300"
-                />
-              </div>
+              <HeroImage />
             </div>
             {/* Text Content */}
             <div className="flex-1 max-h-full flex items-center justify-start text-left w-full pl-[1.15rem] md:pl-24 pr-4 xl:pl-0 xl:pr-0">
