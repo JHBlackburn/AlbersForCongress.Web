@@ -30,7 +30,7 @@ const WordScrollAnimation = () => {
   // Fixed transition – short enough for the "quickly" phase but smooth
   const wordTransition = {
     duration: 0.22,
-    ease: [0.4, 0, 0.2, 1], // nice snappy cubic-bezier
+    ease: [0.4, 0, 0.2, 1] as const, // nice snappy cubic-bezier
   };
 
   // ORIGINAL CODE - Build the full sequence once (3 full cycles of the array + final word)
@@ -118,11 +118,11 @@ const WordScrollAnimation = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center gap-1 text-center font-black tracking-[-2px] leading-none pb-16">
+    <div className="flex flex-col items-start justify-center xl:justify-start w-full gap-2 text-left font-black tracking-[-2px] leading-none">
       {/* Line 1 – static "Hell" */}
       <motion.div
-        className="text-8xl md:text-9xl pb-16"
-        style={{ color: '#c8102e' }}
+        className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl pb-3 xl:pb-6 whitespace-nowrap"
+        style={{ color: '#FFCC33' }}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -142,11 +142,11 @@ const WordScrollAnimation = () => {
       </motion.div> */}
 
       {/* Line 3 – the cycling / final word */}
-      <div className="relative min-h-[1.1em] flex items-center justify-center">
+      <div className="relative w-full flex items-start justify-start h-[4.5rem] sm:h-[6rem] md:h-[7rem] lg:h-[8rem] overflow-visible">
         <AnimatePresence mode="sync">
           <motion.div
             key={thirdWord}
-            className="text-8xl md:text-9xl text-white absolute"
+            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-white absolute top-0 left-0 whitespace-nowrap"
             // style={{ color: '#003087' }} // Navy / dark blue
             variants={wordVariants}
             initial="initial"
