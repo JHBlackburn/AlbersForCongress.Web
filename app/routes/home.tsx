@@ -23,8 +23,16 @@ export default function Home() {
         <div className="w-full py-2 relative z-10 max-h-full pl-0 xl:pl-2">
           <div className="flex flex-col xl:flex-row items-center gap-2 xl:gap-3 max-h-full">
             {/* Text Content */}
-            <div className="flex-1 max-h-full flex items-center justify-start text-left w-full pl-[1.15rem] md:pl-24 pr-4 xl:pl-0 xl:pr-0 xl:order-2">
+            <div className="flex-1 max-h-full flex flex-col items-start justify-center text-left w-full pl-[1.15rem] md:pl-24 pr-4 xl:pl-0 xl:pr-0 xl:order-2">
               <WordScrollAnimation />
+              <p className="text-white text-lg md:text-xl mt-6 max-w-2xl leading-relaxed">
+                Troy needs your help to get on the ballot. Print and sign the petition, then mail it to:
+                <span className="block mt-2 font-semibold">
+                  Troy Albers<br />
+                  1468 SW Main Blvd Ste 105-28<br />
+                  Lake City, FL 32025
+                </span>
+              </p>
               {/* <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">
                 Troy Albers for Congress
               </h1>

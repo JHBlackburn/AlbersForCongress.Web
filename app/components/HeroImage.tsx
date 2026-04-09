@@ -1,4 +1,4 @@
-import { FiExternalLink } from "react-icons/fi";
+import { FiExternalLink, FiPrinter } from "react-icons/fi";
 
 export default function HeroImage() {
   return (
@@ -18,15 +18,32 @@ export default function HeroImage() {
         <p className="text-white text-xl md:text-2xl font-semibold mb-4 drop-shadow-lg">
           Troy works for YOU
         </p>
-        <a
-          href="https://secure.actblue.com/donate/troy-albers-1"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-lg px-4  rounded-lg shadow-xl transition-all duration-200 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
-        >
-          Donate to Troy Albers
-          <FiExternalLink className="w-5 h-5" aria-hidden="true" />
-        </a>
+        <div className="flex flex-wrap gap-3 justify-center">
+          <a
+            href="https://secure.actblue.com/donate/troy-albers-1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-lg px-4 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
+          >
+            Donate
+            <FiExternalLink className="w-5 h-5" aria-hidden="true" />
+          </a>
+          <button
+            onClick={() => {
+              const iframe = document.createElement('iframe');
+              iframe.style.display = 'none';
+              iframe.src = '/dsde104.pdf';
+              document.body.appendChild(iframe);
+              iframe.onload = () => {
+                iframe.contentWindow?.print();
+              };
+            }}
+            className="inline-flex items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-lg px-4 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
+          >
+            Sign My Petition
+            <FiPrinter className="w-5 h-5" aria-hidden="true" />
+          </button>
+        </div>
       </div>
     </div>
   );
