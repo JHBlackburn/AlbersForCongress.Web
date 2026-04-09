@@ -25,7 +25,8 @@ export default function Home() {
             {/* Text Content */}
             <div className="flex-1 max-h-full flex flex-col items-start justify-center text-left w-full pl-[1.15rem] md:pl-24 pr-4 xl:pl-0 xl:pr-0 xl:order-2">
               <WordScrollAnimation />
-              <p className="text-white text-lg md:text-xl mt-6 max-w-2xl leading-relaxed">
+              {/* Desktop version - visible on xl and above */}
+              <p className="hidden xl:block text-white text-lg md:text-xl mt-6 max-w-2xl leading-relaxed">
                 Troy needs your help to get on the ballot. Print and sign the petition, then mail it to:
                 <span className="block mt-2 font-semibold">
                   Troy Albers<br />
@@ -59,6 +60,15 @@ export default function Home() {
               <HeroImage />
             </div>
           </div>
+          {/* Mobile version - visible below xl breakpoint */}
+          <p className="xl:hidden text-white text-lg md:text-xl mt-6 max-w-2xl leading-relaxed px-4 md:px-24">
+            Troy needs your help to get on the ballot. Print and sign the petition, then mail it to:
+            <span className="block mt-2 font-semibold">
+              Troy Albers<br />
+              1468 SW Main Blvd Ste 105-28<br />
+              Lake City, FL 32025
+            </span>
+          </p>
         </div>
       </div>
     </div>
