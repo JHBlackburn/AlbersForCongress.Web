@@ -25,13 +25,23 @@ export default function Home() {
 
         <div className="w-full py-1 relative z-10 max-h-full pl-0 lg:pl-2">
           <div className="flex flex-col lg:flex-row lg:items-center gap-1 lg:gap-2 max-h-full">
-            {/* Mobile: WordScrollAnimation first */}
-            <div className="lg:hidden flex-1 max-h-full flex flex-col items-start justify-center text-left w-full px-4">
-              <WordScrollAnimation />
+            {/* Mobile: Container for centering */}
+            <div className="lg:hidden flex flex-col items-center w-full">
+              {/* WordScrollAnimation on top */}
+              <div className="flex-1 max-h-full flex flex-col items-start justify-center text-left w-full px-4">
+                <WordScrollAnimation />
+              </div>
+
+              {/* Centered image container */}
+              <div className="flex justify-center w-full px-4 mt-0.5">
+                <div className="flex-shrink-0 max-h-full flex items-center">
+                  <HeroImage />
+                </div>
+              </div>
             </div>
 
-            {/* Candidate Photo - left on desktop, middle on mobile */}
-            <div className="flex-shrink-0 max-h-full flex items-center justify-start px-4 lg:px-3">
+            {/* Desktop: Candidate Photo on left */}
+            <div className="hidden lg:flex flex-shrink-0 max-h-full items-center justify-start px-3">
               <HeroImage />
             </div>
 
