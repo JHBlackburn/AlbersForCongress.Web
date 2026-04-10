@@ -71,7 +71,7 @@ export default function Navigation() {
   return (
     <nav className="bg-blue-900 text-white shadow-lg">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-14">
           {/* Logo */}
           <Link
             to="/"

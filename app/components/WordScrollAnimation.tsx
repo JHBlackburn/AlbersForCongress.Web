@@ -121,7 +121,7 @@ const WordScrollAnimation = () => {
     <div className="flex flex-col items-start justify-center xl:justify-start w-full gap-2 text-left font-black tracking-[-2px] leading-none">
       {/* Line 1 – static "Hell" */}
       <motion.div
-        className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl pb-3 xl:pb-6 whitespace-nowrap"
+        className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl pb-2 xl:pb-4 whitespace-nowrap"
         style={{ color: '#FFCC33' }}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -142,7 +142,7 @@ const WordScrollAnimation = () => {
       </motion.div> */}
 
       {/* Line 3 – the cycling / final word */}
-      <div className="relative w-full flex items-start justify-start h-[4.5rem] sm:h-[6rem] md:h-[7rem] lg:h-[8rem] overflow-visible">
+      <div className="relative w-full flex items-start justify-start h-14 sm:h-18 md:h-22 lg:h-26 overflow-visible">
         <AnimatePresence mode="sync">
           <motion.div
             key={thirdWord}

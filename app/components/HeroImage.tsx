@@ -10,12 +10,12 @@ export default function HeroImage() {
       <img
         src="/TroyAlbers4Congress_Zoomed.JPG"
         alt="Troy Albers"
-        className="rounded-lg shadow-2xl max-w-full max-h-[55vh] xl:max-h-[80vh] w-auto h-auto object-contain relative border-4 border-[#FFCC33] hover:border-[#B2C9A3] transition-all duration-300"
+        className="rounded-lg shadow-2xl max-w-full max-h-[45vh] lg:max-h-[50vh] xl:max-h-[60vh] w-auto h-auto object-contain relative border-4 border-[#FFCC33] hover:border-[#B2C9A3] transition-all duration-300"
       />
 
       {/* Overlay on bottom third */}
-      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-black/40 rounded-b-lg p-3 xl:p-6 flex flex-col items-center justify-end min-h-[20%]">
-        <p className="text-white text-xl md:text-2xl font-semibold mb-2 xl:mb-4 drop-shadow-lg">
+      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-black/40 rounded-b-lg p-2 xl:p-4 flex flex-col items-center justify-end min-h-[20%]">
+        <p className="text-white text-xl md:text-2xl font-semibold mb-1.5 xl:mb-3 drop-shadow-lg">
           Troy works for YOU
         </p>
         <div className="flex flex-wrap gap-3 justify-center">

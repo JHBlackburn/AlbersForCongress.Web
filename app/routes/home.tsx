@@ -23,8 +23,8 @@ export default function Home() {
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#B2C9A3] rounded-full blur-3xl"></div>
         </div>
 
-        <div className="w-full py-2 relative z-10 max-h-full pl-0 lg:pl-2">
-          <div className="flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-3 max-h-full">
+        <div className="w-full py-1 relative z-10 max-h-full pl-0 lg:pl-2">
+          <div className="flex flex-col lg:flex-row lg:items-center gap-1 lg:gap-2 max-h-full">
             {/* Mobile: WordScrollAnimation first */}
             <div className="lg:hidden flex-1 max-h-full flex flex-col items-start justify-center text-left w-full px-4">
               <WordScrollAnimation />
@@ -50,7 +50,7 @@ export default function Home() {
           </div>
 
           {/* Mobile version - visible below lg breakpoint */}
-          <div className="lg:hidden text-white text-lg md:text-xl mt-6 max-w-2xl leading-relaxed px-4">
+          <div className="lg:hidden text-white text-base md:text-lg mt-3 max-w-2xl leading-snug px-4">
             <button
               onClick={() => setIsAddressOpen(!isAddressOpen)}
               className="inline-flex items-center gap-2 text-[#FFCC33] hover:text-[#E8B923] transition-colors font-semibold focus:outline-none focus:ring-2 focus:ring-[#FFCC33] focus:ring-offset-2 focus:ring-offset-[#0E3B67] rounded px-1"
