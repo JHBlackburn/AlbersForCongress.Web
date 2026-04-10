@@ -71,14 +71,14 @@ export default function Navigation() {
   return (
     <nav className="bg-blue-900 text-white shadow-lg">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-14">
           {/* Logo */}
           <Link
             to="/"
             className="text-xl font-bold hover:text-blue-200 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 focus:ring-offset-blue-900 rounded"
             aria-label="Troy Albers for Congress - Home"
           >
-            Troy Albers for Congress
+            Troy <span className="hidden lg:inline">Albers </span>for Congress
           </Link>
 
           {/* Desktop Navigation */}

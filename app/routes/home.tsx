@@ -1,5 +1,7 @@
 import type { Route } from "./+types/home";
-import { FiExternalLink } from "react-icons/fi";
+import { useState } from "react";
+import WordScrollAnimation from "../components/WordScrollAnimation"
+import HeroImage from "../components/HeroImage";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -9,52 +11,81 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
+  const [isAddressOpen, setIsAddressOpen] = useState(false);
+
   return (
-    <div className="h-full">
+    <div className="h-full w-full">
       {/* Hero Section */}
-      <div className="text-white relative overflow-hidden h-full">
+      <div className="text-white relative overflow-hidden h-full flex items-center">
         {/* Decorative background elements */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#FFCC33] rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#B2C9A3] rounded-full blur-3xl"></div>
         </div>
 
-        <div className="container mx-auto px-4 py-2 relative z-10">
-          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-            {/* Candidate Photo */}
-            <div className="flex-1">
-              <div className="relative inline-block">
-                <div className="absolute inset-0 bg-[#FFCC33] rounded-lg blur-xl opacity-30 animate-pulse"></div>
-                <img
-                  src="/TroyAlbers4Congress.jpg"
-                  alt="Troy Albers"
-                  className="rounded-lg shadow-2xl max-w-full mx-auto relative border-4 border-[#FFCC33] hover:border-[#B2C9A3] transition-all duration-300"
-                />
+        <div className="w-full py-1 relative z-10 max-h-full pl-0 lg:pl-2">
+          <div className="flex flex-col lg:flex-row lg:items-center gap-1 lg:gap-2 max-h-full">
+            {/* Mobile: Container for centering */}
+            <div className="lg:hidden flex flex-col items-center w-full">
+              {/* WordScrollAnimation on top */}
+              <div className="flex-1 max-h-full flex flex-col items-start justify-center text-left w-full px-4">
+                <WordScrollAnimation />
+              </div>
+
+              {/* Centered image container */}
+              <div className="flex justify-center w-full px-4 mt-0.5">
+                <div className="flex-shrink-0 max-h-full flex items-center">
+                  <HeroImage />
+                </div>
               </div>
             </div>
-            {/* Text Content */}
-            <div className="flex-1 text-center md:text-left">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">
-                Troy Albers for Congress
-              </h1>
-              <p className="text-xl md:text-2xl mb-2 text-[#FFCC33] font-semibold drop-shadow-md">
-                Democrat for FL-3
-              </p>
-              <p className="text-2xl md:text-3xl font-semibold mb-8 text-white drop-shadow-md border-l-4 border-[#FFCC33] pl-4 inline-block">
-                Troy works for YOU
-              </p>
-              <div className="mt-8">
-                <a
-                  href="https://secure.actblue.com/donate/troy-albers-1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-lg px-8 py-4 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
-                >
-                  Donate to Troy Albers
-                  <FiExternalLink className="w-5 h-5" aria-hidden="true" />
-                </a>
-              </div>
+
+            {/* Desktop: Candidate Photo on left */}
+            <div className="hidden lg:flex flex-shrink-0 max-h-full items-center justify-start px-3">
+              <HeroImage />
             </div>
+
+            {/* Desktop: WordScrollAnimation and help text on right */}
+            <div className="hidden lg:flex flex-1 max-h-full flex-col items-start justify-center text-left w-full">
+              <WordScrollAnimation />
+              <p className="text-white text-lg md:text-xl mt-6 max-w-2xl leading-relaxed">
+                Troy needs your help to get on the ballot. Print and sign the petition, then mail it to:
+                <span className="block mt-2 font-semibold">
+                  Troy Albers<br />
+                  1468 SW Main Blvd Ste 105-28<br />
+                  Lake City, FL 32025
+                </span>
+              </p>
+            </div>
+          </div>
+
+          {/* Mobile version - visible below lg breakpoint */}
+          <div className="lg:hidden text-white text-base md:text-lg mt-3 max-w-2xl leading-snug px-4">
+            <button
+              onClick={() => setIsAddressOpen(!isAddressOpen)}
+              className="inline-flex items-center gap-2 text-[#FFCC33] hover:text-[#E8B923] transition-colors font-semibold focus:outline-none focus:ring-2 focus:ring-[#FFCC33] focus:ring-offset-2 focus:ring-offset-[#0E3B67] rounded px-1"
+              aria-expanded={isAddressOpen}
+            >
+              How YOU can help Troy:
+              <svg
+                className={`w-5 h-5 transition-transform ${isAddressOpen ? 'rotate-180' : ''}`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            {isAddressOpen && (
+              <div className="mt-3 bg-white/10 p-3 rounded-lg backdrop-blur-sm">
+                <p className="mb-2">Print and sign the petition, then mail it to:</p>
+                <span className="block font-semibold">
+                  Troy Albers<br />
+                  1468 SW Main Blvd Ste 105-28<br />
+                  Lake City, FL 32025
+                </span>
+              </div>
+            )}
           </div>
         </div>
       </div>
