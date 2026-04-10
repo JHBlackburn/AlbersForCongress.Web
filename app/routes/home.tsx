@@ -1,4 +1,5 @@
 import type { Route } from "./+types/home";
+import { useState } from "react";
 import WordScrollAnimation from "../components/WordScrollAnimation"
 import HeroImage from "../components/HeroImage";
 
@@ -10,6 +11,8 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
+  const [isAddressOpen, setIsAddressOpen] = useState(false);
+
   return (
     <div className="h-full w-full">
       {/* Hero Section */}
@@ -62,12 +65,29 @@ export default function Home() {
           </div>
           {/* Mobile version - visible below xl breakpoint */}
           <p className="xl:hidden text-white text-lg md:text-xl mt-6 max-w-2xl leading-relaxed px-4 md:px-24">
-            Troy needs your help to get on the ballot. Print and sign the petition, then mail it to:
-            <span className="block mt-2 font-semibold">
-              Troy Albers<br />
-              1468 SW Main Blvd Ste 105-28<br />
-              Lake City, FL 32025
-            </span>
+            Troy needs your help to get on the ballot. Print and sign the petition, then mail it{" "}
+            <button
+              onClick={() => setIsAddressOpen(!isAddressOpen)}
+              className="inline-flex items-center gap-1 text-[#FFCC33] hover:text-[#E8B923] transition-colors underline focus:outline-none focus:ring-2 focus:ring-[#FFCC33] focus:ring-offset-2 focus:ring-offset-[#0E3B67] rounded px-1"
+              aria-expanded={isAddressOpen}
+            >
+              here
+              <svg
+                className={`w-4 h-4 transition-transform ${isAddressOpen ? 'rotate-180' : ''}`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            {isAddressOpen && (
+              <span className="block mt-2 font-semibold bg-white/10 p-3 rounded-lg backdrop-blur-sm">
+                Troy Albers<br />
+                1468 SW Main Blvd Ste 105-28<br />
+                Lake City, FL 32025
+              </span>
+            )}
           </p>
         </div>
       </div>
