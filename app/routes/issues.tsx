@@ -182,7 +182,7 @@ export default function Issues() {
         </p>
 
         {/* Sticky Search Bar */}
-        <div className="sticky top-0 z-40 bg-blue-900/95 backdrop-blur-sm py-4 mb-8 -mx-4 px-4 border-b-2 border-[#FFCC33]">
+        <div className="sticky top-0 z-40 backdrop-blur-sm py-4 mb-8 -mx-4 px-4 border-b-2 border-[#FFCC33]">
           <div className="max-w-4xl mx-auto">
             <label htmlFor="issue-search" className="sr-only">
               Search issues
@@ -206,7 +206,7 @@ export default function Issues() {
           className="mb-12 scroll-mt-24"
         >
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-3xl font-bold text-white">National Issues</h2>
+            <h2 className="text-3xl font-bold text-white pt-4">National Issues</h2>
             <div className="flex gap-2">
               <button
                 onClick={expandAllNational}
@@ -217,7 +217,7 @@ export default function Issues() {
               </button>
               <button
                 onClick={collapseAllNational}
-                className="px-3 py-2 text-sm bg-blue-700 hover:bg-blue-600 text-white font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
+                className="px-3 py-2 text-sm bg-gray-700 hover:bg-gray-600 text-[#FFCC33] font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
                 aria-label="Collapse all national issues"
               >
                 Collapse All
@@ -252,11 +252,8 @@ export default function Issues() {
           className="scroll-mt-24"
         >
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-3xl font-bold text-white">
+            <h2 className="text-3xl font-bold text-white pt-4">
               Local Issues
-              <span className="block text-xl font-normal mt-1">
-                Florida's 3rd Congressional District
-              </span>
             </h2>
             <div className="flex gap-2">
               <button
@@ -268,13 +265,16 @@ export default function Issues() {
               </button>
               <button
                 onClick={collapseAllLocal}
-                className="px-3 py-2 text-sm bg-blue-700 hover:bg-blue-600 text-white font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
+                className="px-3 py-2 text-sm bg-gray-700 hover:bg-gray-600 text-[#FFCC33] font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
                 aria-label="Collapse all local issues"
               >
                 Collapse All
               </button>
             </div>
           </div>
+          <h4 className="text-2xl font-bold text-white pb-2">
+              Florida's 3rd Congressional District
+          </h4>
 
           {filteredLocalIssues.length === 0 ? (
             <div className="bg-blue-50 border-l-4 border-blue-900 p-6 rounded">
