@@ -124,16 +124,18 @@ export default function Navigation() {
                   className="absolute top-full left-0 bg-blue-800 rounded shadow-lg py-2 min-w-[150px] z-50 border-t-2 border-[#FFCC33]"
                 >
                   <Link
-                    to="/issues/national"
+                    to="/issues#national-issues"
                     className="block px-4 py-2 hover:bg-blue-700 hover:text-[#FFCC33] transition-colors focus:outline-none focus:bg-blue-700 focus:ring-2 focus:ring-inset focus:ring-[#FFCC33]"
+                    onClick={() => setIsIssuesOpen(false)}
                   >
-                    National
+                    National Issues
                   </Link>
                   <Link
-                    to="/issues/local"
+                    to="/issues#local-issues"
                     className="block px-4 py-2 hover:bg-blue-700 hover:text-[#FFCC33] transition-colors focus:outline-none focus:bg-blue-700 focus:ring-2 focus:ring-inset focus:ring-[#FFCC33]"
+                    onClick={() => setIsIssuesOpen(false)}
                   >
-                    Local
+                    Local Issues
                   </Link>
                 </div>
               )}
@@ -277,16 +279,18 @@ export default function Navigation() {
               {isIssuesOpen && (
                 <div className="ml-4 space-y-2">
                   <Link
-                    to="/issues/national"
+                    to="/issues#national-issues"
+                    onClick={closeMenu}
                     className="block py-2 px-4 hover:bg-blue-800 hover:text-[#FFCC33] hover:border-l-4 hover:border-[#FFCC33] transition-all focus:outline-none focus:bg-blue-800 rounded"
                   >
-                    National
+                    National Issues
                   </Link>
                   <Link
-                    to="/issues/local"
+                    to="/issues#local-issues"
+                    onClick={closeMenu}
                     className="block py-2 px-4 hover:bg-blue-800 hover:text-[#FFCC33] hover:border-l-4 hover:border-[#FFCC33] transition-all focus:outline-none focus:bg-blue-800 rounded"
                   >
-                    Local
+                    Local Issues
                   </Link>
                 </div>
               )}
