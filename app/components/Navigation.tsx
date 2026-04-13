@@ -101,39 +101,49 @@ export default function Navigation() {
               ref={issuesRef}
               className="relative"
             >
-              <button
-                onClick={() => setIsIssuesOpen(!isIssuesOpen)}
-                onKeyDown={handleIssuesKeyDown}
-                className="hover:text-[#FFCC33] transition-colors focus:outline-none focus:ring-2 focus:ring-[#FFCC33] focus:ring-offset-2 focus:ring-offset-blue-900 rounded px-2 py-1 flex items-center border-b-2 border-transparent hover:border-[#FFCC33]"
-                aria-expanded={isIssuesOpen}
-                aria-haspopup="true"
-              >
-                Issues
-                <svg
-                  className={`ml-1 w-4 h-4 transition-transform ${isIssuesOpen ? 'rotate-180' : ''}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
+              <div className="flex items-center border-b-2 border-transparent hover:border-[#FFCC33] focus-within:ring-2 focus-within:ring-[#FFCC33] focus-within:ring-offset-2 focus-within:ring-offset-blue-900 rounded">
+                <Link
+                  to="/issues"
+                  className="hover:text-[#FFCC33] transition-colors focus:outline-none px-2 py-1"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
+                  Issues
+                </Link>
+                <button
+                  onClick={() => setIsIssuesOpen(!isIssuesOpen)}
+                  onKeyDown={handleIssuesKeyDown}
+                  className="hover:text-[#FFCC33] transition-colors focus:outline-none py-1 pr-2 -ml-1 flex items-center"
+                  aria-expanded={isIssuesOpen}
+                  aria-haspopup="true"
+                  aria-label="Toggle issues dropdown"
+                >
+                  <svg
+                    className={`w-4 h-4 transition-transform ${isIssuesOpen ? 'rotate-180' : ''}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+              </div>
               {isIssuesOpen && (
                 <div
                   className="absolute top-full left-0 bg-blue-800 rounded shadow-lg py-2 min-w-[150px] z-50 border-t-2 border-[#FFCC33]"
                 >
                   <Link
-                    to="/issues/national"
+                    to="/issues#national-issues"
                     className="block px-4 py-2 hover:bg-blue-700 hover:text-[#FFCC33] transition-colors focus:outline-none focus:bg-blue-700 focus:ring-2 focus:ring-inset focus:ring-[#FFCC33]"
+                    onClick={() => setIsIssuesOpen(false)}
                   >
-                    National
+                    National Issues
                   </Link>
                   <Link
-                    to="/issues/local"
+                    to="/issues#local-issues"
                     className="block px-4 py-2 hover:bg-blue-700 hover:text-[#FFCC33] transition-colors focus:outline-none focus:bg-blue-700 focus:ring-2 focus:ring-inset focus:ring-[#FFCC33]"
+                    onClick={() => setIsIssuesOpen(false)}
                   >
-                    Local
+                    Local Issues
                   </Link>
                 </div>
               )}
@@ -258,35 +268,46 @@ export default function Navigation() {
 
             {/* Issues Dropdown */}
             <div ref={mobileIssuesRef}>
-              <button
-                onClick={() => setIsIssuesOpen(!isIssuesOpen)}
-                className="w-full text-left flex justify-between items-center hover:text-[#FFCC33] focus:outline-none focus:text-[#FFCC33] py-2 px-4"
-                aria-expanded={isIssuesOpen}
-              >
-                Issues
-                <svg
-                  className={`w-4 h-4 transition-transform ${isIssuesOpen ? 'rotate-180' : ''}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
+              <div className="flex justify-between items-center py-2 px-4">
+                <Link
+                  to="/issues"
+                  onClick={closeMenu}
+                  className="flex-grow hover:text-[#FFCC33] focus:outline-none focus:text-[#FFCC33]"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
+                  Issues
+                </Link>
+                <button
+                  onClick={() => setIsIssuesOpen(!isIssuesOpen)}
+                  className="hover:text-[#FFCC33] focus:outline-none focus:text-[#FFCC33] pl-2"
+                  aria-expanded={isIssuesOpen}
+                  aria-label="Toggle issues dropdown"
+                >
+                  <svg
+                    className={`w-4 h-4 transition-transform ${isIssuesOpen ? 'rotate-180' : ''}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+              </div>
               {isIssuesOpen && (
                 <div className="ml-4 space-y-2">
                   <Link
-                    to="/issues/national"
+                    to="/issues#national-issues"
+                    onClick={closeMenu}
                     className="block py-2 px-4 hover:bg-blue-800 hover:text-[#FFCC33] hover:border-l-4 hover:border-[#FFCC33] transition-all focus:outline-none focus:bg-blue-800 rounded"
                   >
-                    National
+                    National Issues
                   </Link>
                   <Link
-                    to="/issues/local"
+                    to="/issues#local-issues"
+                    onClick={closeMenu}
                     className="block py-2 px-4 hover:bg-blue-800 hover:text-[#FFCC33] hover:border-l-4 hover:border-[#FFCC33] transition-all focus:outline-none focus:bg-blue-800 rounded"
                   >
-                    Local
+                    Local Issues
                   </Link>
                 </div>
               )}
