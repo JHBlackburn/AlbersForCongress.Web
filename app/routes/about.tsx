@@ -50,6 +50,29 @@ const fadeIn = {
   }
 };
 
+// Animation for heading - sentences appear one by one
+const headingContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.84,
+      delayChildren: 0.21
+    }
+  }
+};
+
+// Each sentence: first word appears, then rest fades in
+const sentenceVariant = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.28
+    }
+  }
+};
+
 export default function About() {
   return (
     <div className="container mx-auto px-4 py-12">
@@ -63,22 +86,78 @@ export default function About() {
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Born in a Naval hospital. Raised on a farm.<br />
-            Tested around the world. Rooted in North Florida.
-          </h1>
+          <motion.h1
+            className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight text-left"
+            variants={headingContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <motion.span className="block mb-3" variants={sentenceVariant}>
+              <motion.span
+                className="text-[#FFCC33] text-4xl md:text-5xl"
+                variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
+              >
+                Born
+              </motion.span>
+              <motion.span
+                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
+              >
+                {" "}in a Naval hospital.
+              </motion.span>
+            </motion.span>
+            <motion.span className="block mb-3" variants={sentenceVariant}>
+              <motion.span
+                className="text-[#FFCC33] text-4xl md:text-5xl"
+                variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
+              >
+                Raised
+              </motion.span>
+              <motion.span
+                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
+              >
+                {" "}on a farm.
+              </motion.span>
+            </motion.span>
+            <motion.span className="block mb-3" variants={sentenceVariant}>
+              <motion.span
+                className="text-[#FFCC33] text-4xl md:text-5xl"
+                variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
+              >
+                Tested
+              </motion.span>
+              <motion.span
+                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
+              >
+                {" "}around the world.
+              </motion.span>
+            </motion.span>
+            <motion.span className="block" variants={sentenceVariant}>
+              <motion.span
+                className="text-[#FFCC33] text-4xl md:text-5xl"
+                variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
+              >
+                Rooted
+              </motion.span>
+              <motion.span
+                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
+              >
+                {" "}in North Florida.
+              </motion.span>
+            </motion.span>
+          </motion.h1>
 
           <motion.div
             className="my-8"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.56, delay: 3.85 }}
           >
             <div className="relative inline-block max-w-2xl mx-auto">
               <div className="absolute inset-0 bg-[#FFCC33] rounded-lg blur-xl opacity-30"></div>
               <img
-                src="/TroyAlbers4Congress.jpg"
+                src="/about1.jpg"
                 alt="Troy Albers - Veteran, Farmer, Candidate for Congress"
                 className="rounded-lg shadow-2xl w-full h-auto relative border-4 border-[#FFCC33] max-h-[450px] object-cover"
               />
@@ -167,8 +246,39 @@ export default function About() {
               When his time in the Navy ended, Troy did not walk away from service. He became a Guardsman, then later went back in with the Army, continuing a life defined by commitment to something bigger than himself.
             </motion.p>
 
-            <motion.p className="text-lg md:text-xl text-white leading-relaxed font-semibold italic" variants={fadeInUp}>
-              Service was never a phase for Troy. It was a calling.
+            <motion.p
+              className="text-lg md:text-xl text-white leading-relaxed font-semibold"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    staggerChildren: 0.15
+                  }
+                }
+              }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              <motion.span
+                className="text-[#FFCC33] italic"
+                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}
+              >
+                Service
+              </motion.span>
+              <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+                {" "}was never a phase for Troy. It was a{" "}
+              </motion.span>
+              <motion.span
+                className="text-[#FFCC33] italic"
+                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}
+              >
+                calling
+              </motion.span>
+              <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+                .
+              </motion.span>
             </motion.p>
           </motion.div>
 
@@ -281,12 +391,62 @@ export default function About() {
               Troy has watched politics become toxic, performative, and two-faced. He has watched too many elected officials treat public office like a game, a stepping stone, or a brand opportunity instead of a duty. He has seen too little honor, too little accountability, and too much grandstanding while real people pay the price.
             </motion.p>
 
-            <motion.p className="text-lg md:text-xl text-white leading-relaxed font-semibold" variants={fadeInUp}>
-              He is disgusted by it.
+            <motion.p
+              className="text-lg md:text-xl text-white leading-relaxed font-semibold"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    staggerChildren: 0.15
+                  }
+                }
+              }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+                He is{" "}
+              </motion.span>
+              <motion.span
+                className="text-[#FFCC33] italic"
+                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}
+              >
+                disgusted
+              </motion.span>
+              <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+                {" "}by it.
+              </motion.span>
             </motion.p>
 
-            <motion.p className="text-lg md:text-xl text-white leading-relaxed font-semibold" variants={fadeInUp}>
-              You should be too.
+            <motion.p
+              className="text-lg md:text-xl text-[#FFCC33] leading-relaxed font-semibold italic"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    staggerChildren: 0.15
+                  }
+                }
+              }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+                You{" "}
+              </motion.span>
+              <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+                should{" "}
+              </motion.span>
+              <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+                be{" "}
+              </motion.span>
+              <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+                too.
+              </motion.span>
             </motion.p>
 
             <motion.p className="text-lg md:text-xl text-white leading-relaxed" variants={fadeInUp}>
@@ -336,8 +496,51 @@ export default function About() {
               </ul>
             </motion.div>
 
-            <motion.p className="text-2xl text-white leading-relaxed font-bold text-center" variants={fadeInUp}>
-              With courage. With backbone. With service.
+            <motion.p
+              className="text-2xl text-white leading-relaxed font-bold text-center"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    staggerChildren: 0.15
+                  }
+                }
+              }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+                With{" "}
+              </motion.span>
+              <motion.span
+                className="text-[#FFCC33] italic"
+                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}
+              >
+                courage
+              </motion.span>
+              <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+                . With{" "}
+              </motion.span>
+              <motion.span
+                className="text-[#FFCC33] italic"
+                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}
+              >
+                backbone
+              </motion.span>
+              <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+                . With{" "}
+              </motion.span>
+              <motion.span
+                className="text-[#FFCC33] italic"
+                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}
+              >
+                service
+              </motion.span>
+              <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+                .
+              </motion.span>
             </motion.p>
           </motion.div>
 
@@ -383,9 +586,49 @@ export default function About() {
         >
           <motion.h2
             className="text-3xl md:text-4xl font-bold text-white mb-6 border-b-4 border-[#FFCC33] pb-3"
-            variants={fadeInUp}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.15
+                }
+              }
+            }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
           >
-            Troy's Mad. And He's Turning That Anger Into Action.
+            <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+              Troy's{" "}
+            </motion.span>
+            <motion.span
+              className="text-[#FFCC33] italic"
+              variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}
+            >
+              Mad
+            </motion.span>
+            <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+              .<br/> He's Turning That{" "}
+            </motion.span>
+            <motion.span
+              className="text-[#FFCC33] italic"
+              variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}
+            >
+              Anger
+            </motion.span>
+            <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+              {" "}Into{" "}
+            </motion.span>
+            <motion.span
+              className="text-[#FFCC33] italic"
+              variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}
+            >
+              Action
+            </motion.span>
+            <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+              .
+            </motion.span>
           </motion.h2>
 
           <motion.div className="space-y-4" variants={staggerContainer}>
