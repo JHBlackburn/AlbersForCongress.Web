@@ -76,104 +76,238 @@ const sentenceVariant = {
 export default function About() {
   return (
     <div className="container mx-auto px-4 py-12">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
 
         {/* Hero Section */}
         <motion.section
-          className="mb-16 text-center"
+          className="mb-16 -mx-4 px-4 pb-8 lg:pb-12"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
         >
-          <motion.h1
-            className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight text-left"
-            variants={headingContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <motion.span className="block mb-3" variants={sentenceVariant}>
-              <motion.span
-                className="text-[#FFCC33] text-4xl md:text-5xl"
-                variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
+          <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-8">
+            {/* Mobile: Stack vertically */}
+            <div className="lg:hidden flex flex-col items-start w-full">
+              {/* Headline lines appear one by one */}
+              <motion.h1
+                className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight text-left w-full"
+                variants={headingContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
               >
-                Born
-              </motion.span>
-              <motion.span
-                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
-              >
-                {" "}in a Naval hospital.
-              </motion.span>
-            </motion.span>
-            <motion.span className="block mb-3" variants={sentenceVariant}>
-              <motion.span
-                className="text-[#FFCC33] text-4xl md:text-5xl"
-                variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
-              >
-                Raised
-              </motion.span>
-              <motion.span
-                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
-              >
-                {" "}on a farm.
-              </motion.span>
-            </motion.span>
-            <motion.span className="block mb-3" variants={sentenceVariant}>
-              <motion.span
-                className="text-[#FFCC33] text-4xl md:text-5xl"
-                variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
-              >
-                Tested
-              </motion.span>
-              <motion.span
-                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
-              >
-                {" "}around the world.
-              </motion.span>
-            </motion.span>
-            <motion.span className="block" variants={sentenceVariant}>
-              <motion.span
-                className="text-[#FFCC33] text-4xl md:text-5xl"
-                variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
-              >
-                Rooted
-              </motion.span>
-              <motion.span
-                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
-              >
-                {" "}in North Florida.
-              </motion.span>
-            </motion.span>
-          </motion.h1>
+                <motion.span className="block mb-3" variants={sentenceVariant}>
+                  <motion.span
+                    className="text-[#FFCC33] text-4xl md:text-5xl"
+                    variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
+                  >
+                    Born
+                  </motion.span>
+                  <motion.span
+                    variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
+                  >
+                    {" "}in a Naval hospital.
+                  </motion.span>
+                </motion.span>
+                <motion.span className="block mb-3" variants={sentenceVariant}>
+                  <motion.span
+                    className="text-[#FFCC33] text-4xl md:text-5xl"
+                    variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
+                  >
+                    Raised
+                  </motion.span>
+                  <motion.span
+                    variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
+                  >
+                    {" "}on a farm.
+                  </motion.span>
+                </motion.span>
+                <motion.span className="block mb-3" variants={sentenceVariant}>
+                  <motion.span
+                    className="text-[#FFCC33] text-4xl md:text-5xl"
+                    variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
+                  >
+                    Tested
+                  </motion.span>
+                  <motion.span
+                    variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
+                  >
+                    {" "}around the world.
+                  </motion.span>
+                </motion.span>
+                <motion.span className="block" variants={sentenceVariant}>
+                  <motion.span
+                    className="text-[#FFCC33] text-4xl md:text-5xl"
+                    variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
+                  >
+                    Rooted
+                  </motion.span>
+                  <motion.span
+                    variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
+                  >
+                    {" "}in North Florida.
+                  </motion.span>
+                </motion.span>
+              </motion.h1>
 
-          <motion.div
-            className="my-8"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.56, delay: 3.85 }}
-          >
-            <div className="relative inline-block max-w-2xl mx-auto">
-              <div className="absolute inset-0 bg-[#FFCC33] rounded-lg blur-xl opacity-30"></div>
-              <img
-                src="/about1.jpg"
-                alt="Troy Albers - Veteran, Farmer, Candidate for Congress"
-                className="rounded-lg shadow-2xl w-full h-auto relative border-4 border-[#FFCC33] max-h-[450px] object-cover"
-              />
+              {/* Meet Troy button appears after headline */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 3.6 }}
+              >
+                <a
+                  href="#meet-troy"
+                  className="inline-flex items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-lg px-6 py-3 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#0E3B67]"
+                >
+                  Meet Troy
+                </a>
+              </motion.div>
+
+              {/* Troy's photo appears below button */}
+              <motion.div
+                className="my-6 w-full"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.56, delay: 3.85 }}
+              >
+                <div className="relative inline-block max-w-md mx-auto w-full">
+                  <div className="absolute inset-0 bg-[#FFCC33] rounded-lg blur-xl opacity-30"></div>
+                  <img
+                    src="/about1.jpg"
+                    alt="Troy Albers - Veteran, Farmer, Candidate for Congress"
+                    className="rounded-lg shadow-2xl w-full h-auto relative border-4 border-[#FFCC33] max-h-[450px] object-cover"
+                  />
+                </div>
+              </motion.div>
+
+              {/* Bio text appears below photo */}
+              <motion.p
+                className="text-xl md:text-2xl text-white leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 4.1 }}
+              >
+                Troy Albers has spent his life serving something bigger than himself, first in uniform, then on the land, and now in the fight to restore honor and accountability to our government.
+              </motion.p>
             </div>
-          </motion.div>
 
-          <motion.p
-            className="text-xl md:text-2xl text-white leading-relaxed"
-            variants={fadeInUp}
-          >
-            Troy Albers has spent his life serving something bigger than himself, first in uniform, then on the land, and now in the fight to restore honor and accountability to our government.
-          </motion.p>
+            {/* Desktop/Tablet: Text on left, photo on right */}
+            <div className="hidden lg:flex flex-1 max-h-full flex-col items-start justify-center text-left">
+              <motion.h1
+                className="text-2xl lg:text-3xl xl:text-4xl font-bold text-white mb-4 leading-tight"
+                variants={headingContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
+                <motion.span className="block mb-2" variants={sentenceVariant}>
+                  <motion.span
+                    className="text-[#FFCC33] text-3xl lg:text-4xl xl:text-5xl"
+                    variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
+                  >
+                    Born
+                  </motion.span>
+                  <motion.span
+                    variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
+                  >
+                    {" "}in a Naval hospital.
+                  </motion.span>
+                </motion.span>
+                <motion.span className="block mb-2" variants={sentenceVariant}>
+                  <motion.span
+                    className="text-[#FFCC33] text-3xl lg:text-4xl xl:text-5xl"
+                    variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
+                  >
+                    Raised
+                  </motion.span>
+                  <motion.span
+                    variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
+                  >
+                    {" "}on a farm.
+                  </motion.span>
+                </motion.span>
+                <motion.span className="block mb-2" variants={sentenceVariant}>
+                  <motion.span
+                    className="text-[#FFCC33] text-3xl lg:text-4xl xl:text-5xl"
+                    variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
+                  >
+                    Tested
+                  </motion.span>
+                  <motion.span
+                    variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
+                  >
+                    {" "}around the world.
+                  </motion.span>
+                </motion.span>
+                <motion.span className="block" variants={sentenceVariant}>
+                  <motion.span
+                    className="text-[#FFCC33] text-3xl lg:text-4xl xl:text-5xl"
+                    variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
+                  >
+                    Rooted
+                  </motion.span>
+                  <motion.span
+                    variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
+                  >
+                    {" "}in North Florida.
+                  </motion.span>
+                </motion.span>
+              </motion.h1>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 3.6 }}
+              >
+                <a
+                  href="#meet-troy"
+                  className="inline-flex items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-lg px-6 py-3 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#0E3B67]"
+                >
+                  Meet Troy
+                </a>
+              </motion.div>
+
+              <motion.p
+                className="text-lg md:text-xl text-white leading-relaxed mt-6"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 3.8 }}
+              >
+                Troy Albers has spent his life serving something bigger than himself, first in uniform, then on the land, and now in the fight to restore honor and accountability to our government.
+              </motion.p>
+            </div>
+
+            {/* Desktop/Tablet: Photo on right */}
+            <div className="hidden lg:flex flex-shrink-0 max-h-full items-center justify-end">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.56, delay: 3.85 }}
+              >
+                <div className="relative inline-block max-w-md">
+                  <div className="absolute inset-0 bg-[#FFCC33] rounded-lg blur-xl opacity-30"></div>
+                  <img
+                    src="/about1.jpg"
+                    alt="Troy Albers - Veteran, Farmer, Candidate for Congress"
+                    className="rounded-lg shadow-2xl w-full h-auto relative border-4 border-[#FFCC33] max-h-[500px] lg:max-h-[600px] object-cover"
+                  />
+                </div>
+              </motion.div>
+            </div>
+          </div>
         </motion.section>
 
         {/* Campaign Info Callout */}
         <motion.div
+          id="meet-troy"
           className="bg-[#FFCC33] border-l-4 border-blue-900 p-6 rounded-lg shadow-lg mb-12"
           initial="hidden"
           whileInView="visible"
@@ -677,43 +811,56 @@ export default function About() {
             </motion.p>
 
             <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+              className="flex flex-col items-center gap-4"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
             >
-              <button
-                onClick={() => {
-                  // Check if mobile device
-                  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button
+                  onClick={() => {
+                    // Check if mobile device
+                    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-                  if (isMobile) {
-                    // On mobile, open PDF directly in new tab
-                    window.open('/dsde104.pdf', '_blank');
-                  } else {
-                    // On desktop, use iframe print method
-                    const iframe = document.createElement('iframe');
-                    iframe.style.display = 'none';
-                    iframe.src = '/dsde104.pdf';
-                    document.body.appendChild(iframe);
-                    iframe.onload = () => {
-                      iframe.contentWindow?.print();
-                    };
-                  }
+                    if (isMobile) {
+                      // On mobile, open PDF directly in new tab
+                      window.open('/dsde104.pdf', '_blank');
+                    } else {
+                      // On desktop, use iframe print method
+                      const iframe = document.createElement('iframe');
+                      iframe.style.display = 'none';
+                      iframe.src = '/dsde104.pdf';
+                      document.body.appendChild(iframe);
+                      iframe.onload = () => {
+                        iframe.contentWindow?.print();
+                      };
+                    }
+                  }}
+                  className="inline-flex items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-xl px-8 py-4 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
+                >
+                  Sign Troy's Petition
+                  <FiPrinter className="w-5 h-5" aria-hidden="true" />
+                </button>
+
+                <Link
+                  to="/issues"
+                  className="inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-600 text-white font-bold text-xl px-8 py-4 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-[#FFCC33] focus:ring-offset-2 focus:ring-offset-blue-900"
+                >
+                  View Troy's Issues
+                </Link>
+              </div>
+
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="inline-flex items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-xl px-8 py-4 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
+                className="text-white/70 hover:text-white text-sm underline transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 rounded px-2 py-1"
               >
-                Sign Troy's Petition
-                <FiPrinter className="w-5 h-5" aria-hidden="true" />
-              </button>
-
-              <Link
-                to="/issues"
-                className="inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-600 text-white font-bold text-xl px-8 py-4 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-[#FFCC33] focus:ring-offset-2 focus:ring-offset-blue-900"
-              >
-                View Troy's Issues
-              </Link>
+                Back to top
+              </a>
             </motion.div>
           </div>
         </motion.section>
