@@ -75,98 +75,100 @@ const sentenceVariant = {
 
 export default function About() {
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="container mx-auto px-4 pb-12">
       <div className="max-w-6xl mx-auto">
 
         {/* Hero Section */}
         <motion.section
-          className="mb-16 -mx-4 px-4 pb-8 lg:pb-12"
+          className="mb-16 -mx-4 px-4 pb-8 lg:pb-12 lg:min-h-screen"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
         >
-          <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-8">
-            {/* Mobile: Stack vertically */}
-            <div className="lg:hidden flex flex-col items-start w-full">
-              {/* Headline lines appear one by one */}
-              <motion.h1
-                className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight text-left w-full"
-                variants={headingContainer}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
-                <motion.span className="block mb-3" variants={sentenceVariant}>
-                  <motion.span
-                    className="text-[#FFCC33] text-4xl md:text-5xl"
-                    variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
-                  >
-                    Born
-                  </motion.span>
-                  <motion.span
-                    variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
-                  >
-                    {" "}in a Naval hospital.
-                  </motion.span>
-                </motion.span>
-                <motion.span className="block mb-3" variants={sentenceVariant}>
-                  <motion.span
-                    className="text-[#FFCC33] text-4xl md:text-5xl"
-                    variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
-                  >
-                    Raised
-                  </motion.span>
-                  <motion.span
-                    variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
-                  >
-                    {" "}on a farm.
-                  </motion.span>
-                </motion.span>
-                <motion.span className="block mb-3" variants={sentenceVariant}>
-                  <motion.span
-                    className="text-[#FFCC33] text-4xl md:text-5xl"
-                    variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
-                  >
-                    Tested
-                  </motion.span>
-                  <motion.span
-                    variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
-                  >
-                    {" "}around the world.
-                  </motion.span>
-                </motion.span>
-                <motion.span className="block" variants={sentenceVariant}>
-                  <motion.span
-                    className="text-[#FFCC33] text-4xl md:text-5xl"
-                    variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
-                  >
-                    Rooted
-                  </motion.span>
-                  <motion.span
-                    variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
-                  >
-                    {" "}in North Florida.
-                  </motion.span>
-                </motion.span>
-              </motion.h1>
-
-              {/* Meet Troy button appears after headline */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 3.6 }}
-              >
-                <a
-                  href="#meet-troy"
-                  className="inline-flex items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-lg px-6 py-3 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#0E3B67]"
+          <div className="flex flex-col lg:flex-row lg:items-center md:min-h-screen gap-6 lg:gap-8">
+            {/* Mobile: Stack vertically - Hero text and button fill viewport */}
+            <div className="lg:hidden w-full">
+              <div className="flex flex-col items-start w-full min-h-screen justify-center">
+                {/* Headline lines appear one by one */}
+                <motion.h1
+                  className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight text-left w-full"
+                  variants={headingContainer}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
                 >
-                  Meet Troy
-                </a>
-              </motion.div>
+                  <motion.span className="block mb-3" variants={sentenceVariant}>
+                    <motion.span
+                      className="text-[#FFCC33] text-4xl md:text-5xl"
+                      variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
+                    >
+                      Born
+                    </motion.span>
+                    <motion.span
+                      variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
+                    >
+                      {" "}in a Naval hospital.
+                    </motion.span>
+                  </motion.span>
+                  <motion.span className="block mb-3" variants={sentenceVariant}>
+                    <motion.span
+                      className="text-[#FFCC33] text-4xl md:text-5xl"
+                      variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
+                    >
+                      Raised
+                    </motion.span>
+                    <motion.span
+                      variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
+                    >
+                      {" "}on a farm.
+                    </motion.span>
+                  </motion.span>
+                  <motion.span className="block mb-3" variants={sentenceVariant}>
+                    <motion.span
+                      className="text-[#FFCC33] text-4xl md:text-5xl"
+                      variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
+                    >
+                      Tested
+                    </motion.span>
+                    <motion.span
+                      variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
+                    >
+                      {" "}around the world.
+                    </motion.span>
+                  </motion.span>
+                  <motion.span className="block" variants={sentenceVariant}>
+                    <motion.span
+                      className="text-[#FFCC33] text-4xl md:text-5xl"
+                      variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
+                    >
+                      Rooted
+                    </motion.span>
+                    <motion.span
+                      variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
+                    >
+                      {" "}in North Florida.
+                    </motion.span>
+                  </motion.span>
+                </motion.h1>
 
-              {/* Troy's photo appears below button */}
+                {/* Meet Troy button appears after headline */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 3.6 }}
+                >
+                  <a
+                    href="#meet-troy"
+                    className="inline-flex items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-lg px-6 py-3 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#0E3B67]"
+                  >
+                    Meet Troy
+                  </a>
+                </motion.div>
+              </div>
+
+              {/* Troy's photo appears below the fold on mobile */}
               <motion.div
                 className="my-6 w-full"
                 initial={{ opacity: 0, scale: 0.9 }}
