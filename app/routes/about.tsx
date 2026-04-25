@@ -349,7 +349,7 @@ export default function About() {
 
           <motion.div className="space-y-4" variants={staggerContainer}>
             <motion.p className="text-lg md:text-xl text-white leading-relaxed" variants={fadeInUp}>
-              Troy Albers was born in a Naval hospital and raised on a farm in Elizabethtown, North Carolina. He grew up as a Navy kid in a family that understood duty, sacrifice, and service to country.
+              Troy Albers was born in a Naval hospital and raised on a farm in Elizabeth City, North Carolina. He grew up as a Navy kid in a family that understood duty, sacrifice, and service to country.
             </motion.p>
 
             <motion.p className="text-lg md:text-xl text-white leading-relaxed" variants={fadeInUp}>
