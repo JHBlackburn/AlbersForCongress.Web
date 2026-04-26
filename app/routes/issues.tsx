@@ -37,7 +37,7 @@ const nationalIssues: Issue[] = [
   {
     id: "insurance-national",
     title: "Insurance",
-    content: "Floridians are being crushed by rising insurance costs that government has failed to confront. For many families, insurance is no longer just expensive — it is destabilizing. Troy believes leaders need to treat this like the real economic emergency it is, especially in Florida, where homeowners and working families are paying the price for years of drift and delay."
+    content: "Health insurance should help people get care, not stand between families and their doctors. Too many Americans are paying more every year for premiums, deductibles, prescriptions, and surprise bills while still wondering whether the care they need will actually be covered. Troy believes Congress needs to take health insurance seriously as a cost-of-living issue: protect access to care, lower out-of-pocket costs, fight waste and abuse in the system, and make sure insurance companies are serving patients instead of trapping them in paperwork and denial."
   },
   {
     id: "healthcare",
@@ -50,7 +50,6 @@ const nationalIssues: Issue[] = [
     content: "The people deserve a government that treats public money with discipline and respect. Reckless spending and weak accountability have damaged trust across multiple administrations and left taxpayers holding the bill. Troy believes Congress should demand real transparency, exercise stronger oversight, and remember that every dollar spent belongs to the people first."
   }
 ];
-
 const localIssues: Issue[] = [
   {
     id: "florida-practical-fixes",
@@ -80,7 +79,7 @@ const localIssues: Issue[] = [
   {
     id: "insurance-local",
     title: "Insurance",
-    content: "Florida needs serious action on insurance costs before more families get priced out of staying put. Insurance is one of the biggest financial pressures facing Florida households. Troy wants to push for a stronger federal role in confronting the crisis, including expanding the mandate of the Federal Insurance Office so it does more than monitor the market and can help bring real accountability to a system that keeps failing consumers."
+    content: "Florida families are getting squeezed from every direction by property and car insurance costs. Homeowners are watching premiums climb, renters feel those costs passed down, and drivers are paying more just to stay legal on the road. This is not sustainable for working families, seniors, or young people trying to build a life here. Troy believes Florida needs real accountability in the insurance market, stronger consumer protection, and a serious push from every level of government to make property and auto insurance more stable, more transparent, and more affordable for Floridians."
   }
 ];
 
