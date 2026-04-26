@@ -4,6 +4,7 @@ import type { Route } from "./+types/about";
 import { motion } from "framer-motion";
 import { Link } from "react-router";
 import { FiPrinter } from "react-icons/fi";
+import type { MouseEvent as ReactMouseEvent } from "react";
 import {
   ScrollWipeStory,
   type ScrollWipeStorySlide,
@@ -65,6 +66,21 @@ const sentenceVariant = {
 };
 
 export default function About() {
+  const handleMeetTroyClick = (event: ReactMouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+
+    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+    const targetId = isDesktop ? "meet-troy" : "about-troy-photo";
+    const target = document.getElementById(targetId);
+
+    target?.scrollIntoView({
+      behavior: "smooth",
+      block: isDesktop ? "start" : "center",
+    });
+
+    window.history.replaceState(null, "", `#${targetId}`);
+  };
+
   const serviceSlides: ScrollWipeStorySlide[] = [
     {
       eyebrow: "Navy",
@@ -159,6 +175,7 @@ export default function About() {
                 >
                   <a
                     href="#meet-troy"
+                    onClick={handleMeetTroyClick}
                     className="inline-flex items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-lg px-6 py-3 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#0E3B67]"
                   >
                     Meet Troy
@@ -167,7 +184,8 @@ export default function About() {
               </div>
 
               <motion.div
-                className="my-6 w-full"
+                id="about-troy-photo"
+                className="my-6 w-full scroll-mt-24"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -259,6 +277,7 @@ export default function About() {
               >
                 <a
                   href="#meet-troy"
+                  onClick={handleMeetTroyClick}
                   className="inline-flex items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-lg px-6 py-3 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#0E3B67]"
                 >
                   Meet Troy
@@ -298,13 +317,17 @@ export default function About() {
 
         <motion.div
           id="meet-troy"
-          className="bg-[#FFCC33] border-l-4 border-blue-900 p-6 rounded-lg shadow-lg mb-12"
+          className="bg-[#FFCC33] border-l-4 border-blue-900 p-6 rounded-lg shadow-lg mb-12 scroll-mt-24"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={fadeInUp}
         >
           <div className="text-blue-900">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+              Meet Troy Albers
+            </h2>
+
             <p className="text-lg font-semibold mb-2">
               <strong>Running for:</strong> U.S. Congress, Florida's 3rd Congressional District
             </p>
@@ -464,7 +487,6 @@ export default function About() {
               Here, he built a life the way many people in this district have: through work, sacrifice, faith, family, and responsibility. He knows what it means to serve, but he also knows what it means to budget, to raise children, to work the land, and to worry about what kind of country and community we are handing to the next generation.
             </motion.p>
           </motion.div>
-
         </motion.section>
 
         <motion.section
@@ -801,7 +823,7 @@ export default function About() {
 
                 <Link
                   to="/issues"
-                  className="inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-600 text-white font-bold text-xl px-8 py-4 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-[#FFCC33] focus:ring-offset-2 focus:ring-offset-blue-900"
+                  className="inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-600 text-white font-bold text-xl px-8 py-4 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
                 >
                   View Troy's Issues
                 </Link>
