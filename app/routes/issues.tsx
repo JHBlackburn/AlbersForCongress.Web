@@ -220,26 +220,28 @@ export default function Issues() {
           ref={nationalSectionRef}
           className="mb-12 scroll-mt-24"
         >
-          <div className="mb-6">
-            <h2 className="text-3xl font-bold text-white pt-4 mb-4">
+          <div className="flex items-center justify-between gap-4 mb-6">
+            <h2 className="text-3xl font-bold text-white pt-4">
               National Issues
             </h2>
 
             {/* Expand/Collapse All Button */}
             <button
               onClick={toggleAllNational}
-              className="inline-flex items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold px-6 py-3 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
+              className="inline-flex items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold px-4 py-2 sm:px-6 sm:py-3 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
               aria-label={allNationalExpanded ? "Collapse all national issues" : "Expand all national issues"}
             >
               {allNationalExpanded ? (
                 <>
                   <FiChevronUp className="w-5 h-5" aria-hidden="true" />
-                  Collapse All
+                  <span className="hidden sm:inline">Collapse All</span>
+                  <span className="sm:hidden">Collapse</span>
                 </>
               ) : (
                 <>
                   <FiChevronDown className="w-5 h-5" aria-hidden="true" />
-                  Expand All
+                  <span className="hidden sm:inline">Expand All</span>
+                  <span className="sm:hidden">Expand</span>
                 </>
               )}
             </button>
@@ -271,26 +273,28 @@ export default function Issues() {
           ref={localSectionRef}
           className="scroll-mt-24"
         >
-          <div className="mb-6">
-            <h2 className="text-3xl font-bold text-white pt-4 mb-4">
+          <div className="flex items-center justify-between gap-4 mb-3">
+            <h2 className="text-3xl font-bold text-white pt-4">
               Local Issues
             </h2>
 
             {/* Expand/Collapse All Button */}
             <button
               onClick={toggleAllLocal}
-              className="inline-flex items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold px-6 py-3 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
+              className="inline-flex items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold px-4 py-2 sm:px-6 sm:py-3 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
               aria-label={allLocalExpanded ? "Collapse all local issues" : "Expand all local issues"}
             >
               {allLocalExpanded ? (
                 <>
                   <FiChevronUp className="w-5 h-5" aria-hidden="true" />
-                  Collapse All
+                  <span className="hidden sm:inline">Collapse All</span>
+                  <span className="sm:hidden">Collapse</span>
                 </>
               ) : (
                 <>
                   <FiChevronDown className="w-5 h-5" aria-hidden="true" />
-                  Expand All
+                  <span className="hidden sm:inline">Expand All</span>
+                  <span className="sm:hidden">Expand</span>
                 </>
               )}
             </button>
