@@ -1,6 +1,6 @@
 import type { Route } from "./+types/home";
 import { useState } from "react";
-import WordScrollAnimation from "../components/WordScrollAnimation"
+import WordScrollAnimation from "../components/WordScrollAnimation";
 import HeroImage from "../components/HeroImage";
 
 export function meta({}: Route.MetaArgs) {
@@ -23,8 +23,8 @@ export default function Home() {
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#B2C9A3] rounded-full blur-3xl"></div>
         </div>
 
-        <div className="w-full py-1 relative z-10 max-h-full pl-0 lg:pl-2">
-          <div className="flex flex-col lg:flex-row lg:items-center gap-1 lg:gap-2 max-h-full">
+        <div className="w-full py-1 lg:py-6 xl:py-8 2xl:py-10 relative z-10 max-h-full pl-0 lg:pl-8 xl:pl-12 2xl:pl-16 pr-0 lg:pr-8 xl:pr-12 2xl:pr-16">
+          <div className="flex flex-col lg:flex-row lg:items-center gap-1 lg:gap-8 xl:gap-12 2xl:gap-16 max-h-full">
             {/* Mobile: Container for centering */}
             <div className="lg:hidden flex flex-col items-center w-full">
               {/* WordScrollAnimation on top */}
@@ -41,16 +41,19 @@ export default function Home() {
             </div>
 
             {/* Desktop: Candidate Photo on left */}
-            <div className="hidden lg:flex flex-shrink-0 max-h-full items-center justify-start px-3">
+            <div className="hidden lg:flex flex-shrink-0 max-h-full items-center justify-start pt-6 xl:pt-8 2xl:pt-10 pl-4 xl:pl-6 2xl:pl-8">
               <HeroImage />
             </div>
 
             {/* Desktop: WordScrollAnimation and help text on right */}
-            <div className="hidden lg:flex flex-1 max-h-full flex-col items-start justify-center text-left w-full">
-              <WordScrollAnimation />
-              <p className="text-white text-lg md:text-xl mt-6 max-w-2xl leading-relaxed">
+            <div className="hidden lg:flex flex-1 max-h-full flex-col items-start justify-center text-left w-full min-w-0 pr-4 xl:pr-8 2xl:pr-12">
+              <div className="w-full max-w-3xl xl:max-w-4xl 2xl:max-w-5xl">
+                <WordScrollAnimation />
+              </div>
+
+              <p className="text-white text-lg xl:text-xl 2xl:text-2xl mt-8 xl:mt-10 max-w-3xl 2xl:max-w-4xl leading-relaxed xl:leading-loose">
                 Troy needs your help to get on the ballot. Print and sign the petition, then mail it to:
-                <span className="block mt-2 font-semibold">
+                <span className="block mt-3 font-semibold">
                   Troy Albers<br />
                   1468 SW Main Blvd Ste 105-28<br />
                   Lake City, FL 32025
@@ -68,7 +71,7 @@ export default function Home() {
             >
               How YOU can help Troy:
               <svg
-                className={`w-5 h-5 transition-transform ${isAddressOpen ? 'rotate-180' : ''}`}
+                className={`w-5 h-5 transition-transform ${isAddressOpen ? "rotate-180" : ""}`}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
