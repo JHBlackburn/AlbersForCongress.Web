@@ -17,16 +17,16 @@ export default function Home() {
   const [isAddressOpen, setIsAddressOpen] = useState(false);
 
   return (
-    <div className="w-full overflow-visible lg:h-full lg:min-h-0 lg:overflow-hidden">
+    <div className="w-full min-h-[calc(100dvh-76px)] lg:h-full lg:min-h-0 lg:overflow-hidden">
       {/* Hero Section */}
-      <div className="text-white relative overflow-hidden h-auto lg:h-full lg:min-h-0 flex items-start lg:items-center">
+      <div className="text-white relative overflow-hidden min-h-[calc(100dvh-76px)] lg:h-full lg:min-h-0 flex items-start lg:items-center">
         {/* Decorative background elements */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#FFCC33] rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#B2C9A3] rounded-full blur-3xl"></div>
         </div>
 
-        <div className="relative z-10 w-full h-auto lg:h-full lg:min-h-0 px-0 pt-2 pb-1 lg:px-[clamp(1.5rem,4vw,5rem)] lg:py-[clamp(0.75rem,2.4vh,2rem)]">
+        <div className="relative z-10 w-full min-h-[calc(100dvh-76px)] lg:h-full lg:min-h-0 px-0 pt-2 pb-0 lg:px-[clamp(1.5rem,4vw,5rem)] lg:py-[clamp(0.75rem,2.4vh,2rem)]">
           <div className="h-auto lg:h-full min-h-0 flex flex-col lg:grid lg:grid-cols-[minmax(360px,0.95fr)_minmax(420px,1.35fr)] xl:grid-cols-[minmax(420px,0.95fr)_minmax(520px,1.35fr)] lg:items-center gap-0 lg:gap-[clamp(0.25rem,1.15vw,1.35rem)]">
             {/* Mobile: Container for centering */}
             <div className="lg:hidden flex flex-col items-center w-full min-h-0">
@@ -73,7 +73,7 @@ export default function Home() {
           </div>
 
           {/* Mobile version - visible below lg breakpoint */}
-          <div className="lg:hidden text-white text-base md:text-lg mt-1 max-w-2xl leading-snug px-4 mx-auto text-center">
+          <div className="lg:hidden text-white text-base md:text-lg -mt-1 max-w-2xl leading-snug px-4 mx-auto text-center pb-2">
             <button
               onClick={() => setIsAddressOpen(!isAddressOpen)}
               className="inline-flex items-center justify-center gap-2 text-[#FFCC33] hover:text-[#E8B923] transition-colors font-semibold rounded px-1 mx-auto border-0 outline-none focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"

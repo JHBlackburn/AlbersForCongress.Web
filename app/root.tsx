@@ -51,7 +51,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body className="min-h-dvh flex flex-col lg:overflow-hidden">
         <Navigation />
 
-        <main className="flex-none overflow-visible bg-linear-to-br from-blue-900 to-blue-700 lg:flex-1 lg:min-h-0 lg:overflow-hidden">
+        <main className="grow overflow-visible bg-linear-to-br from-blue-900 to-blue-700 lg:min-h-0 lg:overflow-hidden">
           {children}
         </main>
 
