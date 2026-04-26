@@ -48,10 +48,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="min-h-dvh flex flex-col lg:overflow-hidden">
+      <body className="min-h-dvh flex flex-col">
         <Navigation />
 
-        <main className="grow overflow-visible bg-linear-to-br from-blue-900 to-blue-700 lg:min-h-0 lg:overflow-hidden">
+        <main className="grow bg-linear-to-br from-blue-900 to-blue-700">
           {children}
         </main>
 
