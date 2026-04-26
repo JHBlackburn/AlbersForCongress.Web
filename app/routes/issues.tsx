@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import type { Route } from "./+types/issues";
 import Fuse from "fuse.js";
+import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -37,7 +38,7 @@ const nationalIssues: Issue[] = [
   {
     id: "insurance-national",
     title: "Insurance",
-    content: "Floridians are being crushed by rising insurance costs that government has failed to confront. For many families, insurance is no longer just expensive — it is destabilizing. Troy believes leaders need to treat this like the real economic emergency it is, especially in Florida, where homeowners and working families are paying the price for years of drift and delay."
+    content: "Health insurance should help people get care, not stand between families and their doctors. Too many Americans are paying more every year for premiums, deductibles, prescriptions, and surprise bills while still wondering whether the care they need will actually be covered. Troy believes Congress needs to take health insurance seriously as a cost-of-living issue: protect access to care, lower out-of-pocket costs, fight waste and abuse in the system, and make sure insurance companies are serving patients instead of trapping them in paperwork and denial."
   },
   {
     id: "healthcare",
@@ -80,7 +81,7 @@ const localIssues: Issue[] = [
   {
     id: "insurance-local",
     title: "Insurance",
-    content: "Florida needs serious action on insurance costs before more families get priced out of staying put. Insurance is one of the biggest financial pressures facing Florida households. Troy wants to push for a stronger federal role in confronting the crisis, including expanding the mandate of the Federal Insurance Office so it does more than monitor the market and can help bring real accountability to a system that keeps failing consumers."
+    content: "Florida families are getting squeezed from every direction by property and car insurance costs. Homeowners are watching premiums climb, renters feel those costs passed down, and drivers are paying more just to stay legal on the road. This is not sustainable for working families, seniors, or young people trying to build a life here. Troy believes Florida needs real accountability in the insurance market, stronger consumer protection, and a serious push from every level of government to make property and auto insurance more stable, more transparent, and more affordable for Floridians."
   }
 ];
 
@@ -93,7 +94,7 @@ export default function Issues() {
 
   // Configure Fuse.js options for fuzzy search
   const fuseOptions = useMemo(() => ({
-    keys: ['title', 'content'], // Search in both title and content
+    keys: ["title", "content"], // Search in both title and content
     threshold: 0.4, // 0 = exact match, 1 = match anything (0.4 is good balance)
     ignoreLocation: true, // Don't weight matches by position in string
     minMatchCharLength: 2, // Minimum character length to match
@@ -108,6 +109,7 @@ export default function Issues() {
   useEffect(() => {
     const scrollToSection = () => {
       const hash = window.location.hash;
+
       if (hash === "#national-issues" && nationalSectionRef.current) {
         nationalSectionRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
       } else if (hash === "#local-issues" && localSectionRef.current) {
@@ -126,50 +128,63 @@ export default function Issues() {
   // Filter issues using Fuse.js fuzzy search
   const filteredNationalIssues = useMemo(() => {
     if (!searchQuery.trim()) return nationalIssues;
-    return nationalFuse.search(searchQuery).map(result => result.item);
+    return nationalFuse.search(searchQuery).map((result) => result.item);
   }, [searchQuery, nationalFuse]);
 
   const filteredLocalIssues = useMemo(() => {
     if (!searchQuery.trim()) return localIssues;
-    return localFuse.search(searchQuery).map(result => result.item);
+    return localFuse.search(searchQuery).map((result) => result.item);
   }, [searchQuery, localFuse]);
 
   // Toggle individual accordion
   const toggleNationalAccordion = (id: string) => {
     const newExpanded = new Set(nationalExpanded);
+
     if (newExpanded.has(id)) {
       newExpanded.delete(id);
     } else {
       newExpanded.add(id);
     }
+
     setNationalExpanded(newExpanded);
   };
 
   const toggleLocalAccordion = (id: string) => {
     const newExpanded = new Set(localExpanded);
+
     if (newExpanded.has(id)) {
       newExpanded.delete(id);
     } else {
       newExpanded.add(id);
     }
+
     setLocalExpanded(newExpanded);
   };
 
+  // Track whether all filtered issues are currently expanded
+  const allNationalExpanded =
+    filteredNationalIssues.length > 0 &&
+    filteredNationalIssues.every((issue) => nationalExpanded.has(issue.id));
+
+  const allLocalExpanded =
+    filteredLocalIssues.length > 0 &&
+    filteredLocalIssues.every((issue) => localExpanded.has(issue.id));
+
   // Expand/Collapse all for each section
-  const expandAllNational = () => {
-    setNationalExpanded(new Set(filteredNationalIssues.map(i => i.id)));
+  const toggleAllNational = () => {
+    if (allNationalExpanded) {
+      setNationalExpanded(new Set());
+    } else {
+      setNationalExpanded(new Set(filteredNationalIssues.map((issue) => issue.id)));
+    }
   };
 
-  const collapseAllNational = () => {
-    setNationalExpanded(new Set());
-  };
-
-  const expandAllLocal = () => {
-    setLocalExpanded(new Set(filteredLocalIssues.map(i => i.id)));
-  };
-
-  const collapseAllLocal = () => {
-    setLocalExpanded(new Set());
+  const toggleAllLocal = () => {
+    if (allLocalExpanded) {
+      setLocalExpanded(new Set());
+    } else {
+      setLocalExpanded(new Set(filteredLocalIssues.map((issue) => issue.id)));
+    }
   };
 
   return (
@@ -205,24 +220,31 @@ export default function Issues() {
           ref={nationalSectionRef}
           className="mb-12 scroll-mt-24"
         >
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-3xl font-bold text-white pt-4">National Issues</h2>
-            <div className="flex gap-2">
-              <button
-                onClick={expandAllNational}
-                className="px-3 py-2 text-sm bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
-                aria-label="Expand all national issues"
-              >
-                Expand All
-              </button>
-              <button
-                onClick={collapseAllNational}
-                className="px-3 py-2 text-sm bg-gray-700 hover:bg-gray-600 text-[#FFCC33] font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
-                aria-label="Collapse all national issues"
-              >
-                Collapse All
-              </button>
-            </div>
+          <div className="flex items-center justify-between gap-4 mb-6">
+            <h2 className="text-3xl font-bold text-white pt-4">
+              National Issues
+            </h2>
+
+            {/* Expand/Collapse All Button */}
+            <button
+              onClick={toggleAllNational}
+              className="inline-flex items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold px-4 py-2 sm:px-6 sm:py-3 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
+              aria-label={allNationalExpanded ? "Collapse all national issues" : "Expand all national issues"}
+            >
+              {allNationalExpanded ? (
+                <>
+                  <FiChevronUp className="w-5 h-5" aria-hidden="true" />
+                  <span className="hidden sm:inline">Collapse All</span>
+                  <span className="sm:hidden">Collapse</span>
+                </>
+              ) : (
+                <>
+                  <FiChevronDown className="w-5 h-5" aria-hidden="true" />
+                  <span className="hidden sm:inline">Expand All</span>
+                  <span className="sm:hidden">Expand</span>
+                </>
+              )}
+            </button>
           </div>
 
           {filteredNationalIssues.length === 0 ? (
@@ -251,29 +273,35 @@ export default function Issues() {
           ref={localSectionRef}
           className="scroll-mt-24"
         >
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-between gap-4 mb-3">
             <h2 className="text-3xl font-bold text-white pt-4">
               Local Issues
             </h2>
-            <div className="flex gap-2">
-              <button
-                onClick={expandAllLocal}
-                className="px-3 py-2 text-sm bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
-                aria-label="Expand all local issues"
-              >
-                Expand All
-              </button>
-              <button
-                onClick={collapseAllLocal}
-                className="px-3 py-2 text-sm bg-gray-700 hover:bg-gray-600 text-[#FFCC33] font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
-                aria-label="Collapse all local issues"
-              >
-                Collapse All
-              </button>
-            </div>
+
+            {/* Expand/Collapse All Button */}
+            <button
+              onClick={toggleAllLocal}
+              className="inline-flex items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold px-4 py-2 sm:px-6 sm:py-3 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
+              aria-label={allLocalExpanded ? "Collapse all local issues" : "Expand all local issues"}
+            >
+              {allLocalExpanded ? (
+                <>
+                  <FiChevronUp className="w-5 h-5" aria-hidden="true" />
+                  <span className="hidden sm:inline">Collapse All</span>
+                  <span className="sm:hidden">Collapse</span>
+                </>
+              ) : (
+                <>
+                  <FiChevronDown className="w-5 h-5" aria-hidden="true" />
+                  <span className="hidden sm:inline">Expand All</span>
+                  <span className="sm:hidden">Expand</span>
+                </>
+              )}
+            </button>
           </div>
+
           <h4 className="text-2xl font-bold text-white pb-2">
-              Florida's 3rd Congressional District
+            Florida's 3rd Congressional District
           </h4>
 
           {filteredLocalIssues.length === 0 ? (
@@ -351,6 +379,7 @@ function AccordionItem({ issue, isExpanded, onToggle }: AccordionItemProps) {
           />
         </svg>
       </button>
+
       <div
         id={`content-${issue.id}`}
         ref={contentRef}

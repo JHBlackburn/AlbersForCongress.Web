@@ -176,12 +176,7 @@ export default function Navigation() {
                 <div
                   className="absolute top-full left-0 bg-blue-800 rounded shadow-lg py-2 min-w-[150px] z-50 border-t-2 border-[#FFCC33]"
                 >
-                  <Link
-                    to="/events"
-                    className="block px-4 py-2 hover:bg-blue-700 hover:text-[#FFCC33] transition-colors focus:outline-none focus:bg-blue-700 focus:ring-2 focus:ring-inset focus:ring-[#FFCC33]"
-                  >
-                    Events
-                  </Link>
+
                   <a
                     href="https://secure.actblue.com/donate/troy-albers-1"
                     target="_blank"
@@ -191,12 +186,7 @@ export default function Navigation() {
                     Donate
                     <FiExternalLink className="w-4 h-4" aria-hidden="true" />
                   </a>
-                  <Link
-                    to="/volunteer"
-                    className="block px-4 py-2 hover:bg-blue-700 hover:text-[#FFCC33] transition-colors focus:outline-none focus:bg-blue-700 focus:ring-2 focus:ring-inset focus:ring-[#FFCC33]"
-                  >
-                    Volunteer
-                  </Link>
+
                 </div>
               )}
             </div>
