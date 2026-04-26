@@ -27,8 +27,7 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 w-full h-full min-h-0 px-0 lg:px-[clamp(1.5rem,4vw,5rem)] lg:py-[clamp(1rem,3vh,2.5rem)]">
-          <div className="h-full min-h-0 flex flex-col lg:grid lg:grid-cols-[minmax(360px,0.95fr)_minmax(420px,1.35fr)] xl:grid-cols-[minmax(420px,0.95fr)_minmax(520px,1.35fr)] lg:items-center gap-1 lg:gap-[clamp(2rem,4vw,5rem)]">
-            {/* Mobile: Container for centering */}
+<div className="h-full min-h-0 flex flex-col lg:grid lg:grid-cols-[minmax(360px,0.95fr)_minmax(420px,1.35fr)] xl:grid-cols-[minmax(420px,0.95fr)_minmax(520px,1.35fr)] lg:items-center gap-1 lg:gap-[clamp(0.75rem,2vw,2.25rem)]">            {/* Mobile: Container for centering */}
             <div className="lg:hidden flex flex-col items-center w-full min-h-0">
               {/* WordScrollAnimation on top */}
               <div className="flex-1 max-h-full flex flex-col items-start justify-center text-left w-full px-4">
@@ -53,8 +52,7 @@ export default function Home() {
             </div>
 
             {/* Desktop: WordScrollAnimation and help text on right */}
-            <div className="hidden lg:flex h-full min-h-0 flex-col items-start justify-center text-left w-full min-w-0 overflow-hidden pr-[clamp(0.5rem,2vw,2rem)]">
-              <div className="w-full max-w-[min(58vw,920px)] origin-left scale-[clamp(0.72,0.84+0.12vw,1)]">
+<div className="hidden lg:flex h-full min-h-0 flex-col items-start justify-center text-left w-full min-w-0 overflow-hidden pr-[clamp(0.25rem,1vw,1rem)]">              <div className="w-full max-w-[min(58vw,920px)] origin-left scale-[clamp(0.72,0.84+0.12vw,1)]">
                 <WordScrollAnimation />
               </div>
 
