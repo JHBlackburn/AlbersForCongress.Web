@@ -20,16 +20,16 @@ export default function HeroImage() {
   };
 
   return (
-    <div className="relative inline-block max-h-full lg:pb-3">
+    <div className="relative inline-flex max-h-full flex-col items-center lg:w-full lg:pb-1">
       {/* Static embellishment */}
       <div className="absolute inset-0 bg-[#FFCC33] rounded-lg blur-xl opacity-15"></div>
 
       {/* Image and mobile overlay */}
-      <div className="relative inline-block">
+      <div className="relative inline-block lg:w-full">
         <img
           src="/TroyAlbers4Congress_Zoomed.JPG"
           alt="Troy Albers"
-          className="rounded-lg shadow-2xl max-w-full max-h-[45vh] lg:max-h-[48vh] xl:max-h-[58vh] w-auto h-auto object-contain relative border-4 border-[#FFCC33] hover:border-[#B2C9A3] transition-all duration-300"
+          className="rounded-lg shadow-2xl max-w-full max-h-[45vh] lg:max-h-[64vh] xl:max-h-[70vh] 2xl:max-h-[74vh] w-auto h-auto object-contain relative border-4 border-[#FFCC33] hover:border-[#B2C9A3] transition-all duration-300 lg:w-full lg:object-cover"
         />
 
         {/* Mobile Overlay on bottom third */}
@@ -61,28 +61,28 @@ export default function HeroImage() {
       </div>
 
       {/* Desktop buttons below picture */}
-      <div className="hidden lg:flex flex-col items-center mt-3 pb-3">
-        <p className="text-white text-[clamp(1.15rem,1.45vw,1.65rem)] font-semibold mb-2 leading-tight">
+      <div className="hidden lg:flex w-full flex-col items-center mt-2 pb-1">
+        <p className="text-white text-[clamp(1.05rem,1.25vw,1.45rem)] font-semibold mb-2 leading-tight">
           Troy works for YOU
         </p>
 
-        <div className="flex flex-wrap gap-3 justify-center pb-3">
+        <div className="grid w-full grid-cols-2 gap-3 pb-1">
           <a
             href="https://secure.actblue.com/donate/troy-albers-1"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-[clamp(1rem,1.15vw,1.2rem)] px-5 py-2 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-900 whitespace-nowrap"
+            className="inline-flex min-w-0 items-center justify-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-[clamp(0.9rem,1vw,1.1rem)] px-3 py-2 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-[1.03] hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-900 whitespace-nowrap"
           >
             Donate
-            <FiExternalLink className="w-5 h-5" aria-hidden="true" />
+            <FiExternalLink className="w-5 h-5 shrink-0" aria-hidden="true" />
           </a>
 
           <button
             onClick={handlePrintPetition}
-            className="inline-flex items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-[clamp(1rem,1.15vw,1.2rem)] px-5 py-2 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-900 whitespace-nowrap"
+            className="inline-flex min-w-0 items-center justify-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-[clamp(0.9rem,1vw,1.1rem)] px-3 py-2 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-[1.03] hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-900 whitespace-nowrap"
           >
             Sign My Petition
-            <FiPrinter className="w-5 h-5" aria-hidden="true" />
+            <FiPrinter className="w-5 h-5 shrink-0" aria-hidden="true" />
           </button>
         </div>
       </div>
