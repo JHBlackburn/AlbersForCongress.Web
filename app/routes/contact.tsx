@@ -3,16 +3,24 @@
 import type { Route } from "./+types/contact";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { FiMapPin, FiPhone, FiMail, FiClock, FiChevronDown, FiChevronUp } from "react-icons/fi";
+import {
+  FiMapPin,
+  FiPhone,
+  FiMail,
+  FiClock,
+  FiChevronDown,
+  FiChevronUp,
+} from "react-icons/fi";
 
 export function meta({}: Route.MetaArgs) {
   return [
     {
-      title: "Contact Troy Albers for Congress | Gainesville Campaign Office"
+      title: "Contact Troy Albers for Congress | Gainesville Campaign Office",
     },
     {
       name: "description",
-      content: "Visit our campaign office in Gainesville or reach out today to volunteer, learn more, or get involved. Troy Albers is a local candidate with a real physical office in Gainesville, FL, in the heart of Florida's 3rd Congressional District."
+      content:
+        "Visit our campaign office in Gainesville or reach out today to volunteer, learn more, or get involved. Troy Albers is a local candidate with a real physical office in Gainesville, FL, in the heart of Florida's 3rd Congressional District.",
     },
   ];
 }
@@ -24,9 +32,9 @@ const fadeInUp = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6
-    }
-  }
+      duration: 0.6,
+    },
+  },
 };
 
 const staggerContainer = {
@@ -35,65 +43,83 @@ const staggerContainer = {
     opacity: 1,
     transition: {
       staggerChildren: 0.15,
-      delayChildren: 0.1
-    }
-  }
+      delayChildren: 0.1,
+    },
+  },
 };
 
 // District data
 const districtData = [
   {
     county: "Alachua County",
-    cities: ["Gainesville", "High Springs", "Newberry", "Alachua", "Archer", "Hawthorne", "Micanopy", "Waldo"]
+    cities: [
+      "Gainesville",
+      "High Springs",
+      "Newberry",
+      "Alachua",
+      "Archer",
+      "Hawthorne",
+      "Micanopy",
+      "Waldo",
+    ],
   },
   {
     county: "Baker County",
-    cities: ["Macclenny", "Glen St. Mary"]
+    cities: ["Macclenny", "Glen St. Mary"],
   },
   {
     county: "Bradford County",
-    cities: ["Starke", "Lawtey", "Brooker", "Hampton"]
+    cities: ["Starke", "Lawtey", "Brooker", "Hampton"],
   },
   {
     county: "Columbia County",
-    cities: ["Lake City", "Fort White"]
+    cities: ["Lake City", "Fort White"],
   },
   {
     county: "Dixie County",
-    cities: ["Cross City", "Horseshoe Beach"]
+    cities: ["Cross City", "Horseshoe Beach"],
   },
   {
     county: "Gilchrist County",
-    cities: ["Trenton", "Bell", "Fanning Springs"]
+    cities: ["Trenton", "Bell", "Fanning Springs"],
   },
   {
     county: "Hamilton County",
-    cities: ["Jasper", "Jennings", "White Springs"]
+    cities: ["Jasper", "Jennings", "White Springs"],
   },
   {
     county: "Lafayette County",
-    cities: ["Mayo"]
+    cities: ["Mayo"],
   },
   {
     county: "Levy County",
-    cities: ["Bronson", "Cedar Key", "Chiefland", "Williston", "Yankeetown", "Inglis"]
+    cities: [
+      "Bronson",
+      "Cedar Key",
+      "Chiefland",
+      "Williston",
+      "Yankeetown",
+      "Inglis",
+    ],
   },
   {
     county: "Marion County (partial)",
-    cities: ["Ocala (northern parts)"]
+    cities: ["Ocala (northern parts)"],
   },
   {
     county: "Suwannee County",
-    cities: ["Live Oak", "Branford"]
+    cities: ["Live Oak", "Branford"],
   },
   {
     county: "Union County",
-    cities: ["Lake Butler", "Raiford", "Worthington Springs"]
-  }
+    cities: ["Lake Butler", "Raiford", "Worthington Springs"],
+  },
 ];
 
 export default function Contact() {
-  const [expandedCounties, setExpandedCounties] = useState<Set<number>>(new Set());
+  const [expandedCounties, setExpandedCounties] = useState<Set<number>>(
+    new Set(),
+  );
   const [allExpanded, setAllExpanded] = useState(false);
 
   const toggleCounty = (index: number) => {
@@ -122,7 +148,6 @@ export default function Contact() {
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-6xl mx-auto">
-
         {/* Hero Section */}
         <motion.section
           className="mb-12 text-center"
@@ -135,7 +160,8 @@ export default function Contact() {
             Get in Touch with Troy Albers for Congress
           </h1>
           <p className="text-xl md:text-2xl text-white/90 leading-relaxed max-w-3xl mx-auto">
-            Visit our campaign office in Gainesville or reach out today to volunteer, learn more, or get involved.
+            Visit our campaign office in Gainesville or reach out today to
+            volunteer, learn more, or get involved.
           </p>
           <p className="text-lg text-[#FFCC33] font-semibold mt-4">
             Local office • Real address • Here to serve you
@@ -157,11 +183,17 @@ export default function Contact() {
               variants={fadeInUp}
             >
               <div className="flex items-start gap-4">
-                <FiMapPin className="w-8 h-8 text-[#FFCC33] shrink-0 mt-1" aria-hidden="true" />
+                <FiMapPin
+                  className="w-8 h-8 text-[#FFCC33] shrink-0 mt-1"
+                  aria-hidden="true"
+                />
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-2">Campaign Office</h3>
+                  <h3 className="text-xl font-bold text-white mb-2">
+                    Campaign Office
+                  </h3>
                   <p className="text-white/90 text-lg">
-                    201 SE 2nd Ave, Suite 208<br />
+                    201 SE 2nd Ave, Suite 208
+                    <br />
                     Gainesville, FL 32601
                   </p>
                 </div>
@@ -174,12 +206,28 @@ export default function Contact() {
               variants={fadeInUp}
             >
               <div className="flex items-start gap-4">
-                <FiPhone className="w-8 h-8 text-[#FFCC33] shrink-0 mt-1" aria-hidden="true" />
+                <FiPhone
+                  className="w-8 h-8 text-[#FFCC33] shrink-0 mt-1"
+                  aria-hidden="true"
+                />
                 <div>
                   <h3 className="text-xl font-bold text-white mb-2">Phone</h3>
                   <p className="text-white/90 text-lg">
-                    <strong>Office:</strong> <a href="tel:3527926215" className="hover:text-[#FFCC33] transition-colors">(352) 792-6215</a><br />
-                    <strong>Cell:</strong> <a href="tel:3257567882" className="hover:text-[#FFCC33] transition-colors">(325) 756-7882</a>
+                    <strong>Office:</strong>{" "}
+                    <a
+                      href="tel:3527926215"
+                      className="hover:text-[#FFCC33] transition-colors"
+                    >
+                      (352) 792-6215
+                    </a>
+                    <br />
+                    <strong>Cell:</strong>{" "}
+                    <a
+                      href="tel:3257567882"
+                      className="hover:text-[#FFCC33] transition-colors"
+                    >
+                      (325) 756-7882
+                    </a>
                   </p>
                 </div>
               </div>
@@ -191,14 +239,20 @@ export default function Contact() {
               variants={fadeInUp}
             >
               <div className="flex items-start gap-4">
-                <FiMail className="w-8 h-8 text-[#FFCC33] shrink-0 mt-1" aria-hidden="true" />
+                <FiMail
+                  className="w-8 h-8 text-[#FFCC33] shrink-0 mt-1"
+                  aria-hidden="true"
+                />
                 <div className="min-w-0">
                   <h3 className="text-xl font-bold text-white mb-2">Email</h3>
                   <p className="text-white/90 text-base sm:text-lg">
                     <a
                       href="mailto:GetInvolved@AlbersForCongress.com"
                       className="hover:text-[#FFCC33] transition-colors inline-block"
-                      style={{ wordBreak: "break-word", overflowWrap: "anywhere" }}
+                      style={{
+                        wordBreak: "break-word",
+                        overflowWrap: "anywhere",
+                      }}
                     >
                       <span className="inline">GetInvolved</span>
                       <wbr />
@@ -215,11 +269,17 @@ export default function Contact() {
               variants={fadeInUp}
             >
               <div className="flex items-start gap-4">
-                <FiClock className="w-8 h-8 text-[#FFCC33] shrink-0 mt-1" aria-hidden="true" />
+                <FiClock
+                  className="w-8 h-8 text-[#FFCC33] shrink-0 mt-1"
+                  aria-hidden="true"
+                />
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-2">Office Hours</h3>
+                  <h3 className="text-xl font-bold text-white mb-2">
+                    Office Hours
+                  </h3>
                   <p className="text-white/90 text-lg">
-                    Monday – Friday<br />
+                    Monday – Friday
+                    <br />
                     9:00 AM – 5:00 PM ET
                   </p>
                 </div>
@@ -264,41 +324,52 @@ export default function Contact() {
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
         >
-          <div className="flex items-start justify-between gap-4 mb-4 border-b-4 border-[#FFCC33] pb-3">
-            <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+          <div className="mb-4 border-b-4 border-[#FFCC33] pb-3">
+            <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
               <span className="block">
-                Showing Up <span className="text-[#FFCC33] italic">Every Day</span>
+                Showing Up{" "}
+                <span className="text-[#FFCC33] italic">Every Day</span>
               </span>
               <span className="block">
-                For <span className="text-[#FFCC33] italic">Florida's 3rd District</span>
+                For{" "}
+                <span className="text-[#FFCC33] italic">
+                  Florida's 3rd District
+                </span>
               </span>
             </h2>
 
-            {/* Expand/Collapse All Button */}
-            <button
-              onClick={toggleAll}
-              className="inline-flex shrink-0 items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold px-4 py-2 sm:px-6 sm:py-3 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
-              aria-label={allExpanded ? "Collapse all district counties" : "Expand all district counties"}
-            >
-              {allExpanded ? (
-                <>
-                  <FiChevronUp className="w-5 h-5" aria-hidden="true" />
-                  <span className="hidden sm:inline">Collapse All</span>
-                  <span className="sm:hidden">Collapse</span>
-                </>
-              ) : (
-                <>
-                  <FiChevronDown className="w-5 h-5" aria-hidden="true" />
-                  <span className="hidden sm:inline">Expand All</span>
-                  <span className="sm:hidden">Expand</span>
-                </>
-              )}
-            </button>
-          </div>
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+              <p className="max-w-3xl text-lg md:text-xl text-white/90 leading-relaxed">
+                Troy Albers is proudly seeking to serve the communities of North
+                Central Florida, including the following counties and cities.
+              </p>
 
-          <p className="max-w-3xl text-lg md:text-xl text-white/90 mb-6 leading-relaxed">
-            Troy Albers is proudly seeking to serve the communities of North Central Florida, including the following counties and cities.
-          </p>
+              {/* Expand/Collapse All Button */}
+              <button
+                onClick={toggleAll}
+                className="inline-flex w-fit shrink-0 items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold px-4 py-2 sm:px-6 sm:py-3 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
+                aria-label={
+                  allExpanded
+                    ? "Collapse all district counties"
+                    : "Expand all district counties"
+                }
+              >
+                {allExpanded ? (
+                  <>
+                    <FiChevronUp className="w-5 h-5" aria-hidden="true" />
+                    <span className="hidden sm:inline">Collapse All</span>
+                    <span className="sm:hidden">Collapse</span>
+                  </>
+                ) : (
+                  <>
+                    <FiChevronDown className="w-5 h-5" aria-hidden="true" />
+                    <span className="hidden sm:inline">Expand All</span>
+                    <span className="sm:hidden">Expand</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
 
           {/* Accordion List */}
           <div className="space-y-3">
@@ -316,12 +387,20 @@ export default function Contact() {
                     className="w-full flex items-center justify-between p-4 text-left hover:bg-white/5 transition-colors focus:outline-none focus:ring-2 focus:ring-[#FFCC33] focus:ring-inset"
                     aria-expanded={isExpanded}
                   >
-                    <h3 className="text-xl font-bold text-white">{district.county}</h3>
+                    <h3 className="text-xl font-bold text-white">
+                      {district.county}
+                    </h3>
                     <div className="shrink-0 ml-4">
                       {isExpanded ? (
-                        <FiChevronUp className="w-6 h-6 text-[#FFCC33]" aria-hidden="true" />
+                        <FiChevronUp
+                          className="w-6 h-6 text-[#FFCC33]"
+                          aria-hidden="true"
+                        />
                       ) : (
-                        <FiChevronDown className="w-6 h-6 text-[#FFCC33]" aria-hidden="true" />
+                        <FiChevronDown
+                          className="w-6 h-6 text-[#FFCC33]"
+                          aria-hidden="true"
+                        />
                       )}
                     </div>
                   </button>
@@ -329,7 +408,10 @@ export default function Contact() {
                   {isExpanded && (
                     <div className="px-4 pb-4 pt-2 border-t border-white/10">
                       <p className="text-white/90 text-lg">
-                        <strong className="text-[#FFCC33]">Cities & Towns:</strong> {district.cities.join(", ")}
+                        <strong className="text-[#FFCC33]">
+                          Cities & Towns:
+                        </strong>{" "}
+                        {district.cities.join(", ")}
                       </p>
                     </div>
                   )}
@@ -352,7 +434,8 @@ export default function Contact() {
               Ready to Get Involved?
             </h2>
             <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed">
-              Join us in our mission to bring honor and accountability back to Washington.
+              Join us in our mission to bring honor and accountability back to
+              Washington.
             </p>
 
             {/* Desktop CTA */}
@@ -407,7 +490,6 @@ export default function Contact() {
             <FiPhone className="w-7 h-7" aria-hidden="true" />
           </a>
         </div>
-
       </div>
     </div>
   );
