@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import type { Route } from "./+types/issues";
 import Fuse from "fuse.js";
+import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -50,6 +51,7 @@ const nationalIssues: Issue[] = [
     content: "The people deserve a government that treats public money with discipline and respect. Reckless spending and weak accountability have damaged trust across multiple administrations and left taxpayers holding the bill. Troy believes Congress should demand real transparency, exercise stronger oversight, and remember that every dollar spent belongs to the people first."
   }
 ];
+
 const localIssues: Issue[] = [
   {
     id: "florida-practical-fixes",
@@ -92,7 +94,7 @@ export default function Issues() {
 
   // Configure Fuse.js options for fuzzy search
   const fuseOptions = useMemo(() => ({
-    keys: ['title', 'content'], // Search in both title and content
+    keys: ["title", "content"], // Search in both title and content
     threshold: 0.4, // 0 = exact match, 1 = match anything (0.4 is good balance)
     ignoreLocation: true, // Don't weight matches by position in string
     minMatchCharLength: 2, // Minimum character length to match
@@ -107,6 +109,7 @@ export default function Issues() {
   useEffect(() => {
     const scrollToSection = () => {
       const hash = window.location.hash;
+
       if (hash === "#national-issues" && nationalSectionRef.current) {
         nationalSectionRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
       } else if (hash === "#local-issues" && localSectionRef.current) {
@@ -125,50 +128,63 @@ export default function Issues() {
   // Filter issues using Fuse.js fuzzy search
   const filteredNationalIssues = useMemo(() => {
     if (!searchQuery.trim()) return nationalIssues;
-    return nationalFuse.search(searchQuery).map(result => result.item);
+    return nationalFuse.search(searchQuery).map((result) => result.item);
   }, [searchQuery, nationalFuse]);
 
   const filteredLocalIssues = useMemo(() => {
     if (!searchQuery.trim()) return localIssues;
-    return localFuse.search(searchQuery).map(result => result.item);
+    return localFuse.search(searchQuery).map((result) => result.item);
   }, [searchQuery, localFuse]);
 
   // Toggle individual accordion
   const toggleNationalAccordion = (id: string) => {
     const newExpanded = new Set(nationalExpanded);
+
     if (newExpanded.has(id)) {
       newExpanded.delete(id);
     } else {
       newExpanded.add(id);
     }
+
     setNationalExpanded(newExpanded);
   };
 
   const toggleLocalAccordion = (id: string) => {
     const newExpanded = new Set(localExpanded);
+
     if (newExpanded.has(id)) {
       newExpanded.delete(id);
     } else {
       newExpanded.add(id);
     }
+
     setLocalExpanded(newExpanded);
   };
 
+  // Track whether all filtered issues are currently expanded
+  const allNationalExpanded =
+    filteredNationalIssues.length > 0 &&
+    filteredNationalIssues.every((issue) => nationalExpanded.has(issue.id));
+
+  const allLocalExpanded =
+    filteredLocalIssues.length > 0 &&
+    filteredLocalIssues.every((issue) => localExpanded.has(issue.id));
+
   // Expand/Collapse all for each section
-  const expandAllNational = () => {
-    setNationalExpanded(new Set(filteredNationalIssues.map(i => i.id)));
+  const toggleAllNational = () => {
+    if (allNationalExpanded) {
+      setNationalExpanded(new Set());
+    } else {
+      setNationalExpanded(new Set(filteredNationalIssues.map((issue) => issue.id)));
+    }
   };
 
-  const collapseAllNational = () => {
-    setNationalExpanded(new Set());
-  };
-
-  const expandAllLocal = () => {
-    setLocalExpanded(new Set(filteredLocalIssues.map(i => i.id)));
-  };
-
-  const collapseAllLocal = () => {
-    setLocalExpanded(new Set());
+  const toggleAllLocal = () => {
+    if (allLocalExpanded) {
+      setLocalExpanded(new Set());
+    } else {
+      setLocalExpanded(new Set(filteredLocalIssues.map((issue) => issue.id)));
+    }
   };
 
   return (
@@ -204,24 +220,29 @@ export default function Issues() {
           ref={nationalSectionRef}
           className="mb-12 scroll-mt-24"
         >
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-3xl font-bold text-white pt-4">National Issues</h2>
-            <div className="flex gap-2">
-              <button
-                onClick={expandAllNational}
-                className="px-3 py-2 text-sm bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
-                aria-label="Expand all national issues"
-              >
-                Expand All
-              </button>
-              <button
-                onClick={collapseAllNational}
-                className="px-3 py-2 text-sm bg-gray-700 hover:bg-gray-600 text-[#FFCC33] font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
-                aria-label="Collapse all national issues"
-              >
-                Collapse All
-              </button>
-            </div>
+          <div className="mb-6">
+            <h2 className="text-3xl font-bold text-white pt-4 mb-4">
+              National Issues
+            </h2>
+
+            {/* Expand/Collapse All Button */}
+            <button
+              onClick={toggleAllNational}
+              className="inline-flex items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold px-6 py-3 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
+              aria-label={allNationalExpanded ? "Collapse all national issues" : "Expand all national issues"}
+            >
+              {allNationalExpanded ? (
+                <>
+                  <FiChevronUp className="w-5 h-5" aria-hidden="true" />
+                  Collapse All
+                </>
+              ) : (
+                <>
+                  <FiChevronDown className="w-5 h-5" aria-hidden="true" />
+                  Expand All
+                </>
+              )}
+            </button>
           </div>
 
           {filteredNationalIssues.length === 0 ? (
@@ -250,29 +271,33 @@ export default function Issues() {
           ref={localSectionRef}
           className="scroll-mt-24"
         >
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-3xl font-bold text-white pt-4">
+          <div className="mb-6">
+            <h2 className="text-3xl font-bold text-white pt-4 mb-4">
               Local Issues
             </h2>
-            <div className="flex gap-2">
-              <button
-                onClick={expandAllLocal}
-                className="px-3 py-2 text-sm bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
-                aria-label="Expand all local issues"
-              >
-                Expand All
-              </button>
-              <button
-                onClick={collapseAllLocal}
-                className="px-3 py-2 text-sm bg-gray-700 hover:bg-gray-600 text-[#FFCC33] font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
-                aria-label="Collapse all local issues"
-              >
-                Collapse All
-              </button>
-            </div>
+
+            {/* Expand/Collapse All Button */}
+            <button
+              onClick={toggleAllLocal}
+              className="inline-flex items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold px-6 py-3 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
+              aria-label={allLocalExpanded ? "Collapse all local issues" : "Expand all local issues"}
+            >
+              {allLocalExpanded ? (
+                <>
+                  <FiChevronUp className="w-5 h-5" aria-hidden="true" />
+                  Collapse All
+                </>
+              ) : (
+                <>
+                  <FiChevronDown className="w-5 h-5" aria-hidden="true" />
+                  Expand All
+                </>
+              )}
+            </button>
           </div>
+
           <h4 className="text-2xl font-bold text-white pb-2">
-              Florida's 3rd Congressional District
+            Florida's 3rd Congressional District
           </h4>
 
           {filteredLocalIssues.length === 0 ? (
@@ -350,6 +375,7 @@ function AccordionItem({ issue, isExpanded, onToggle }: AccordionItemProps) {
           />
         </svg>
       </button>
+
       <div
         id={`content-${issue.id}`}
         ref={contentRef}
