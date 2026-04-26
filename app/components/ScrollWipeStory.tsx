@@ -54,10 +54,10 @@ export function ScrollWipeStory({
   return (
     <section
       ref={sectionRef}
-      className={`relative -mx-4 mt-10 bg-blue-950 ${className}`}
+      className={`relative isolate z-20 -mx-4 mt-10 bg-blue-950 ${className}`}
       style={{ height: sectionHeight }}
     >
-      <div className="sticky top-0 min-h-screen overflow-hidden px-4">
+      <div className="sticky top-0 z-20 min-h-screen overflow-hidden px-4">
         <div className="mx-auto grid min-h-screen w-full max-w-6xl gap-5 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-10">
           <div className="order-1 flex w-full items-start justify-center lg:order-2">
             <div className="relative h-[calc(100svh-15rem)] min-h-[20rem] w-full max-w-[calc((100svh-15rem)*0.8)] overflow-hidden rounded-lg border-4 border-[#FFCC33] bg-black shadow-2xl sm:h-[calc(100svh-14rem)] sm:max-w-[calc((100svh-14rem)*0.8)] lg:h-screen lg:max-w-[calc(100vh*0.8)]">
@@ -76,7 +76,7 @@ export function ScrollWipeStory({
           </div>
 
           <div className="order-2 flex w-full items-start lg:order-1 lg:pt-24">
-            <div className="relative min-h-[14rem] w-full sm:min-h-[13rem] lg:min-h-[24rem]">
+            <div className="relative z-30 min-h-[14rem] w-full sm:min-h-[13rem] lg:min-h-[24rem]">
               {slides.map((slide, index) => (
                 <ScrollWipeCaption
                   key={`${slide.imageSrc}-caption-${index}`}
@@ -101,13 +101,24 @@ function ScrollWipeImage({
   scrollYProgress,
 }: ScrollWipeImageProps) {
   const { start, end } = getImageWipeWindow(index, total);
+  const nextWipe = getImageWipeWindow(index + 1, total);
 
   const clipPath = useTransform(
     scrollYProgress,
     index === 0 ? [0, 1] : [start, end],
     index === 0
       ? ["inset(0 0% 0 0)", "inset(0 0% 0 0)"]
-      : ["inset(0 100% 0 0)", "inset(0 0% 0 0)"]
+      : ["inset(0 100% 0 0)", "inset(0 0% 0 0)"],
+    { clamp: true }
+  );
+
+  const opacity = useTransform(
+    scrollYProgress,
+    index === total - 1
+      ? [0, 1]
+      : [Math.max(0, nextWipe.end - 0.02), nextWipe.end],
+    index === total - 1 ? [1, 1] : [1, 0],
+    { clamp: true }
   );
 
   return (
@@ -117,6 +128,7 @@ function ScrollWipeImage({
         alt={slide.imageAlt}
         style={{
           clipPath,
+          opacity,
           zIndex: index + 1,
         }}
         className="absolute inset-0 h-full w-full object-cover"
@@ -149,13 +161,15 @@ function ScrollWipeCaption({
     index === total - 1
       ? [0, captionWindow.inStart, captionWindow.inEnd, 1]
       : [0, captionWindow.inStart, captionWindow.inEnd, nextWipe.start, nextWipe.end],
-    index === total - 1 ? [0, 0, 1, 1] : [0, 0, 1, 1, 0]
+    index === total - 1 ? [0, 0, 1, 1] : [0, 0, 1, 1, 0],
+    { clamp: true }
   );
 
   const y = useTransform(
     scrollYProgress,
     [captionWindow.inStart, captionWindow.inEnd],
-    [24, 0]
+    [34, 0],
+    { clamp: true }
   );
 
   return (
@@ -185,13 +199,14 @@ function ScrollWipeCaption({
 }
 
 function getStoryTimeline(total: number) {
-  const unitVh = 42;
+  const unitVh = 25;
   const firstHold = 1;
   const captionDrop = 0.4;
   const captionHold = 1;
   const wipe = 1.25;
-  const postWipeHold = 1;
-  const finalHold = 1.4;
+  const finalCaptionDrop = 0.7;
+  const finalCaptionHold = 2;
+  const finalHold = 2.5;
 
   return {
     unitVh,
@@ -199,14 +214,20 @@ function getStoryTimeline(total: number) {
     captionDrop,
     captionHold,
     wipe,
-    postWipeHold,
+    finalCaptionDrop,
+    finalCaptionHold,
     finalHold,
     totalUnits:
-      firstHold +
-      captionDrop +
-      captionHold +
-      Math.max(total - 1, 0) * (wipe + postWipeHold + captionDrop + captionHold) +
-      finalHold,
+      total <= 1
+        ? firstHold + finalCaptionDrop + finalCaptionHold + finalHold
+        : firstHold +
+          captionDrop +
+          captionHold +
+          Math.max(total - 2, 0) * (wipe + captionDrop + captionHold) +
+          wipe +
+          finalCaptionDrop +
+          finalCaptionHold +
+          finalHold,
   };
 }
 
@@ -224,7 +245,7 @@ function getImageWipeWindow(index: number, total: number) {
     timeline.captionDrop +
     timeline.captionHold +
     (index - 1) *
-      (timeline.wipe + timeline.postWipeHold + timeline.captionDrop + timeline.captionHold);
+      (timeline.wipe + timeline.captionDrop + timeline.captionHold);
 
   return {
     start: startUnit / timeline.totalUnits,
@@ -234,13 +255,18 @@ function getImageWipeWindow(index: number, total: number) {
 
 function getCaptionWindow(index: number, total: number) {
   const timeline = getStoryTimeline(total);
+  const dropDuration = index === total - 1 ? timeline.finalCaptionDrop : timeline.captionDrop;
+  const wipeWindow = getImageWipeWindow(index, total);
   const startUnit =
     index === 0
       ? timeline.firstHold
-      : getImageWipeWindow(index, total).end * timeline.totalUnits + timeline.postWipeHold;
+      : Math.max(
+          wipeWindow.start * timeline.totalUnits,
+          wipeWindow.end * timeline.totalUnits - dropDuration
+        );
 
   return {
     inStart: startUnit / timeline.totalUnits,
-    inEnd: (startUnit + timeline.captionDrop) / timeline.totalUnits,
+    inEnd: (startUnit + dropDuration) / timeline.totalUnits,
   };
 }
