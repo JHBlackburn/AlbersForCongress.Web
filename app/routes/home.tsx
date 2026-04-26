@@ -6,7 +6,10 @@ import HeroImage from "../components/HeroImage";
 export function meta({}: Route.MetaArgs) {
   return [
     { title: "Troy Albers for Congress - Florida 3rd District" },
-    { name: "description", content: "Troy Albers is running for Congress in Florida's 3rd District." },
+    {
+      name: "description",
+      content: "Troy Albers is running for Congress in Florida's 3rd District.",
+    },
   ];
 }
 
@@ -42,7 +45,9 @@ export default function Home() {
 
             {/* Desktop: Candidate Photo on left */}
             <div className="hidden lg:flex flex-shrink-0 max-h-full items-center justify-start pt-6 xl:pt-8 2xl:pt-10 pl-4 xl:pl-6 2xl:pl-8">
-              <HeroImage />
+              <div className="origin-left scale-[1.04] xl:scale-[1.07] 2xl:scale-[1.1] transition-transform duration-300">
+                <HeroImage />
+              </div>
             </div>
 
             {/* Desktop: WordScrollAnimation and help text on right */}
@@ -52,10 +57,13 @@ export default function Home() {
               </div>
 
               <p className="text-white text-lg xl:text-xl 2xl:text-2xl mt-8 xl:mt-10 max-w-3xl 2xl:max-w-4xl leading-relaxed xl:leading-loose">
-                Troy needs your help to get on the ballot. Print and sign the petition, then mail it to:
+                Troy needs your help to get on the ballot. Print and sign the
+                petition, then mail it to:
                 <span className="block mt-3 font-semibold">
-                  Troy Albers<br />
-                  1468 SW Main Blvd Ste 105-28<br />
+                  Troy Albers
+                  <br />
+                  1468 SW Main Blvd Ste 105-28
+                  <br />
                   Lake City, FL 32025
                 </span>
               </p>
@@ -76,15 +84,24 @@ export default function Home() {
                 stroke="currentColor"
                 viewBox="0 0 24 24"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </button>
             {isAddressOpen && (
               <div className="mt-3 bg-white/10 p-3 rounded-lg backdrop-blur-sm">
-                <p className="mb-2">Print and sign the petition, then mail it to:</p>
+                <p className="mb-2">
+                  Print and sign the petition, then mail it to:
+                </p>
                 <span className="block font-semibold">
-                  Troy Albers<br />
-                  1468 SW Main Blvd Ste 105-28<br />
+                  Troy Albers
+                  <br />
+                  1468 SW Main Blvd Ste 105-28
+                  <br />
                   Lake City, FL 32025
                 </span>
               </div>
