@@ -1,7 +1,13 @@
 "use client";
 
 import type { Route } from "./+types/about";
-import { motion } from "framer-motion";
+import {
+  motion,
+  type MotionValue,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+import { useRef } from "react";
 import { Link } from "react-router";
 import { FiPrinter } from "react-icons/fi";
 
@@ -17,7 +23,6 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-// Animation variants for sections
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
   visible: {
@@ -40,17 +45,6 @@ const staggerContainer = {
   }
 };
 
-const fadeIn = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 0.8
-    }
-  }
-};
-
-// Animation for heading - sentences appear one by one
 const headingContainer = {
   hidden: { opacity: 0 },
   visible: {
@@ -62,7 +56,6 @@ const headingContainer = {
   }
 };
 
-// Each sentence: first word appears, then rest fades in
 const sentenceVariant = {
   hidden: { opacity: 0 },
   visible: {
@@ -73,12 +66,229 @@ const sentenceVariant = {
   }
 };
 
+type ScrollWipeStorySlide = {
+  eyebrow?: string;
+  title: string;
+  body: string;
+  imageSrc: string;
+  imageAlt: string;
+};
+
+type ScrollWipeStoryProps = {
+  slides: ScrollWipeStorySlide[];
+  className?: string;
+};
+
+type ScrollWipeImageProps = {
+  slide: ScrollWipeStorySlide;
+  index: number;
+  total: number;
+  scrollYProgress: MotionValue<number>;
+};
+
+type ScrollWipeCaptionProps = {
+  slide: ScrollWipeStorySlide;
+  index: number;
+  total: number;
+  scrollYProgress: MotionValue<number>;
+};
+
+function ScrollWipeStory({ slides, className = "" }: ScrollWipeStoryProps) {
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"],
+  });
+
+  if (slides.length === 0) {
+    return null;
+  }
+
+  const sectionHeight = `${180 + slides.length * 105}vh`;
+
+  return (
+    <section
+      ref={sectionRef}
+      className={`relative -mx-4 mt-10 bg-blue-950 ${className}`}
+      style={{ height: sectionHeight }}
+    >
+      <div className="sticky top-0 flex min-h-screen items-center justify-center overflow-hidden px-4 py-16">
+        <div className="mx-auto grid w-full max-w-6xl items-center gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
+          <div className="order-2 min-h-[15rem] lg:order-1">
+            <div className="relative min-h-[15rem]">
+              {slides.map((slide, index) => (
+                <ScrollWipeCaption
+                  key={`${slide.imageSrc}-caption-${index}`}
+                  slide={slide}
+                  index={index}
+                  total={slides.length}
+                  scrollYProgress={scrollYProgress}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className="order-1 lg:order-2">
+            <div className="relative mx-auto aspect-[4/5] w-full max-w-[430px] overflow-hidden rounded-lg border-4 border-[#FFCC33] bg-black shadow-2xl">
+              {slides.map((slide, index) => (
+                <ScrollWipeImage
+                  key={`${slide.imageSrc}-image-${index}`}
+                  slide={slide}
+                  index={index}
+                  total={slides.length}
+                  scrollYProgress={scrollYProgress}
+                />
+              ))}
+
+              <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/15" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ScrollWipeImage({
+  slide,
+  index,
+  total,
+  scrollYProgress,
+}: ScrollWipeImageProps) {
+  const step = getStepSize(total);
+  const revealStart = index === 0 ? 0 : getSlideStart(index, total) - step * 0.2;
+  const revealEnd = index === 0 ? 0 : revealStart + step * 0.45;
+
+  const exitStart = getSlideStart(index + 1, total) - step * 0.2;
+  const exitEnd = exitStart + step * 0.45;
+
+  const clipPath = useTransform(
+    scrollYProgress,
+    index === 0 ? [0, 1] : [revealStart, revealEnd],
+    index === 0
+      ? ["inset(0 0% 0 0)", "inset(0 0% 0 0)"]
+      : ["inset(0 100% 0 0)", "inset(0 0% 0 0)"]
+  );
+
+  const opacity = useTransform(
+    scrollYProgress,
+    index === total - 1 ? [0, 1] : [exitStart, exitEnd],
+    index === total - 1 ? [1, 1] : [1, 0.45]
+  );
+
+  return (
+    <>
+      <motion.img
+        src={slide.imageSrc}
+        alt={slide.imageAlt}
+        style={{
+          clipPath,
+          opacity,
+          zIndex: index + 1,
+        }}
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+
+      {index > 0 ? (
+        <motion.div
+          style={{
+            clipPath,
+            zIndex: index + 2,
+          }}
+          className="pointer-events-none absolute inset-0 bg-linear-to-l from-white/25 via-transparent to-transparent"
+        />
+      ) : null}
+    </>
+  );
+}
+
+function ScrollWipeCaption({
+  slide,
+  index,
+  total,
+  scrollYProgress,
+}: ScrollWipeCaptionProps) {
+  const step = getStepSize(total);
+  const slideStart = getSlideStart(index, total);
+  const nextSlideStart = getSlideStart(index + 1, total);
+
+  const fadeInStart = index === 0 ? slideStart + step * 0.12 : slideStart + step * 0.18;
+  const fadeInEnd = fadeInStart + step * 0.18;
+
+  const fadeOutStart = nextSlideStart - step * 0.18;
+  const fadeOutEnd = nextSlideStart + step * 0.04;
+
+  const opacity = useTransform(
+    scrollYProgress,
+    index === total - 1
+      ? [fadeInStart, fadeInEnd, 1]
+      : [fadeInStart, fadeInEnd, fadeOutStart, fadeOutEnd],
+    index === total - 1 ? [0, 1, 1] : [0, 1, 1, 0]
+  );
+
+  const y = useTransform(
+    scrollYProgress,
+    index === total - 1
+      ? [fadeInStart, fadeInEnd, 1]
+      : [fadeInStart, fadeInEnd, fadeOutStart, fadeOutEnd],
+    index === total - 1 ? [18, 0, 0] : [18, 0, 0, -12]
+  );
+
+  return (
+    <motion.div
+      style={{
+        opacity,
+        y,
+      }}
+      className="absolute left-0 top-0 max-w-xl"
+    >
+      {slide.eyebrow ? (
+        <p className="mb-3 text-sm font-bold uppercase tracking-[0.22em] text-[#FFCC33]">
+          {slide.eyebrow}
+        </p>
+      ) : null}
+
+      <h3 className="text-3xl font-bold leading-tight text-white md:text-5xl">
+        {slide.title}
+      </h3>
+
+      <p className="mt-4 text-lg leading-8 text-white/85 md:text-xl">
+        {slide.body}
+      </p>
+    </motion.div>
+  );
+}
+
+function getStepSize(total: number) {
+  return 1 / Math.max(total, 1);
+}
+
+function getSlideStart(index: number, total: number) {
+  return Math.min(index * getStepSize(total), 1);
+}
+
 export default function About() {
+  const serviceSlides: ScrollWipeStorySlide[] = [
+    {
+      eyebrow: "Navy",
+      title: "First, he became a sailor.",
+      body: "Boot camp was the first hard line in a life shaped by service, discipline, and doing the job in front of him.",
+      imageSrc: "/troy-navy-boot-camp.jpg",
+      imageAlt: "Troy Albers in Navy boot camp uniform",
+    },
+    {
+      eyebrow: "Army",
+      title: "Then, he served again.",
+      body: "From sailor to soldier, Troy kept choosing service when the country called.",
+      imageSrc: "/troy-army-boot-camp.jpg",
+      imageAlt: "Troy Albers in Army boot camp uniform",
+    },
+  ];
+
   return (
     <div className="container mx-auto px-4 pb-12">
       <div className="max-w-6xl mx-auto">
-
-        {/* Hero Section */}
         <motion.section
           className="mb-16 -mx-4 px-4 pb-8 lg:pb-12 lg:min-h-screen"
           initial="hidden"
@@ -87,10 +297,8 @@ export default function About() {
           variants={fadeInUp}
         >
           <div className="flex flex-col lg:flex-row lg:items-center md:min-h-screen gap-6 lg:gap-8">
-            {/* Mobile: Stack vertically - Hero text and button fill viewport */}
             <div className="lg:hidden w-full">
               <div className="flex flex-col items-start w-full min-h-screen justify-center">
-                {/* Headline lines appear one by one */}
                 <motion.h1
                   className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight text-left w-full"
                   variants={headingContainer}
@@ -105,12 +313,11 @@ export default function About() {
                     >
                       Born
                     </motion.span>
-                    <motion.span
-                      variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
-                    >
+                    <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}>
                       {" "}in a Naval hospital.
                     </motion.span>
                   </motion.span>
+
                   <motion.span className="block mb-3" variants={sentenceVariant}>
                     <motion.span
                       className="text-[#FFCC33] text-4xl md:text-5xl"
@@ -118,12 +325,11 @@ export default function About() {
                     >
                       Raised
                     </motion.span>
-                    <motion.span
-                      variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
-                    >
+                    <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}>
                       {" "}on a farm.
                     </motion.span>
                   </motion.span>
+
                   <motion.span className="block mb-3" variants={sentenceVariant}>
                     <motion.span
                       className="text-[#FFCC33] text-4xl md:text-5xl"
@@ -131,12 +337,11 @@ export default function About() {
                     >
                       Tested
                     </motion.span>
-                    <motion.span
-                      variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
-                    >
+                    <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}>
                       {" "}around the world.
                     </motion.span>
                   </motion.span>
+
                   <motion.span className="block" variants={sentenceVariant}>
                     <motion.span
                       className="text-[#FFCC33] text-4xl md:text-5xl"
@@ -144,15 +349,12 @@ export default function About() {
                     >
                       Rooted
                     </motion.span>
-                    <motion.span
-                      variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
-                    >
+                    <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}>
                       {" "}in North Florida.
                     </motion.span>
                   </motion.span>
                 </motion.h1>
 
-                {/* Meet Troy button appears after headline */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -168,7 +370,6 @@ export default function About() {
                 </motion.div>
               </div>
 
-              {/* Troy's photo appears below the fold on mobile */}
               <motion.div
                 className="my-6 w-full"
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -186,7 +387,6 @@ export default function About() {
                 </div>
               </motion.div>
 
-              {/* Bio text appears below photo */}
               <motion.p
                 className="text-xl md:text-2xl text-white leading-relaxed"
                 initial={{ opacity: 0, y: 20 }}
@@ -198,7 +398,6 @@ export default function About() {
               </motion.p>
             </div>
 
-            {/* Desktop/Tablet: Text on left, photo on right */}
             <div className="hidden lg:flex flex-1 max-h-full flex-col items-start justify-center text-left">
               <motion.h1
                 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-white mb-4 leading-tight"
@@ -214,12 +413,11 @@ export default function About() {
                   >
                     Born
                   </motion.span>
-                  <motion.span
-                    variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
-                  >
+                  <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}>
                     {" "}in a Naval hospital.
                   </motion.span>
                 </motion.span>
+
                 <motion.span className="block mb-2" variants={sentenceVariant}>
                   <motion.span
                     className="text-[#FFCC33] text-3xl lg:text-4xl xl:text-5xl"
@@ -227,12 +425,11 @@ export default function About() {
                   >
                     Raised
                   </motion.span>
-                  <motion.span
-                    variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
-                  >
+                  <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}>
                     {" "}on a farm.
                   </motion.span>
                 </motion.span>
+
                 <motion.span className="block mb-2" variants={sentenceVariant}>
                   <motion.span
                     className="text-[#FFCC33] text-3xl lg:text-4xl xl:text-5xl"
@@ -240,12 +437,11 @@ export default function About() {
                   >
                     Tested
                   </motion.span>
-                  <motion.span
-                    variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
-                  >
+                  <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}>
                     {" "}around the world.
                   </motion.span>
                 </motion.span>
+
                 <motion.span className="block" variants={sentenceVariant}>
                   <motion.span
                     className="text-[#FFCC33] text-3xl lg:text-4xl xl:text-5xl"
@@ -253,9 +449,7 @@ export default function About() {
                   >
                     Rooted
                   </motion.span>
-                  <motion.span
-                    variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}
-                  >
+                  <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}>
                     {" "}in North Florida.
                   </motion.span>
                 </motion.span>
@@ -286,7 +480,6 @@ export default function About() {
               </motion.p>
             </div>
 
-            {/* Desktop/Tablet: Photo on right */}
             <div className="hidden lg:flex flex-shrink-0 max-h-full items-center justify-end">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -307,7 +500,6 @@ export default function About() {
           </div>
         </motion.section>
 
-        {/* Campaign Info Callout */}
         <motion.div
           id="meet-troy"
           className="bg-[#FFCC33] border-l-4 border-blue-900 p-6 rounded-lg shadow-lg mb-12"
@@ -332,7 +524,6 @@ export default function About() {
           </div>
         </motion.div>
 
-        {/* Roots Section */}
         <motion.section
           className="mb-12"
           initial="hidden"
@@ -358,7 +549,6 @@ export default function About() {
           </motion.div>
         </motion.section>
 
-        {/* Service Section */}
         <motion.section
           className="mb-12"
           initial="hidden"
@@ -418,24 +608,9 @@ export default function About() {
             </motion.p>
           </motion.div>
 
-          {/* Placeholder for service photo */}
-          <motion.div
-            className="mt-8"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            {/* TODO: Replace with actual military service photo */}
-            <div className="bg-blue-800 border-l-4 border-[#B2C9A3] p-4 rounded">
-              <p className="text-white italic text-center">
-                [Photo: Troy in uniform during his military service]
-              </p>
-            </div>
-          </motion.div>
+          <ScrollWipeStory slides={serviceSlides} />
         </motion.section>
 
-        {/* A Turning Point Section */}
         <motion.section
           className="mb-12"
           initial="hidden"
@@ -465,7 +640,6 @@ export default function About() {
           </motion.div>
         </motion.section>
 
-        {/* Family and North Florida Section */}
         <motion.section
           className="mb-12"
           initial="hidden"
@@ -490,7 +664,6 @@ export default function About() {
             </motion.p>
           </motion.div>
 
-          {/* Placeholder for family/farm photo */}
           <motion.div
             className="mt-8"
             initial={{ opacity: 0, x: 30 }}
@@ -498,7 +671,6 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            {/* TODO: Replace with actual family or farm photo */}
             <div className="bg-blue-800 border-l-4 border-[#B2C9A3] p-4 rounded">
               <p className="text-white italic text-center">
                 [Photo: Troy with his family or working the farm in Columbia County]
@@ -507,7 +679,6 @@ export default function About() {
           </motion.div>
         </motion.section>
 
-        {/* Why He's Running Section */}
         <motion.section
           className="mb-12"
           initial="hidden"
@@ -591,7 +762,6 @@ export default function About() {
           </motion.div>
         </motion.section>
 
-        {/* What Troy Stands For Section */}
         <motion.section
           className="mb-12"
           initial="hidden"
@@ -680,7 +850,6 @@ export default function About() {
             </motion.p>
           </motion.div>
 
-          {/* Core Values Placeholder */}
           <motion.div
             className="bg-[#B2C9A3] border-l-4 border-blue-900 p-6 rounded-lg shadow-lg mt-8"
             variants={fadeInUp}
@@ -694,6 +863,7 @@ export default function About() {
                   <p className="text-sm italic">[Details to be added]</p>
                 </div>
               </div>
+
               <div className="flex items-start">
                 <span className="text-2xl font-bold mr-3">2.</span>
                 <div>
@@ -701,6 +871,7 @@ export default function About() {
                   <p className="text-sm italic">[Details to be added]</p>
                 </div>
               </div>
+
               <div className="flex items-start">
                 <span className="text-2xl font-bold mr-3">3.</span>
                 <div>
@@ -712,7 +883,6 @@ export default function About() {
           </motion.div>
         </motion.section>
 
-        {/* Troy's Mad Section */}
         <motion.section
           className="mb-12"
           initial="hidden"
@@ -745,7 +915,7 @@ export default function About() {
               Mad
             </motion.span>
             <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
-              .<br/> He's Turning That{" "}
+              .<br /> He's Turning That{" "}
             </motion.span>
             <motion.span
               className="text-[#FFCC33] italic"
@@ -782,7 +952,6 @@ export default function About() {
           </motion.div>
         </motion.section>
 
-        {/* Final CTA Section */}
         <motion.section
           className="mt-16 text-center"
           initial="hidden"
@@ -822,17 +991,14 @@ export default function About() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <button
                   onClick={() => {
-                    // Check if mobile device
                     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
                     if (isMobile) {
-                      // On mobile, open PDF directly in new tab
-                      window.open('/dsde104.pdf', '_blank');
+                      window.open("/dsde104.pdf", "_blank");
                     } else {
-                      // On desktop, use iframe print method
-                      const iframe = document.createElement('iframe');
-                      iframe.style.display = 'none';
-                      iframe.src = '/dsde104.pdf';
+                      const iframe = document.createElement("iframe");
+                      iframe.style.display = "none";
+                      iframe.src = "/dsde104.pdf";
                       document.body.appendChild(iframe);
                       iframe.onload = () => {
                         iframe.contentWindow?.print();
@@ -857,7 +1023,7 @@ export default function About() {
                 href="#"
                 onClick={(e) => {
                   e.preventDefault();
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
                 className="text-white/70 hover:text-white text-sm underline transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 rounded px-2 py-1"
               >
