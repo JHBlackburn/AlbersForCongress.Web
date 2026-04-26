@@ -266,7 +266,7 @@ export default function Contact() {
             Serving Florida's 3rd Congressional District
           </h2>
           <p className="text-lg md:text-xl text-white/90 mb-6 leading-relaxed">
-            Troy Albers proudly represents the communities across North Central Florida, including the following counties and cities.
+            Troy Albers is proudly seeking to serve the communities of North Central Florida, including the following counties and cities.
           </p>
 
           {/* Expand/Collapse All Button */}
