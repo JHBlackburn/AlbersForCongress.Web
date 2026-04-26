@@ -37,6 +37,7 @@ export const links: Route.LinksFunction = () => [
     href: "/site.webmanifest",
   },
 ];
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -47,12 +48,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="flex flex-col min-h-screen">
+      <body className="min-h-dvh flex flex-col lg:overflow-hidden">
         <Navigation />
-        <main className="grow bg-linear-to-br from-blue-900 to-blue-700">
+
+        <main className="flex-none overflow-visible bg-linear-to-br from-blue-900 to-blue-700 lg:flex-1 lg:min-h-0 lg:overflow-hidden">
           {children}
         </main>
+
         <Footer />
+
         <ScrollRestoration />
         <Scripts />
       </body>

@@ -17,7 +17,7 @@ export default function Home() {
   const [isAddressOpen, setIsAddressOpen] = useState(false);
 
   return (
-    <div className="w-full min-h-0 overflow-visible lg:h-full lg:overflow-hidden">
+    <div className="w-full overflow-visible lg:h-full lg:min-h-0 lg:overflow-hidden">
       {/* Hero Section */}
       <div className="text-white relative overflow-hidden h-auto lg:h-full lg:min-h-0 flex items-start lg:items-center">
         {/* Decorative background elements */}
@@ -76,7 +76,7 @@ export default function Home() {
           <div className="lg:hidden text-white text-base md:text-lg mt-1 max-w-2xl leading-snug px-4 mx-auto text-center">
             <button
               onClick={() => setIsAddressOpen(!isAddressOpen)}
-              className="inline-flex items-center justify-center gap-2 text-[#FFCC33] hover:text-[#E8B923] transition-colors font-semibold rounded px-1 mx-auto focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0E3B67]"
+              className="inline-flex items-center justify-center gap-2 text-[#FFCC33] hover:text-[#E8B923] transition-colors font-semibold rounded px-1 mx-auto border-0 outline-none focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
               aria-expanded={isAddressOpen}
             >
               How YOU can help Troy:
