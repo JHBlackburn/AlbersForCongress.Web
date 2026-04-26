@@ -98,11 +98,13 @@ export default function Contact() {
 
   const toggleCounty = (index: number) => {
     const newExpanded = new Set(expandedCounties);
+
     if (newExpanded.has(index)) {
       newExpanded.delete(index);
     } else {
       newExpanded.add(index);
     }
+
     setExpandedCounties(newExpanded);
     setAllExpanded(newExpanded.size === districtData.length);
   };
@@ -196,7 +198,7 @@ export default function Contact() {
                     <a
                       href="mailto:GetInvolved@AlbersForCongress.com"
                       className="hover:text-[#FFCC33] transition-colors inline-block"
-                      style={{ wordBreak: 'break-word', overflowWrap: 'anywhere' }}
+                      style={{ wordBreak: "break-word", overflowWrap: "anywhere" }}
                     >
                       <span className="inline">GetInvolved</span>
                       <wbr />
@@ -262,37 +264,47 @@ export default function Contact() {
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 border-b-4 border-[#FFCC33] pb-3">
-            Showing Up Every Day For Florida's 3rd Congressional District
-          </h2>
-          <p className="text-lg md:text-xl text-white/90 mb-6 leading-relaxed">
-            Troy Albers is proudly seeking to serve the communities of North Central Florida, including the following counties and cities.
-          </p>
+          <div className="flex items-start justify-between gap-4 mb-4 border-b-4 border-[#FFCC33] pb-3">
+            <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+              <span className="block">
+                Showing Up <span className="text-[#FFCC33] italic">Every Day</span>
+              </span>
+              <span className="block">
+                For <span className="text-[#FFCC33] italic">Florida's 3rd District</span>
+              </span>
+            </h2>
 
-          {/* Expand/Collapse All Button */}
-          <div className="mb-4">
+            {/* Expand/Collapse All Button */}
             <button
               onClick={toggleAll}
-              className="inline-flex items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold px-6 py-3 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
+              className="inline-flex shrink-0 items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold px-4 py-2 sm:px-6 sm:py-3 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
+              aria-label={allExpanded ? "Collapse all district counties" : "Expand all district counties"}
             >
               {allExpanded ? (
                 <>
                   <FiChevronUp className="w-5 h-5" aria-hidden="true" />
-                  Collapse All
+                  <span className="hidden sm:inline">Collapse All</span>
+                  <span className="sm:hidden">Collapse</span>
                 </>
               ) : (
                 <>
                   <FiChevronDown className="w-5 h-5" aria-hidden="true" />
-                  Expand All
+                  <span className="hidden sm:inline">Expand All</span>
+                  <span className="sm:hidden">Expand</span>
                 </>
               )}
             </button>
           </div>
 
+          <p className="max-w-3xl text-lg md:text-xl text-white/90 mb-6 leading-relaxed">
+            Troy Albers is proudly seeking to serve the communities of North Central Florida, including the following counties and cities.
+          </p>
+
           {/* Accordion List */}
           <div className="space-y-3">
             {districtData.map((district, index) => {
               const isExpanded = expandedCounties.has(index);
+
               return (
                 <motion.div
                   key={index}
@@ -376,7 +388,7 @@ export default function Contact() {
               href="#"
               onClick={(e) => {
                 e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                window.scrollTo({ top: 0, behavior: "smooth" });
               }}
               className="text-white/70 hover:text-white text-sm underline transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 rounded px-2 py-1 mt-6 inline-block"
             >
