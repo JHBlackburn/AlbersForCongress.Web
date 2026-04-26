@@ -444,7 +444,7 @@ export default function About() {
                     loading="eager"
                     fetchPriority="high"
                     decoding="async"
-                    className="rounded-lg shadow-2xl w-full h-auto relative border-4 border-[#FFCC33] max-h-[450px] object-cover object-top"
+                    className="rounded-lg shadow-2xl w-full h-auto relative border-4 border-[#FFCC33] max-h-[500px] lg:max-h-[600px] object-cover object-top"
                   />
                 </div>
               </motion.div>
