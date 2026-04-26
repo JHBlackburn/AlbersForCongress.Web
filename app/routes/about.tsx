@@ -13,11 +13,13 @@ import {
 export function meta({}: Route.MetaArgs) {
   return [
     {
-      title: "About Troy Albers - Democrat for Florida's 3rd Congressional District"
+      title:
+        "About Troy Albers - Democrat for Florida's 3rd Congressional District",
     },
     {
       name: "description",
-      content: "Born in a Naval hospital. Raised on a farm. Tested around the world. Rooted in North Florida. Troy Albers is running for Congress in Florida's 3rd District Democratic Primary on August 18, 2026."
+      content:
+        "Born in a Naval hospital. Raised on a farm. Tested around the world. Rooted in North Florida. Troy Albers is running for Congress in Florida's 3rd District Democratic Primary on August 18, 2026.",
     },
   ];
 }
@@ -28,9 +30,9 @@ const fadeInUp = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6
-    }
-  }
+      duration: 0.6,
+    },
+  },
 };
 
 const staggerContainer = {
@@ -39,9 +41,9 @@ const staggerContainer = {
     opacity: 1,
     transition: {
       staggerChildren: 0.2,
-      delayChildren: 0.1
-    }
-  }
+      delayChildren: 0.1,
+    },
+  },
 };
 
 const headingContainer = {
@@ -50,9 +52,9 @@ const headingContainer = {
     opacity: 1,
     transition: {
       staggerChildren: 0.84,
-      delayChildren: 0.21
-    }
-  }
+      delayChildren: 0.21,
+    },
+  },
 };
 
 const sentenceVariant = {
@@ -60,9 +62,9 @@ const sentenceVariant = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.28
-    }
-  }
+      staggerChildren: 0.28,
+    },
+  },
 };
 
 export default function About() {
@@ -73,10 +75,22 @@ export default function About() {
     const targetId = isDesktop ? "meet-troy" : "about-troy-photo";
     const target = document.getElementById(targetId);
 
-    target?.scrollIntoView({
-      behavior: "smooth",
-      block: isDesktop ? "start" : "center",
-    });
+    if (!target) return;
+
+    if (isDesktop) {
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    } else {
+      const mobileOffset = 18;
+      const targetTop = target.getBoundingClientRect().top + window.scrollY;
+
+      window.scrollTo({
+        top: targetTop - mobileOffset,
+        behavior: "smooth",
+      });
+    }
 
     window.history.replaceState(null, "", `#${targetId}`);
   };
@@ -118,51 +132,112 @@ export default function About() {
                   whileInView="visible"
                   viewport={{ once: true }}
                 >
-                  <motion.span className="block mb-3" variants={sentenceVariant}>
+                  <motion.span
+                    className="block mb-3"
+                    variants={sentenceVariant}
+                  >
                     <motion.span
                       className="text-[#FFCC33] text-4xl md:text-5xl"
-                      variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
+                      variants={{
+                        hidden: { opacity: 0, x: -20 },
+                        visible: {
+                          opacity: 1,
+                          x: 0,
+                          transition: { duration: 0.28 },
+                        },
+                      }}
                     >
                       Born
                     </motion.span>
-                    <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}>
-                      {" "}in a Naval hospital.
+                    <motion.span
+                      variants={{
+                        hidden: { opacity: 0 },
+                        visible: { opacity: 1, transition: { duration: 0.42 } },
+                      }}
+                    >
+                      {" "}
+                      in a Naval hospital.
                     </motion.span>
                   </motion.span>
 
-                  <motion.span className="block mb-3" variants={sentenceVariant}>
+                  <motion.span
+                    className="block mb-3"
+                    variants={sentenceVariant}
+                  >
                     <motion.span
                       className="text-[#FFCC33] text-4xl md:text-5xl"
-                      variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
+                      variants={{
+                        hidden: { opacity: 0, x: -20 },
+                        visible: {
+                          opacity: 1,
+                          x: 0,
+                          transition: { duration: 0.28 },
+                        },
+                      }}
                     >
                       Raised
                     </motion.span>
-                    <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}>
-                      {" "}on a farm.
+                    <motion.span
+                      variants={{
+                        hidden: { opacity: 0 },
+                        visible: { opacity: 1, transition: { duration: 0.42 } },
+                      }}
+                    >
+                      {" "}
+                      on a farm.
                     </motion.span>
                   </motion.span>
 
-                  <motion.span className="block mb-3" variants={sentenceVariant}>
+                  <motion.span
+                    className="block mb-3"
+                    variants={sentenceVariant}
+                  >
                     <motion.span
                       className="text-[#FFCC33] text-4xl md:text-5xl"
-                      variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
+                      variants={{
+                        hidden: { opacity: 0, x: -20 },
+                        visible: {
+                          opacity: 1,
+                          x: 0,
+                          transition: { duration: 0.28 },
+                        },
+                      }}
                     >
                       Tested
                     </motion.span>
-                    <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}>
-                      {" "}around the world.
+                    <motion.span
+                      variants={{
+                        hidden: { opacity: 0 },
+                        visible: { opacity: 1, transition: { duration: 0.42 } },
+                      }}
+                    >
+                      {" "}
+                      around the world.
                     </motion.span>
                   </motion.span>
 
                   <motion.span className="block" variants={sentenceVariant}>
                     <motion.span
                       className="text-[#FFCC33] text-4xl md:text-5xl"
-                      variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
+                      variants={{
+                        hidden: { opacity: 0, x: -20 },
+                        visible: {
+                          opacity: 1,
+                          x: 0,
+                          transition: { duration: 0.28 },
+                        },
+                      }}
                     >
                       Rooted
                     </motion.span>
-                    <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}>
-                      {" "}in North Florida.
+                    <motion.span
+                      variants={{
+                        hidden: { opacity: 0 },
+                        visible: { opacity: 1, transition: { duration: 0.42 } },
+                      }}
+                    >
+                      {" "}
+                      in North Florida.
                     </motion.span>
                   </motion.span>
                 </motion.h1>
@@ -185,18 +260,21 @@ export default function About() {
 
               <motion.div
                 id="about-troy-photo"
-                className="my-6 w-full scroll-mt-24"
+                className="my-6 w-full scroll-mt-4"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.56, delay: 3.85 }}
+                transition={{ duration: 0.56, delay: 0.1 }}
               >
                 <div className="relative inline-block max-w-md mx-auto w-full">
                   <div className="absolute inset-0 bg-[#FFCC33] rounded-lg blur-xl opacity-30"></div>
                   <img
-                    src="/about1.jpg"
+                    src="/troy-albers-for-congress.jpg"
                     alt="Troy Albers - Veteran, Farmer, Candidate for Congress"
-                    className="rounded-lg shadow-2xl w-full h-auto relative border-4 border-[#FFCC33] max-h-[450px] object-cover"
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
+                    className="rounded-lg shadow-2xl w-full h-auto relative border-4 border-[#FFCC33] max-h-[450px] object-cover object-top"
                   />
                 </div>
               </motion.div>
@@ -208,7 +286,9 @@ export default function About() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 4.1 }}
               >
-                Troy Albers has spent his life serving something bigger than himself, first in uniform, then on the land, and now in the fight to restore honor and accountability to our government.
+                Troy Albers has spent his life serving something bigger than
+                himself, first in uniform, then on the land, and now in the
+                fight to restore honor and accountability to our government.
               </motion.p>
             </div>
 
@@ -223,48 +303,100 @@ export default function About() {
                 <motion.span className="block mb-2" variants={sentenceVariant}>
                   <motion.span
                     className="text-[#FFCC33] text-3xl lg:text-4xl xl:text-5xl"
-                    variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
+                    variants={{
+                      hidden: { opacity: 0, x: -20 },
+                      visible: {
+                        opacity: 1,
+                        x: 0,
+                        transition: { duration: 0.28 },
+                      },
+                    }}
                   >
                     Born
                   </motion.span>
-                  <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}>
-                    {" "}in a Naval hospital.
+                  <motion.span
+                    variants={{
+                      hidden: { opacity: 0 },
+                      visible: { opacity: 1, transition: { duration: 0.42 } },
+                    }}
+                  >
+                    {" "}
+                    in a Naval hospital.
                   </motion.span>
                 </motion.span>
 
                 <motion.span className="block mb-2" variants={sentenceVariant}>
                   <motion.span
                     className="text-[#FFCC33] text-3xl lg:text-4xl xl:text-5xl"
-                    variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
+                    variants={{
+                      hidden: { opacity: 0, x: -20 },
+                      visible: {
+                        opacity: 1,
+                        x: 0,
+                        transition: { duration: 0.28 },
+                      },
+                    }}
                   >
                     Raised
                   </motion.span>
-                  <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}>
-                    {" "}on a farm.
+                  <motion.span
+                    variants={{
+                      hidden: { opacity: 0 },
+                      visible: { opacity: 1, transition: { duration: 0.42 } },
+                    }}
+                  >
+                    {" "}
+                    on a farm.
                   </motion.span>
                 </motion.span>
 
                 <motion.span className="block mb-2" variants={sentenceVariant}>
                   <motion.span
                     className="text-[#FFCC33] text-3xl lg:text-4xl xl:text-5xl"
-                    variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
+                    variants={{
+                      hidden: { opacity: 0, x: -20 },
+                      visible: {
+                        opacity: 1,
+                        x: 0,
+                        transition: { duration: 0.28 },
+                      },
+                    }}
                   >
                     Tested
                   </motion.span>
-                  <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}>
-                    {" "}around the world.
+                  <motion.span
+                    variants={{
+                      hidden: { opacity: 0 },
+                      visible: { opacity: 1, transition: { duration: 0.42 } },
+                    }}
+                  >
+                    {" "}
+                    around the world.
                   </motion.span>
                 </motion.span>
 
                 <motion.span className="block" variants={sentenceVariant}>
                   <motion.span
                     className="text-[#FFCC33] text-3xl lg:text-4xl xl:text-5xl"
-                    variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.28 } } }}
+                    variants={{
+                      hidden: { opacity: 0, x: -20 },
+                      visible: {
+                        opacity: 1,
+                        x: 0,
+                        transition: { duration: 0.28 },
+                      },
+                    }}
                   >
                     Rooted
                   </motion.span>
-                  <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.42 } } }}>
-                    {" "}in North Florida.
+                  <motion.span
+                    variants={{
+                      hidden: { opacity: 0 },
+                      visible: { opacity: 1, transition: { duration: 0.42 } },
+                    }}
+                  >
+                    {" "}
+                    in North Florida.
                   </motion.span>
                 </motion.span>
               </motion.h1>
@@ -291,7 +423,9 @@ export default function About() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 3.8 }}
               >
-                Troy Albers has spent his life serving something bigger than himself, first in uniform, then on the land, and now in the fight to restore honor and accountability to our government.
+                Troy Albers has spent his life serving something bigger than
+                himself, first in uniform, then on the land, and now in the
+                fight to restore honor and accountability to our government.
               </motion.p>
             </div>
 
@@ -305,9 +439,12 @@ export default function About() {
                 <div className="relative inline-block max-w-md">
                   <div className="absolute inset-0 bg-[#FFCC33] rounded-lg blur-xl opacity-30"></div>
                   <img
-                    src="/about1.jpg"
+                    src="/troy-albers-for-congress.jpg"
                     alt="Troy Albers - Veteran, Farmer, Candidate for Congress"
-                    className="rounded-lg shadow-2xl w-full h-auto relative border-4 border-[#FFCC33] max-h-[500px] lg:max-h-[600px] object-cover"
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
+                    className="rounded-lg shadow-2xl w-full h-auto relative border-4 border-[#FFCC33] max-h-[450px] object-cover object-top"
                   />
                 </div>
               </motion.div>
@@ -329,7 +466,8 @@ export default function About() {
             </h2>
 
             <p className="text-lg font-semibold mb-2">
-              <strong>Running for:</strong> U.S. Congress, Florida's 3rd Congressional District
+              <strong>Running for:</strong> U.S. Congress, Florida's 3rd
+              Congressional District
             </p>
             <p className="text-lg font-semibold mb-2">
               <strong>Party:</strong> Democrat
@@ -358,12 +496,23 @@ export default function About() {
           </motion.h2>
 
           <motion.div className="space-y-4" variants={staggerContainer}>
-            <motion.p className="text-lg md:text-xl text-white leading-relaxed" variants={fadeInUp}>
-              Troy Albers was born in a Naval hospital and raised on a farm in Elizabeth City, North Carolina. He grew up as a Navy kid in a family that understood duty, sacrifice, and service to country.
+            <motion.p
+              className="text-lg md:text-xl text-white leading-relaxed"
+              variants={fadeInUp}
+            >
+              Troy Albers was born in a Naval hospital and raised on a farm in
+              Elizabeth City, North Carolina. He grew up as a Navy kid in a
+              family that understood duty, sacrifice, and service to country.
             </motion.p>
 
-            <motion.p className="text-lg md:text-xl text-white leading-relaxed" variants={fadeInUp}>
-              Like many military families, they moved where the mission took them. Eventually, that road led to San Diego, where Troy graduated high school and made a decision that would shape the rest of his life: he joined the United States Navy.
+            <motion.p
+              className="text-lg md:text-xl text-white leading-relaxed"
+              variants={fadeInUp}
+            >
+              Like many military families, they moved where the mission took
+              them. Eventually, that road led to San Diego, where Troy graduated
+              high school and made a decision that would shape the rest of his
+              life: he joined the United States Navy.
             </motion.p>
           </motion.div>
         </motion.section>
@@ -383,12 +532,24 @@ export default function About() {
           </motion.h2>
 
           <motion.div className="space-y-4" variants={staggerContainer}>
-            <motion.p className="text-lg md:text-xl text-white leading-relaxed" variants={fadeInUp}>
-              Troy served around the world, including time in Iceland, the Mediterranean, and the Indian Ocean, and supported operations connected to the Black Hawk Down era. He later deployed to the Middle East, serving his country in dangerous and uncertain times.
+            <motion.p
+              className="text-lg md:text-xl text-white leading-relaxed"
+              variants={fadeInUp}
+            >
+              Troy served around the world, including time in Iceland, the
+              Mediterranean, and the Indian Ocean, and supported operations
+              connected to the Black Hawk Down era. He later deployed to the
+              Middle East, serving his country in dangerous and uncertain times.
             </motion.p>
 
-            <motion.p className="text-lg md:text-xl text-white leading-relaxed" variants={fadeInUp}>
-              When his time in the Navy ended, Troy did not walk away from service. He became a Guardsman, then later went back in with the Army, continuing a life defined by commitment to something bigger than himself.
+            <motion.p
+              className="text-lg md:text-xl text-white leading-relaxed"
+              variants={fadeInUp}
+            >
+              When his time in the Navy ended, Troy did not walk away from
+              service. He became a Guardsman, then later went back in with the
+              Army, continuing a life defined by commitment to something bigger
+              than himself.
             </motion.p>
 
             <motion.p
@@ -398,9 +559,9 @@ export default function About() {
                 visible: {
                   opacity: 1,
                   transition: {
-                    staggerChildren: 0.15
-                  }
-                }
+                    staggerChildren: 0.15,
+                  },
+                },
               }}
               initial="hidden"
               whileInView="visible"
@@ -408,20 +569,37 @@ export default function About() {
             >
               <motion.span
                 className="text-[#FFCC33] italic"
-                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { duration: 0.3 } },
+                }}
               >
                 Service
               </motion.span>
-              <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
-                {" "}was never a phase for Troy. It was a{" "}
+              <motion.span
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { duration: 0.3 } },
+                }}
+              >
+                {" "}
+                was never a phase for Troy. It was a{" "}
               </motion.span>
               <motion.span
                 className="text-[#FFCC33] italic"
-                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { duration: 0.3 } },
+                }}
               >
                 calling
               </motion.span>
-              <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+              <motion.span
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { duration: 0.3 } },
+                }}
+              >
                 .
               </motion.span>
             </motion.p>
@@ -450,16 +628,34 @@ export default function About() {
           </motion.h2>
 
           <motion.div className="space-y-4" variants={staggerContainer}>
-            <motion.p className="text-lg md:text-xl text-white leading-relaxed" variants={fadeInUp}>
-              After years in uniform, Troy got out and enrolled at UCF as a pre-med student. He was considering a path into medicine and a very different future for himself and his family.
+            <motion.p
+              className="text-lg md:text-xl text-white leading-relaxed"
+              variants={fadeInUp}
+            >
+              After years in uniform, Troy got out and enrolled at UCF as a
+              pre-med student. He was considering a path into medicine and a
+              very different future for himself and his family.
             </motion.p>
 
-            <motion.p className="text-lg md:text-xl text-white leading-relaxed" variants={fadeInUp}>
-              Then came a moment that brought him back to his roots. In a genetics class, a professor posed a question about inheritance and asked how two brown quail could produce a white one. That class did not just teach Troy biology. It reminded him of something deeper: he came from people who worked the land, understood how life worked up close, and built their lives with their own hands.
+            <motion.p
+              className="text-lg md:text-xl text-white leading-relaxed"
+              variants={fadeInUp}
+            >
+              Then came a moment that brought him back to his roots. In a
+              genetics class, a professor posed a question about inheritance and
+              asked how two brown quail could produce a white one. That class
+              did not just teach Troy biology. It reminded him of something
+              deeper: he came from people who worked the land, understood how
+              life worked up close, and built their lives with their own hands.
             </motion.p>
 
-            <motion.p className="text-lg md:text-xl text-white leading-relaxed" variants={fadeInUp}>
-              Staring down years of medical school and hundreds of thousands of dollars in student loans, Troy made the fiscally responsible choice he believed was right for him and his family.
+            <motion.p
+              className="text-lg md:text-xl text-white leading-relaxed"
+              variants={fadeInUp}
+            >
+              Staring down years of medical school and hundreds of thousands of
+              dollars in student loans, Troy made the fiscally responsible
+              choice he believed was right for him and his family.
             </motion.p>
           </motion.div>
         </motion.section>
@@ -479,12 +675,24 @@ export default function About() {
           </motion.h2>
 
           <motion.div className="space-y-4" variants={staggerContainer}>
-            <motion.p className="text-lg md:text-xl text-white leading-relaxed" variants={fadeInUp}>
-              Troy moved to Columbia County, became a farmer, raised three kids, and fell in love with North Central Florida.
+            <motion.p
+              className="text-lg md:text-xl text-white leading-relaxed"
+              variants={fadeInUp}
+            >
+              Troy moved to Columbia County, became a farmer, raised three kids,
+              and fell in love with North Central Florida.
             </motion.p>
 
-            <motion.p className="text-lg md:text-xl text-white leading-relaxed" variants={fadeInUp}>
-              Here, he built a life the way many people in this district have: through work, sacrifice, faith, family, and responsibility. He knows what it means to serve, but he also knows what it means to budget, to raise children, to work the land, and to worry about what kind of country and community we are handing to the next generation.
+            <motion.p
+              className="text-lg md:text-xl text-white leading-relaxed"
+              variants={fadeInUp}
+            >
+              Here, he built a life the way many people in this district have:
+              through work, sacrifice, faith, family, and responsibility. He
+              knows what it means to serve, but he also knows what it means to
+              budget, to raise children, to work the land, and to worry about
+              what kind of country and community we are handing to the next
+              generation.
             </motion.p>
           </motion.div>
         </motion.section>
@@ -504,8 +712,16 @@ export default function About() {
           </motion.h2>
 
           <motion.div className="space-y-4" variants={staggerContainer}>
-            <motion.p className="text-lg md:text-xl text-white leading-relaxed" variants={fadeInUp}>
-              Troy has watched politics become toxic, performative, and two-faced. He has watched too many elected officials treat public office like a game, a stepping stone, or a brand opportunity instead of a duty. He has seen too little honor, too little accountability, and too much grandstanding while real people pay the price.
+            <motion.p
+              className="text-lg md:text-xl text-white leading-relaxed"
+              variants={fadeInUp}
+            >
+              Troy has watched politics become toxic, performative, and
+              two-faced. He has watched too many elected officials treat public
+              office like a game, a stepping stone, or a brand opportunity
+              instead of a duty. He has seen too little honor, too little
+              accountability, and too much grandstanding while real people pay
+              the price.
             </motion.p>
 
             <motion.p
@@ -515,25 +731,39 @@ export default function About() {
                 visible: {
                   opacity: 1,
                   transition: {
-                    staggerChildren: 0.15
-                  }
-                }
+                    staggerChildren: 0.15,
+                  },
+                },
               }}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+              <motion.span
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { duration: 0.3 } },
+                }}
+              >
                 He is{" "}
               </motion.span>
               <motion.span
                 className="text-[#FFCC33] italic"
-                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { duration: 0.3 } },
+                }}
               >
                 disgusted
               </motion.span>
-              <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
-                {" "}by it.
+              <motion.span
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { duration: 0.3 } },
+                }}
+              >
+                {" "}
+                by it.
               </motion.span>
             </motion.p>
 
@@ -544,30 +774,57 @@ export default function About() {
                 visible: {
                   opacity: 1,
                   transition: {
-                    staggerChildren: 0.15
-                  }
-                }
+                    staggerChildren: 0.15,
+                  },
+                },
               }}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+              <motion.span
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { duration: 0.3 } },
+                }}
+              >
                 You{" "}
               </motion.span>
-              <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+              <motion.span
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { duration: 0.3 } },
+                }}
+              >
                 should{" "}
               </motion.span>
-              <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+              <motion.span
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { duration: 0.3 } },
+                }}
+              >
                 be{" "}
               </motion.span>
-              <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+              <motion.span
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { duration: 0.3 } },
+                }}
+              >
                 too.
               </motion.span>
             </motion.p>
 
-            <motion.p className="text-lg md:text-xl text-white leading-relaxed" variants={fadeInUp}>
-              Troy is not running because politics looks fun. He is running because service did not stop when the uniform came off. He is running because the people of Florida's 3rd District deserve a representative who respects the office, tells the truth, and remembers who government is supposed to serve.
+            <motion.p
+              className="text-lg md:text-xl text-white leading-relaxed"
+              variants={fadeInUp}
+            >
+              Troy is not running because politics looks fun. He is running
+              because service did not stop when the uniform came off. He is
+              running because the people of Florida's 3rd District deserve a
+              representative who respects the office, tells the truth, and
+              remembers who government is supposed to serve.
             </motion.p>
           </motion.div>
         </motion.section>
@@ -587,15 +844,25 @@ export default function About() {
           </motion.h2>
 
           <motion.div className="space-y-4" variants={staggerContainer}>
-            <motion.p className="text-lg md:text-xl text-white leading-relaxed" variants={fadeInUp}>
-              Troy wants to bring a different kind of leadership to Washington. Leadership rooted in duty, honor, work, and results.
+            <motion.p
+              className="text-lg md:text-xl text-white leading-relaxed"
+              variants={fadeInUp}
+            >
+              Troy wants to bring a different kind of leadership to Washington.
+              Leadership rooted in duty, honor, work, and results.
             </motion.p>
 
-            <motion.p className="text-lg md:text-xl text-white leading-relaxed" variants={fadeInUp}>
+            <motion.p
+              className="text-lg md:text-xl text-white leading-relaxed"
+              variants={fadeInUp}
+            >
               He wants to hold our government to a higher standard.
             </motion.p>
 
-            <motion.div className="bg-blue-800 border-l-4 border-[#FFCC33] p-6 rounded-lg my-6" variants={fadeInUp}>
+            <motion.div
+              className="bg-blue-800 border-l-4 border-[#FFCC33] p-6 rounded-lg my-6"
+              variants={fadeInUp}
+            >
               <ul className="space-y-3 text-lg md:text-xl text-white">
                 <li className="flex items-start">
                   <span className="text-[#FFCC33] font-bold mr-3">•</span>
@@ -619,42 +886,71 @@ export default function About() {
                 visible: {
                   opacity: 1,
                   transition: {
-                    staggerChildren: 0.15
-                  }
-                }
+                    staggerChildren: 0.15,
+                  },
+                },
               }}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+              <motion.span
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { duration: 0.3 } },
+                }}
+              >
                 With{" "}
               </motion.span>
               <motion.span
                 className="text-[#FFCC33] italic"
-                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { duration: 0.3 } },
+                }}
               >
                 courage
               </motion.span>
-              <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+              <motion.span
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { duration: 0.3 } },
+                }}
+              >
                 . With{" "}
               </motion.span>
               <motion.span
                 className="text-[#FFCC33] italic"
-                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { duration: 0.3 } },
+                }}
               >
                 backbone
               </motion.span>
-              <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+              <motion.span
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { duration: 0.3 } },
+                }}
+              >
                 . With{" "}
               </motion.span>
               <motion.span
                 className="text-[#FFCC33] italic"
-                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { duration: 0.3 } },
+                }}
               >
                 service
               </motion.span>
-              <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+              <motion.span
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { duration: 0.3 } },
+                }}
+              >
                 .
               </motion.span>
             </motion.p>
@@ -664,13 +960,18 @@ export default function About() {
             className="bg-[#B2C9A3] border-l-4 border-blue-900 p-6 rounded-lg shadow-lg mt-8"
             variants={fadeInUp}
           >
-            <h3 className="text-2xl font-bold text-blue-900 mb-4">Troy's Core Principles</h3>
+            <h3 className="text-2xl font-bold text-blue-900 mb-4">
+              Troy's Core Principles
+            </h3>
             <div className="space-y-3 text-blue-900">
               <div className="flex items-start">
                 <span className="text-2xl font-bold mr-3">1.</span>
                 <div>
                   <p className="font-semibold text-lg">Commitment</p>
-                  <p className="text-base leading-relaxed">His word is his bond, and he believes public service means keeping faith with the people you represent.</p>
+                  <p className="text-base leading-relaxed">
+                    His word is his bond, and he believes public service means
+                    keeping faith with the people you represent.
+                  </p>
                 </div>
               </div>
 
@@ -678,7 +979,11 @@ export default function About() {
                 <span className="text-2xl font-bold mr-3">2.</span>
                 <div>
                   <p className="font-semibold text-lg">Perseverance</p>
-                  <p className="text-base leading-relaxed">He lives by the idea that because the sun is down does not mean the work is done, especially when others are counting on you.</p>
+                  <p className="text-base leading-relaxed">
+                    He lives by the idea that because the sun is down does not
+                    mean the work is done, especially when others are counting
+                    on you.
+                  </p>
                 </div>
               </div>
 
@@ -686,7 +991,10 @@ export default function About() {
                 <span className="text-2xl font-bold mr-3">3.</span>
                 <div>
                   <p className="font-semibold text-lg">Humility</p>
-                  <p className="text-base leading-relaxed">He stays grateful for the opportunities he has had and grounded in the responsibility to use them well.</p>
+                  <p className="text-base leading-relaxed">
+                    He stays grateful for the opportunities he has had and
+                    grounded in the responsibility to use them well.
+                  </p>
                 </div>
               </div>
             </div>
@@ -707,57 +1015,102 @@ export default function About() {
               visible: {
                 opacity: 1,
                 transition: {
-                  staggerChildren: 0.15
-                }
-              }
+                  staggerChildren: 0.15,
+                },
+              },
             }}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+            <motion.span
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { duration: 0.3 } },
+              }}
+            >
               Troy's{" "}
             </motion.span>
             <motion.span
               className="text-[#FFCC33] italic"
-              variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { duration: 0.3 } },
+              }}
             >
               Mad
             </motion.span>
-            <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+            <motion.span
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { duration: 0.3 } },
+              }}
+            >
               .<br /> He's Turning That{" "}
             </motion.span>
             <motion.span
               className="text-[#FFCC33] italic"
-              variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { duration: 0.3 } },
+              }}
             >
               Anger
             </motion.span>
-            <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
-              {" "}Into{" "}
+            <motion.span
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { duration: 0.3 } },
+              }}
+            >
+              {" "}
+              Into{" "}
             </motion.span>
             <motion.span
               className="text-[#FFCC33] italic"
-              variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { duration: 0.3 } },
+              }}
             >
               Action
             </motion.span>
-            <motion.span variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3 } } }}>
+            <motion.span
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { duration: 0.3 } },
+              }}
+            >
               .
             </motion.span>
           </motion.h2>
 
           <motion.div className="space-y-4" variants={staggerContainer}>
-            <motion.p className="text-lg md:text-xl text-white leading-relaxed" variants={fadeInUp}>
-              He is running for the people who are tired of being ignored. For the families doing everything right and still falling behind. For the rural communities that feel forgotten. For the voters who are sick of politicians who say one thing in public and another behind closed doors.
+            <motion.p
+              className="text-lg md:text-xl text-white leading-relaxed"
+              variants={fadeInUp}
+            >
+              He is running for the people who are tired of being ignored. For
+              the families doing everything right and still falling behind. For
+              the rural communities that feel forgotten. For the voters who are
+              sick of politicians who say one thing in public and another behind
+              closed doors.
             </motion.p>
 
-            <motion.p className="text-lg md:text-xl text-white leading-relaxed" variants={fadeInUp}>
-              Troy Albers has been a farm kid, a sailor, a soldier, a guardsman, a student, a farmer, a father, and a citizen.
+            <motion.p
+              className="text-lg md:text-xl text-white leading-relaxed"
+              variants={fadeInUp}
+            >
+              Troy Albers has been a farm kid, a sailor, a soldier, a guardsman,
+              a student, a farmer, a father, and a citizen.
             </motion.p>
 
-            <motion.p className="text-lg md:text-xl text-white leading-relaxed font-semibold" variants={fadeInUp}>
-              Now he is ready to serve Florida's 3rd District in a brand new way.
+            <motion.p
+              className="text-lg md:text-xl text-white leading-relaxed font-semibold"
+              variants={fadeInUp}
+            >
+              Now he is ready to serve Florida's 3rd District in a brand new
+              way.
             </motion.p>
           </motion.div>
         </motion.section>
@@ -787,7 +1140,8 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
             >
-              Washington does not need another performer.<br />
+              Washington does not need another performer.
+              <br />
               It needs someone with backbone.
             </motion.p>
 
@@ -801,7 +1155,10 @@ export default function About() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <button
                   onClick={() => {
-                    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                    const isMobile =
+                      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+                        navigator.userAgent,
+                      );
 
                     if (isMobile) {
                       window.open("/dsde104.pdf", "_blank");
