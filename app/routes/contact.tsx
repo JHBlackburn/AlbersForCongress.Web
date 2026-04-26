@@ -326,11 +326,16 @@ export default function Contact() {
         >
           <div className="mb-6">
             <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-3">
-              <span className="block">
-                Showing Up <span className="text-[#FFCC33] italic">Every Day</span>
+              <span className="block md:inline">Showing Up </span>
+              <span className="block md:inline text-[#FFCC33] italic">
+                Every Day
               </span>
+
               <span className="block">
-                For <span className="text-[#FFCC33] italic">Florida's 3rd District</span>
+                <span className="block md:inline">For </span>
+                <span className="block md:inline text-[#FFCC33] italic">
+                  Florida's 3rd District
+                </span>
               </span>
             </h2>
 
@@ -338,14 +343,19 @@ export default function Contact() {
 
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
               <p className="max-w-3xl text-lg md:text-xl text-white/90 leading-relaxed">
-                Troy Albers is proudly seeking to serve the communities of North Central Florida, including the following counties and cities.
+                Troy Albers is proudly seeking to serve the communities of North
+                Central Florida, including the following counties and cities.
               </p>
 
               {/* Expand/Collapse All Button */}
               <button
                 onClick={toggleAll}
                 className="inline-flex w-fit self-end sm:self-auto shrink-0 items-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold px-4 py-2 sm:px-6 sm:py-3 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
-                aria-label={allExpanded ? "Collapse all district counties" : "Expand all district counties"}
+                aria-label={
+                  allExpanded
+                    ? "Collapse all district counties"
+                    : "Expand all district counties"
+                }
               >
                 {allExpanded ? (
                   <>
@@ -380,12 +390,20 @@ export default function Contact() {
                     className="w-full flex items-center justify-between p-4 text-left hover:bg-white/5 transition-colors focus:outline-none focus:ring-2 focus:ring-[#FFCC33] focus:ring-inset"
                     aria-expanded={isExpanded}
                   >
-                    <h3 className="text-xl font-bold text-white">{district.county}</h3>
+                    <h3 className="text-xl font-bold text-white">
+                      {district.county}
+                    </h3>
                     <div className="shrink-0 ml-4">
                       {isExpanded ? (
-                        <FiChevronUp className="w-6 h-6 text-[#FFCC33]" aria-hidden="true" />
+                        <FiChevronUp
+                          className="w-6 h-6 text-[#FFCC33]"
+                          aria-hidden="true"
+                        />
                       ) : (
-                        <FiChevronDown className="w-6 h-6 text-[#FFCC33]" aria-hidden="true" />
+                        <FiChevronDown
+                          className="w-6 h-6 text-[#FFCC33]"
+                          aria-hidden="true"
+                        />
                       )}
                     </div>
                   </button>
@@ -393,7 +411,10 @@ export default function Contact() {
                   {isExpanded && (
                     <div className="px-4 pb-4 pt-2 border-t border-white/10">
                       <p className="text-white/90 text-lg">
-                        <strong className="text-[#FFCC33]">Cities & Towns:</strong> {district.cities.join(", ")}
+                        <strong className="text-[#FFCC33]">
+                          Cities & Towns:
+                        </strong>{" "}
+                        {district.cities.join(", ")}
                       </p>
                     </div>
                   )}
