@@ -56,9 +56,7 @@ export default function Home() {
                 <WordScrollAnimation />
               </div>
 
-              <p className="text-white text-[clamp(1rem,1.15vw,1.35rem)] mt-[clamp(1rem,2.6vh,2.5rem)] max-w-[min(52vw,840px)] leading-[1.45] xl:leading-[1.6]">
-                Troy needs your help to get on the ballot. Print and sign the
-                petition, then mail it to:
+<p className="text-white text-[clamp(1.15rem,1.38vw,1.6rem)] mt-[clamp(1rem,2.4vh,2.25rem)] max-w-[min(52vw,840px)] leading-[1.38] xl:leading-[1.5]">                petition, then mail it to:
                 <span className="block mt-[clamp(0.5rem,1.5vh,1rem)] font-semibold leading-[1.6]">
                   Troy Albers
                   <br />
