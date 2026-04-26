@@ -321,7 +321,7 @@ export default function About() {
         </motion.div>
 
         <motion.section
-          className="mb-12"
+          className="mt-6 mb-12 md:mt-8"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -346,7 +346,7 @@ export default function About() {
         </motion.section>
 
         <motion.section
-          className="mb-12"
+          className="mt-6 mb-12 md:mt-8"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -413,7 +413,7 @@ export default function About() {
         />
 
         <motion.section
-          className="mb-12"
+          className="mt-6 mb-12 md:mt-8"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -465,19 +465,6 @@ export default function About() {
             </motion.p>
           </motion.div>
 
-          <motion.div
-            className="mt-8"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="bg-blue-800 border-l-4 border-[#B2C9A3] p-4 rounded">
-              <p className="text-white italic text-center">
-                [Photo: Troy with his family or working the farm in Columbia County]
-              </p>
-            </div>
-          </motion.div>
         </motion.section>
 
         <motion.section
@@ -660,24 +647,24 @@ export default function About() {
               <div className="flex items-start">
                 <span className="text-2xl font-bold mr-3">1.</span>
                 <div>
-                  <p className="font-semibold text-lg">TBD Core Value 1</p>
-                  <p className="text-sm italic">[Details to be added]</p>
+                  <p className="font-semibold text-lg">Commitment</p>
+                  <p className="text-base leading-relaxed">His word is his bond, and he believes public service means keeping faith with the people you represent.</p>
                 </div>
               </div>
 
               <div className="flex items-start">
                 <span className="text-2xl font-bold mr-3">2.</span>
                 <div>
-                  <p className="font-semibold text-lg">TBD Core Value 2</p>
-                  <p className="text-sm italic">[Details to be added]</p>
+                  <p className="font-semibold text-lg">Perseverance</p>
+                  <p className="text-base leading-relaxed">He lives by the idea that because the sun is down does not mean the work is done, especially when others are counting on you.</p>
                 </div>
               </div>
 
               <div className="flex items-start">
                 <span className="text-2xl font-bold mr-3">3.</span>
                 <div>
-                  <p className="font-semibold text-lg">TBD Core Value 3</p>
-                  <p className="text-sm italic">[Details to be added]</p>
+                  <p className="font-semibold text-lg">Humility</p>
+                  <p className="text-base leading-relaxed">He stays grateful for the opportunities he has had and grounded in the responsibility to use them well.</p>
                 </div>
               </div>
             </div>
