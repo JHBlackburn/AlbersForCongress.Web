@@ -12,7 +12,7 @@ export function meta({}: Route.MetaArgs) {
     },
     {
       name: "description",
-      content: "Visit our campaign office in Gainesville or reach out today to volunteer, learn more, or get involved. Troy Albers is a local candidate with a real physical office in Gainesville, FL, serving Florida's 3rd Congressional District."
+      content: "Visit our campaign office in Gainesville or reach out today to volunteer, learn more, or get involved. Troy Albers is a local candidate with a real physical office in Gainesville, FL, in the heart of Florida's 3rd Congressional District."
     },
   ];
 }
@@ -263,7 +263,7 @@ export default function Contact() {
           variants={fadeInUp}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 border-b-4 border-[#FFCC33] pb-3">
-            Serving Florida's 3rd Congressional District
+            Showing Up Every Day For Florida's 3rd Congressional District
           </h2>
           <p className="text-lg md:text-xl text-white/90 mb-6 leading-relaxed">
             Troy Albers is proudly seeking to serve the communities of North Central Florida, including the following counties and cities.
