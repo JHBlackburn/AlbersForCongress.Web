@@ -17,19 +17,19 @@ export default function Home() {
   const [isAddressOpen, setIsAddressOpen] = useState(false);
 
   return (
-    <div className="h-full w-full">
+    <div className="h-full w-full min-h-0 overflow-hidden">
       {/* Hero Section */}
-      <div className="text-white relative overflow-hidden h-full flex items-center">
+      <div className="text-white relative overflow-hidden h-full min-h-0 flex items-center">
         {/* Decorative background elements */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#FFCC33] rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#B2C9A3] rounded-full blur-3xl"></div>
         </div>
 
-        <div className="w-full py-1 lg:py-6 xl:py-8 2xl:py-10 relative z-10 max-h-full pl-0 lg:pl-8 xl:pl-12 2xl:pl-16 pr-0 lg:pr-8 xl:pr-12 2xl:pr-16">
-          <div className="flex flex-col lg:flex-row lg:items-center gap-1 lg:gap-8 xl:gap-12 2xl:gap-16 max-h-full">
+        <div className="relative z-10 w-full h-full min-h-0 px-0 lg:px-[clamp(1.5rem,4vw,5rem)] lg:py-[clamp(1rem,3vh,2.5rem)]">
+          <div className="h-full min-h-0 flex flex-col lg:grid lg:grid-cols-[minmax(360px,0.95fr)_minmax(420px,1.35fr)] xl:grid-cols-[minmax(420px,0.95fr)_minmax(520px,1.35fr)] lg:items-center gap-1 lg:gap-[clamp(2rem,4vw,5rem)]">
             {/* Mobile: Container for centering */}
-            <div className="lg:hidden flex flex-col items-center w-full">
+            <div className="lg:hidden flex flex-col items-center w-full min-h-0">
               {/* WordScrollAnimation on top */}
               <div className="flex-1 max-h-full flex flex-col items-start justify-center text-left w-full px-4">
                 <WordScrollAnimation />
@@ -44,22 +44,24 @@ export default function Home() {
             </div>
 
             {/* Desktop: Candidate Photo on left */}
-            <div className="hidden lg:flex flex-shrink-0 max-h-full items-center justify-start pt-6 xl:pt-8 2xl:pt-10 pl-4 xl:pl-6 2xl:pl-8">
-              <div className="origin-left scale-[1.04] xl:scale-[1.07] 2xl:scale-[1.1] transition-transform duration-300">
-                <HeroImage />
+            <div className="hidden lg:flex h-full min-h-0 items-center justify-start pt-[clamp(0.75rem,2.5vh,2rem)] pl-[clamp(0.75rem,2vw,2rem)]">
+              <div className="h-[min(100%,72vh)] max-h-[760px] min-h-[420px] flex items-center">
+                <div className="h-full [&>*]:h-full [&>*]:max-h-full [&_img]:h-full [&_img]:w-auto [&_img]:max-w-full [&_img]:object-contain">
+                  <HeroImage />
+                </div>
               </div>
             </div>
 
             {/* Desktop: WordScrollAnimation and help text on right */}
-            <div className="hidden lg:flex flex-1 max-h-full flex-col items-start justify-center text-left w-full min-w-0 pr-4 xl:pr-8 2xl:pr-12">
-              <div className="w-full max-w-3xl xl:max-w-4xl 2xl:max-w-5xl">
+            <div className="hidden lg:flex h-full min-h-0 flex-col items-start justify-center text-left w-full min-w-0 overflow-hidden pr-[clamp(0.5rem,2vw,2rem)]">
+              <div className="w-full max-w-[min(58vw,920px)] origin-left scale-[clamp(0.72,0.84+0.12vw,1)]">
                 <WordScrollAnimation />
               </div>
 
-              <p className="text-white text-lg xl:text-xl 2xl:text-2xl mt-8 xl:mt-10 max-w-3xl 2xl:max-w-4xl leading-relaxed xl:leading-loose">
+              <p className="text-white text-[clamp(1rem,1.15vw,1.35rem)] mt-[clamp(1rem,2.6vh,2.5rem)] max-w-[min(52vw,840px)] leading-[1.45] xl:leading-[1.6]">
                 Troy needs your help to get on the ballot. Print and sign the
                 petition, then mail it to:
-                <span className="block mt-3 font-semibold">
+                <span className="block mt-[clamp(0.5rem,1.5vh,1rem)] font-semibold leading-[1.6]">
                   Troy Albers
                   <br />
                   1468 SW Main Blvd Ste 105-28
@@ -92,6 +94,7 @@ export default function Home() {
                 />
               </svg>
             </button>
+
             {isAddressOpen && (
               <div className="mt-3 bg-white/10 p-3 rounded-lg backdrop-blur-sm">
                 <p className="mb-2">
