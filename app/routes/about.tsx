@@ -405,7 +405,12 @@ export default function About() {
           </motion.div>
         </motion.section>
 
-        <ScrollWipeStory slides={serviceSlides} />
+        <ScrollWipeStory
+          slides={serviceSlides}
+          introScrollVh={25}
+          betweenScrollVh={25}
+          outroScrollVh={30}
+        />
 
         <motion.section
           className="mb-12"
