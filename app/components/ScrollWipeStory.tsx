@@ -101,48 +101,40 @@ function ScrollWipeImage({
   scrollYProgress,
 }: ScrollWipeImageProps) {
   const { start, end } = getImageWipeWindow(index, total);
-  const nextWipe = getImageWipeWindow(index + 1, total);
-
-  const clipPath = useTransform(
+  const revealWidth = useTransform(
     scrollYProgress,
     index === 0 ? [0, 1] : [start, end],
-    index === 0
-      ? ["inset(0 0% 0 0)", "inset(0 0% 0 0)"]
-      : ["inset(0 100% 0 0)", "inset(0 0% 0 0)"],
-    { clamp: true }
-  );
-
-  const opacity = useTransform(
-    scrollYProgress,
-    index === total - 1
-      ? [0, 1]
-      : [Math.max(0, nextWipe.end - 0.02), nextWipe.end],
-    index === total - 1 ? [1, 1] : [1, 0],
+    index === 0 ? ["100%", "100%"] : ["0%", "100%"],
     { clamp: true }
   );
 
   return (
     <>
-      <motion.img
-        src={slide.imageSrc}
-        alt={slide.imageAlt}
-        style={{
-          clipPath,
-          opacity,
-          zIndex: index + 1,
-        }}
-        className="absolute inset-0 h-full w-full object-cover"
-      />
-
-      {index > 0 ? (
+      {index === 0 ? (
+        <motion.img
+          src={slide.imageSrc}
+          alt={slide.imageAlt}
+          style={{
+            zIndex: total,
+          }}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      ) : (
         <motion.div
           style={{
-            clipPath,
-            zIndex: index + 2,
+            width: revealWidth,
+            zIndex: total + index,
           }}
-          className="pointer-events-none absolute inset-0 bg-linear-to-l from-white/25 via-white/5 to-transparent"
-        />
-      ) : null}
+          className="absolute inset-y-0 left-0 overflow-hidden"
+        >
+          <img
+            src={slide.imageSrc}
+            alt={slide.imageAlt}
+            className="absolute inset-0 h-full w-full min-w-full object-cover"
+          />
+          <div className="pointer-events-none absolute inset-0 bg-linear-to-r from-white/25 via-white/5 to-transparent" />
+        </motion.div>
+      )}
     </>
   );
 }
