@@ -81,7 +81,7 @@ const localIssues: Issue[] = [
   {
     id: "insurance-local",
     title: "Insurance",
-    content: "Florida families are getting squeezed from every direction by property and car insurance costs. Homeowners are watching premiums climb, renters feel those costs passed down, and drivers are paying more just to stay legal on the road. This is not sustainable for working families, seniors, or young people trying to build a life here. Troy believes Florida needs real accountability in the insurance market, stronger consumer protection, and a serious push from every level of government to make property and auto insurance more stable, more transparent, and more affordable for Floridians."
+    content: "Florida families are getting squeezed from every direction by property and car insurance costs. Homeowners are watching premiums climb, renters feel those costs passed down, and drivers are paying more just to stay legal on the road. Meanwhile, the state requires you to keep proof of insurance in your glove box when the cop who pulls you over already knows if you're insured. This is not sustainable for working families, seniors, or young people trying to build a life here. Troy believes Florida needs real accountability in the insurance market, stronger consumer protection, smarter policies that cut bureaucratic waste, and a serious push from every level of government to make property and auto insurance more stable, more transparent, and more affordable for Floridians."
   }
 ];
 
