@@ -323,12 +323,12 @@ export default function Navigation() {
               </button>
               {isGetInvolvedOpen && (
                 <div className="ml-4 space-y-2">
-                  <Link
+                  {/* <Link
                     to="/events"
                     className="block py-2 px-4 hover:bg-blue-800 hover:text-[#FFCC33] hover:border-l-4 hover:border-[#FFCC33] transition-all focus:outline-none focus:bg-blue-800 rounded"
                   >
                     Events
-                  </Link>
+                  </Link> */}
                   <a
                     href="https://secure.actblue.com/donate/troy-albers-1"
                     target="_blank"
@@ -338,12 +338,12 @@ export default function Navigation() {
                     Donate
                     <FiExternalLink className="w-4 h-4" aria-hidden="true" />
                   </a>
-                  <Link
+                  {/* <Link
                     to="/volunteer"
                     className="block py-2 px-4 hover:bg-blue-800 hover:text-[#FFCC33] hover:border-l-4 hover:border-[#FFCC33] transition-all focus:outline-none focus:bg-blue-800 rounded"
                   >
                     Volunteer
-                  </Link>
+                  </Link> */}
                 </div>
               )}
             </div>
