@@ -12,4 +12,5 @@ export default [
   route("issues", "routes/issues.tsx"),
   route("issues/national", "routes/issues/national.tsx"),
   route("issues/local", "routes/issues/local.tsx"),
+  route("*", "routes/catch-all.tsx"),
 ] satisfies RouteConfig;
