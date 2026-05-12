@@ -73,7 +73,7 @@ export default function Home() {
           </div>
 
           {/* Mobile version - visible below lg breakpoint */}
-          <div className="lg:hidden text-white text-base md:text-lg -mt-1 max-w-2xl leading-snug px-4 mx-auto text-center pb-2">
+          <div className="lg:hidden text-white text-base md:text-lg mt-4 max-w-2xl leading-snug px-4 mx-auto text-center pb-2">
             <button
               onClick={() => setIsAddressOpen(!isAddressOpen)}
               className="inline-flex items-center justify-center gap-2 text-[#FFCC33] hover:text-[#E8B923] transition-colors font-semibold rounded px-1 mx-auto border-0 outline-none focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"

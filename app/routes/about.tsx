@@ -547,7 +547,7 @@ export default function About() {
               variants={fadeInUp}
             >
               When his time in the Navy ended, Troy did not walk away from
-              service. He became a Guardsman, then later went back in with the
+              service. He became a Florida Guardsman, then later went back in with the
               Army, continuing a life defined by commitment to something bigger
               than himself.
             </motion.p>
@@ -680,7 +680,8 @@ export default function About() {
               variants={fadeInUp}
             >
               Troy moved to Columbia County, became a farmer, raised three kids,
-              and fell in love with North Central Florida.
+              and fell in love with North Central Florida. Happily married to Rachael for the past 30 years,
+              he built a family and a life rooted in this community.
             </motion.p>
 
             <motion.p
@@ -1101,7 +1102,7 @@ export default function About() {
               className="text-lg md:text-xl text-white leading-relaxed"
               variants={fadeInUp}
             >
-              Troy Albers has been a farm kid, a sailor, a soldier, a guardsman,
+              Troy Albers has been a farm kid, a sailor, a soldier, a Florida guardsman,
               a student, a farmer, a father, and a citizen.
             </motion.p>
 

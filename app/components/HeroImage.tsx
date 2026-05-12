@@ -27,8 +27,8 @@ export default function HeroImage() {
       {/* Image and mobile overlay */}
       <div className="relative inline-block lg:w-full">
         <img
-          src="/TroyAlbers4Congress_Zoomed.JPG"
-          alt="Troy Albers"
+          src="/MOR00015.jpg"
+          alt="Troy Albers for Congress - Florida's 3rd District"
           className="rounded-lg shadow-2xl max-w-full max-h-[45vh] lg:max-h-[64vh] xl:max-h-[70vh] 2xl:max-h-[74vh] w-auto h-auto object-contain relative border-4 border-[#FFCC33] hover:border-[#B2C9A3] transition-all duration-300 lg:w-full lg:object-cover"
         />
 
