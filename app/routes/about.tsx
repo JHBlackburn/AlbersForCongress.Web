@@ -1154,7 +1154,8 @@ export default function About() {
               transition={{ delay: 0.4 }}
             >
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <button
+                {/* Petition button - hidden for now, keeping for potential future use */}
+                {/* <button
                   onClick={() => {
                     const isMobile =
                       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -1177,7 +1178,7 @@ export default function About() {
                 >
                   Sign Troy's Petition
                   <FiPrinter className="w-5 h-5" aria-hidden="true" />
-                </button>
+                </button> */}
 
                 <Link
                   to="/issues"
