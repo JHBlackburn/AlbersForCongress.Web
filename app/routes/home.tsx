@@ -1,5 +1,5 @@
 import type { Route } from "./+types/home";
-import { useState } from "react";
+// import { useState } from "react";
 import WordScrollAnimation from "../components/WordScrollAnimation";
 import HeroImage from "../components/HeroImage";
 
@@ -14,7 +14,8 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  const [isAddressOpen, setIsAddressOpen] = useState(false);
+  // State for petition section - hidden for now, keeping for potential future use
+  // const [isAddressOpen, setIsAddressOpen] = useState(false);
 
   return (
     <div className="w-full lg:h-full lg:min-h-0 lg:overflow-hidden">
@@ -58,7 +59,8 @@ export default function Home() {
                 <WordScrollAnimation />
               </div>
 
-              <p className="text-white text-[clamp(1rem,1.16vw,1.38rem)] mt-[clamp(0.75rem,1.75vh,1.75rem)] max-w-[min(52vw,840px)] leading-[1.38] xl:leading-[1.48]">
+              {/* Petition instructions - hidden for now, keeping for potential future use */}
+              {/* <p className="text-white text-[clamp(1rem,1.16vw,1.38rem)] mt-[clamp(0.75rem,1.75vh,1.75rem)] max-w-[min(52vw,840px)] leading-[1.38] xl:leading-[1.48]">
                 Troy needs your help to get on the ballot. Print and sign the
                 petition, then mail it to:
                 <span className="block mt-[clamp(0.4rem,1.1vh,0.8rem)] font-semibold leading-[1.48]">
@@ -68,12 +70,12 @@ export default function Home() {
                   <br />
                   Lake City, FL 32025
                 </span>
-              </p>
+              </p> */}
             </div>
           </div>
 
-          {/* Mobile version - visible below lg breakpoint */}
-          <div className="lg:hidden text-white text-base md:text-lg -mt-1 max-w-2xl leading-snug px-4 mx-auto text-center pb-2">
+          {/* Mobile version - petition instructions hidden for now, keeping for potential future use */}
+          {/* <div className="lg:hidden text-white text-base md:text-lg mt-4 max-w-2xl leading-snug px-4 mx-auto text-center pb-2">
             <button
               onClick={() => setIsAddressOpen(!isAddressOpen)}
               className="inline-flex items-center justify-center gap-2 text-[#FFCC33] hover:text-[#E8B923] transition-colors font-semibold rounded px-1 mx-auto border-0 outline-none focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
@@ -110,7 +112,7 @@ export default function Home() {
                 </span>
               </div>
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

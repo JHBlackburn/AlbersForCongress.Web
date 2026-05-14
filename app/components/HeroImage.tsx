@@ -1,23 +1,24 @@
-import { FiExternalLink, FiPrinter } from "react-icons/fi";
+import { FiExternalLink, FiUser } from "react-icons/fi";
 
 export default function HeroImage() {
-  const handlePrintPetition = () => {
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent
-    );
+  // Keeping handlePrintPetition for potential future use (hidden for now)
+  // const handlePrintPetition = () => {
+  //   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+  //     navigator.userAgent
+  //   );
 
-    if (isMobile) {
-      window.open("/dsde104.pdf", "_blank");
-    } else {
-      const iframe = document.createElement("iframe");
-      iframe.style.display = "none";
-      iframe.src = "/dsde104.pdf";
-      document.body.appendChild(iframe);
-      iframe.onload = () => {
-        iframe.contentWindow?.print();
-      };
-    }
-  };
+  //   if (isMobile) {
+  //     window.open("/dsde104.pdf", "_blank");
+  //   } else {
+  //     const iframe = document.createElement("iframe");
+  //     iframe.style.display = "none";
+  //     iframe.src = "/dsde104.pdf";
+  //     document.body.appendChild(iframe);
+  //     iframe.onload = () => {
+  //       iframe.contentWindow?.print();
+  //     };
+  //   }
+  // };
 
   return (
     <div className="relative inline-flex max-h-full flex-col items-center lg:w-full lg:pb-1">
@@ -27,8 +28,8 @@ export default function HeroImage() {
       {/* Image and mobile overlay */}
       <div className="relative inline-block lg:w-full">
         <img
-          src="/TroyAlbers4Congress_Zoomed.JPG"
-          alt="Troy Albers"
+          src="/MOR00015.jpg"
+          alt="Troy Albers for Congress - Florida's 3rd District"
           className="rounded-lg shadow-2xl max-w-full max-h-[45vh] lg:max-h-[64vh] xl:max-h-[70vh] 2xl:max-h-[74vh] w-auto h-auto object-contain relative border-4 border-[#FFCC33] hover:border-[#B2C9A3] transition-all duration-300 lg:w-full lg:object-cover"
         />
 
@@ -43,19 +44,19 @@ export default function HeroImage() {
               href="https://secure.actblue.com/donate/troy-albers-1"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-1 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-[clamp(0.72rem,3.4vw,0.95rem)] px-2.5 py-1 rounded-md shadow-xl transition-all duration-200 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-900 whitespace-nowrap"
+              className="inline-flex items-center justify-center gap-1 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-[clamp(0.72rem,3.4vw,0.95rem)] px-2.5 py-1 rounded-md shadow-xl transition-all duration-200 transform hover:scale-110 hover:shadow-2xl hover:[filter:drop-shadow(0_0_2px_rgb(255_204_51))_drop-shadow(0_0_2px_rgb(255_204_51))] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-900 whitespace-nowrap cursor-pointer relative z-10"
             >
               Donate
               <FiExternalLink className="w-4 h-4 shrink-0" aria-hidden="true" />
             </a>
 
-            <button
-              onClick={handlePrintPetition}
-              className="inline-flex items-center justify-center gap-1 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-[clamp(0.72rem,3.4vw,0.95rem)] px-2.5 py-1 rounded-md shadow-xl transition-all duration-200 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-900 whitespace-nowrap"
+            <a
+              href="/about"
+              className="inline-flex items-center justify-center gap-1 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-[clamp(0.72rem,3.4vw,0.95rem)] px-2.5 py-1 rounded-md shadow-xl transition-all duration-200 transform hover:scale-110 hover:shadow-2xl hover:[filter:drop-shadow(0_0_2px_rgb(255_204_51))_drop-shadow(0_0_2px_rgb(255_204_51))] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-900 whitespace-nowrap cursor-pointer relative z-10"
             >
-              Sign My Petition
-              <FiPrinter className="w-4 h-4 shrink-0" aria-hidden="true" />
-            </button>
+              Meet Troy
+              <FiUser className="w-4 h-4 shrink-0" aria-hidden="true" />
+            </a>
           </div>
         </div>
       </div>
@@ -71,19 +72,19 @@ export default function HeroImage() {
             href="https://secure.actblue.com/donate/troy-albers-1"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-w-0 items-center justify-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-[clamp(0.9rem,1vw,1.1rem)] px-3 py-2 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-[1.03] hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-900 whitespace-nowrap"
+            className="inline-flex min-w-0 items-center justify-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-[clamp(0.9rem,1vw,1.1rem)] px-3 py-2 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-110 hover:shadow-2xl hover:[filter:drop-shadow(0_0_2px_rgb(255_204_51))_drop-shadow(0_0_2px_rgb(255_204_51))] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-900 whitespace-nowrap cursor-pointer relative z-10"
           >
             Donate
             <FiExternalLink className="w-5 h-5 shrink-0" aria-hidden="true" />
           </a>
 
-          <button
-            onClick={handlePrintPetition}
-            className="inline-flex min-w-0 items-center justify-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-[clamp(0.9rem,1vw,1.1rem)] px-3 py-2 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-[1.03] hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-900 whitespace-nowrap"
+          <a
+            href="/about"
+            className="inline-flex min-w-0 items-center justify-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-[clamp(0.9rem,1vw,1.1rem)] px-3 py-2 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-110 hover:shadow-2xl hover:[filter:drop-shadow(0_0_2px_rgb(255_204_51))_drop-shadow(0_0_2px_rgb(255_204_51))] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-900 whitespace-nowrap cursor-pointer relative z-10"
           >
-            Sign My Petition
-            <FiPrinter className="w-5 h-5 shrink-0" aria-hidden="true" />
-          </button>
+            Meet Troy
+            <FiUser className="w-5 h-5 shrink-0" aria-hidden="true" />
+          </a>
         </div>
       </div>
     </div>
