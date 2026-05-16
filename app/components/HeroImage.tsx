@@ -1,91 +1,36 @@
 import { FiExternalLink, FiUser } from "react-icons/fi";
+import { Link } from "react-router";
 
 export default function HeroImage() {
-  // Keeping handlePrintPetition for potential future use (hidden for now)
-  // const handlePrintPetition = () => {
-  //   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-  //     navigator.userAgent
-  //   );
-
-  //   if (isMobile) {
-  //     window.open("/dsde104.pdf", "_blank");
-  //   } else {
-  //     const iframe = document.createElement("iframe");
-  //     iframe.style.display = "none";
-  //     iframe.src = "/dsde104.pdf";
-  //     document.body.appendChild(iframe);
-  //     iframe.onload = () => {
-  //       iframe.contentWindow?.print();
-  //     };
-  //   }
-  // };
-
   return (
-    <div className="relative inline-flex max-h-full flex-col items-center lg:w-full lg:pb-1">
-      {/* Static embellishment */}
-      <div className="absolute inset-0 bg-[#FFCC33] rounded-lg blur-xl opacity-15"></div>
+    <div className="relative flex h-full min-h-0 w-full max-w-[min(92vw,720px)] items-end justify-end lg:max-w-[min(48vw,820px)]">
+      <div className="pointer-events-none absolute -bottom-8 right-[-10%] h-[80%] w-[84%] rounded-full bg-[#031226]/45 blur-3xl" />
 
-      {/* Image and mobile overlay */}
-      <div className="relative inline-block lg:w-full">
-        <img
-          src="/MOR00015.jpg"
-          alt="Troy Albers for Congress - Florida's 3rd District"
-          className="rounded-lg shadow-2xl max-w-full max-h-[45vh] lg:max-h-[64vh] xl:max-h-[70vh] 2xl:max-h-[74vh] w-auto h-auto object-contain relative border-4 border-[#FFCC33] hover:border-[#B2C9A3] transition-all duration-300 lg:w-full lg:object-cover"
-        />
+      <img
+        // TODO: Add a transparent cutout at public/troy-cutout.png.
+        src="/troy-cutout.png"
+        alt="Troy Albers"
+        className="pointer-events-none relative z-0 ml-auto h-auto max-h-[min(56svh,32rem)] w-auto max-w-[82vw] object-contain object-bottom drop-shadow-[0_1.4rem_1.8rem_rgba(0,0,0,0.42)] sm:max-h-[min(62svh,38rem)] lg:max-h-[calc(100svh-8.1rem)] lg:max-w-full xl:max-h-[calc(100svh-7.6rem)]"
+      />
 
-        {/* Mobile Overlay on bottom third */}
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-black/40 rounded-b-lg px-2 py-2 flex flex-col items-center justify-end min-h-[20%] lg:hidden">
-          <p className="text-white text-[clamp(1rem,5.2vw,1.45rem)] font-semibold mb-1.5 drop-shadow-lg leading-tight whitespace-nowrap">
-            Troy works for YOU
-          </p>
+      <div className="absolute bottom-[clamp(1.1rem,6vh,4rem)] right-[clamp(0.2rem,4vw,3rem)] z-20 grid w-[min(82vw,30rem)] grid-cols-2 gap-[clamp(0.45rem,1.6vw,1rem)] lg:bottom-[clamp(2rem,9vh,6rem)] lg:right-[clamp(0rem,2vw,2rem)]">
+        <a
+          href="https://secure.actblue.com/donate/troy-albers-1"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex min-h-[2.65rem] min-w-0 cursor-pointer items-center justify-center gap-1.5 rounded-lg bg-[#FFCC33] px-[clamp(0.65rem,2.4vw,1.25rem)] py-[clamp(0.55rem,1.4vh,0.9rem)] text-[clamp(0.95rem,3.6vw,1.35rem)] font-black leading-none text-blue-900 shadow-[0_0.8rem_1.6rem_rgba(0,0,0,0.36)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#E8B923] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-900 lg:text-[clamp(1.05rem,1.25vw,1.35rem)]"
+        >
+          Donate
+          <FiExternalLink className="h-[1em] w-[1em] shrink-0" aria-hidden="true" />
+        </a>
 
-          <div className="flex flex-nowrap gap-2 justify-center w-full">
-            <a
-              href="https://secure.actblue.com/donate/troy-albers-1"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-1 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-[clamp(0.72rem,3.4vw,0.95rem)] px-2.5 py-1 rounded-md shadow-xl transition-all duration-200 transform hover:scale-110 hover:shadow-2xl hover:[filter:drop-shadow(0_0_2px_rgb(255_204_51))_drop-shadow(0_0_2px_rgb(255_204_51))] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-900 whitespace-nowrap cursor-pointer relative z-10"
-            >
-              Donate
-              <FiExternalLink className="w-4 h-4 shrink-0" aria-hidden="true" />
-            </a>
-
-            <a
-              href="/about"
-              className="inline-flex items-center justify-center gap-1 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-[clamp(0.72rem,3.4vw,0.95rem)] px-2.5 py-1 rounded-md shadow-xl transition-all duration-200 transform hover:scale-110 hover:shadow-2xl hover:[filter:drop-shadow(0_0_2px_rgb(255_204_51))_drop-shadow(0_0_2px_rgb(255_204_51))] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-900 whitespace-nowrap cursor-pointer relative z-10"
-            >
-              Meet Troy
-              <FiUser className="w-4 h-4 shrink-0" aria-hidden="true" />
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Desktop buttons below picture */}
-      <div className="hidden lg:flex w-full flex-col items-center mt-2 pb-1">
-        <p className="text-white text-[clamp(1.05rem,1.25vw,1.45rem)] font-semibold mb-2 leading-tight">
-          Troy works for YOU
-        </p>
-
-        <div className="grid w-full grid-cols-2 gap-3 pb-1">
-          <a
-            href="https://secure.actblue.com/donate/troy-albers-1"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-w-0 items-center justify-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-[clamp(0.9rem,1vw,1.1rem)] px-3 py-2 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-110 hover:shadow-2xl hover:[filter:drop-shadow(0_0_2px_rgb(255_204_51))_drop-shadow(0_0_2px_rgb(255_204_51))] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-900 whitespace-nowrap cursor-pointer relative z-10"
-          >
-            Donate
-            <FiExternalLink className="w-5 h-5 shrink-0" aria-hidden="true" />
-          </a>
-
-          <a
-            href="/about"
-            className="inline-flex min-w-0 items-center justify-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-[clamp(0.9rem,1vw,1.1rem)] px-3 py-2 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-110 hover:shadow-2xl hover:[filter:drop-shadow(0_0_2px_rgb(255_204_51))_drop-shadow(0_0_2px_rgb(255_204_51))] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-900 whitespace-nowrap cursor-pointer relative z-10"
-          >
-            Meet Troy
-            <FiUser className="w-5 h-5 shrink-0" aria-hidden="true" />
-          </a>
-        </div>
+        <Link
+          to="/about"
+          className="inline-flex min-h-[2.65rem] min-w-0 cursor-pointer items-center justify-center gap-1.5 rounded-lg bg-[#FFCC33] px-[clamp(0.65rem,2.4vw,1.25rem)] py-[clamp(0.55rem,1.4vh,0.9rem)] text-[clamp(0.95rem,3.6vw,1.35rem)] font-black leading-none text-blue-900 shadow-[0_0.8rem_1.6rem_rgba(0,0,0,0.36)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#E8B923] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-900 lg:text-[clamp(1.05rem,1.25vw,1.35rem)]"
+        >
+          Meet Troy
+          <FiUser className="h-[1em] w-[1em] shrink-0" aria-hidden="true" />
+        </Link>
       </div>
     </div>
   );
