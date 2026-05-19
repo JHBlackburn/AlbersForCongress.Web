@@ -12,12 +12,12 @@ export default function HeroImage() {
         className="pointer-events-none relative z-0 h-[min(68svh,42rem)] w-full max-w-none object-contain object-bottom drop-shadow-[0_1.4rem_1.8rem_rgba(0,0,0,0.42)] sm:h-[min(72svh,46rem)] lg:ml-auto lg:h-auto lg:max-h-[calc(100svh-8.1rem)] lg:w-auto lg:max-w-full xl:max-h-[calc(100svh-7.6rem)]"
       />
 
-      <p className="pointer-events-none absolute left-[28vw] top-[clamp(1rem,7vh,4rem)] z-20 text-left text-[clamp(1.15rem,5.4vw,2rem)] font-black leading-[1.08] tracking-normal text-white drop-shadow-[0_0.35rem_0.7rem_rgba(0,0,0,0.42)] sm:left-[26vw] sm:text-[clamp(1.6rem,4.8vw,2.7rem)] lg:left-[clamp(0rem,2.2vw,2rem)] lg:top-[clamp(3rem,10vh,7rem)] lg:text-[clamp(1.9rem,2.7vw,3.3rem)]">
+      <p className="pointer-events-none absolute left-[21vw] top-[clamp(2.2rem,11vh,6rem)] z-20 text-left text-[clamp(1.15rem,5.4vw,2rem)] font-black leading-[1.08] tracking-normal text-white drop-shadow-[0_0.35rem_0.7rem_rgba(0,0,0,0.42)] sm:left-[15vw] sm:text-[clamp(1.6rem,4.8vw,2.7rem)] lg:left-[calc(clamp(5rem,10vw,11rem)*-1)] lg:top-[clamp(5rem,14vh,9rem)] lg:text-[clamp(1.9rem,2.7vw,3.3rem)]">
         Troy works for
         <span className="block text-[#FFCC33]">YOU</span>
       </p>
 
-      <div className="absolute bottom-[clamp(1.1rem,6vh,4rem)] right-[clamp(0.2rem,4vw,3rem)] z-20 grid w-[min(82vw,30rem)] grid-cols-2 gap-[clamp(0.45rem,1.6vw,1rem)] lg:bottom-[clamp(2rem,9vh,6rem)] lg:right-[clamp(0rem,2vw,2rem)]">
+      <div className="absolute bottom-[clamp(1.1rem,6vh,4rem)] left-[29vw] z-20 grid w-[min(82vw,30rem)] grid-cols-2 gap-[clamp(0.45rem,1.6vw,1rem)] sm:left-[21vw] lg:bottom-[clamp(2rem,9vh,6rem)] lg:left-[calc(clamp(13rem,18vw,22rem)*-1)]">
         <a
           href="https://secure.actblue.com/donate/troy-albers-1"
           target="_blank"
