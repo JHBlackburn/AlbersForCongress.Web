@@ -12,6 +12,9 @@ export default function HeroImage() {
         className="pointer-events-none relative z-0 h-[min(68svh,42rem)] w-full max-w-none object-contain object-bottom drop-shadow-[0_1.4rem_1.8rem_rgba(0,0,0,0.42)] sm:h-[min(72svh,46rem)] lg:ml-auto lg:h-auto lg:max-h-[calc(100svh-8.1rem)] lg:w-auto lg:max-w-full xl:max-h-[calc(100svh-7.6rem)]"
       />
 
+      <div className="pointer-events-none absolute inset-y-0 left-[20vw] z-10 w-[clamp(1.25rem,7vw,4rem)] bg-linear-to-r from-[#071f43]/80 via-[#071f43]/32 to-transparent blur-[1px] sm:left-[12vw] lg:left-0 lg:w-[clamp(1rem,2vw,2rem)]" />
+      <div className="pointer-events-none absolute inset-y-0 right-[45vw] z-10 w-[clamp(1.25rem,7vw,4rem)] bg-linear-to-l from-[#071f43]/80 via-[#071f43]/32 to-transparent blur-[1px] sm:right-[28vw] lg:right-0 lg:w-[clamp(1rem,2vw,2rem)]" />
+
       <p className="pointer-events-none absolute left-[21vw] top-[clamp(2.2rem,11vh,6rem)] z-20 text-left text-[clamp(1.15rem,5.4vw,2rem)] font-black leading-[1.08] tracking-normal text-white drop-shadow-[0_0.35rem_0.7rem_rgba(0,0,0,0.42)] sm:left-[15vw] sm:text-[clamp(1.6rem,4.8vw,2.7rem)] lg:left-[calc(clamp(5rem,10vw,11rem)*-1)] lg:top-[clamp(5rem,14vh,9rem)] lg:text-[clamp(1.9rem,2.7vw,3.3rem)]">
         Troy works for
         <span className="block text-[#FFCC33]">YOU</span>
