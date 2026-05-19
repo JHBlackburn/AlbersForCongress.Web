@@ -23,10 +23,6 @@ export default function Home() {
           <div className="w-full max-w-[min(92vw,760px)]">
             <WordScrollAnimation />
           </div>
-
-          <p className="mt-[clamp(0.4rem,1.6vh,1.1rem)] text-[clamp(1.2rem,4.6vw,2.55rem)] font-extrabold leading-none tracking-normal text-white drop-shadow-lg lg:text-[clamp(1.65rem,2.6vw,3.05rem)]">
-            Troy works for <span className="text-[#FFCC33]">YOU</span>
-          </p>
         </div>
 
         <div className="relative z-10 flex min-h-0 items-end justify-end self-end">
