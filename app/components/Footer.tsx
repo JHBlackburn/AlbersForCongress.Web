@@ -1,7 +1,9 @@
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { FaFacebook, FaInstagram, FaYoutube, FaTiktok } from "react-icons/fa6";
 
 export default function Footer() {
+  const { pathname } = useLocation();
+  const isHome = pathname === "/";
   const year = new Date().getFullYear();
   const socialLinks = [
     {
@@ -31,7 +33,11 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative mt-auto bg-[#031936] text-white before:absolute before:inset-x-0 before:top-0 before:h-0.5 before:bg-[#FFCC33]">
+    <footer
+      className={`relative mt-auto bg-[#031936] text-white before:absolute before:inset-x-0 before:h-0.5 before:bg-[#FFCC33] ${
+        isHome ? "before:-top-0.5" : "before:top-0"
+      }`}
+    >
       <div className="mx-auto flex min-h-[3.25rem] w-full max-w-7xl items-center justify-between gap-3 px-[clamp(0.75rem,2.8vw,2rem)] py-1.5">
         <div className="min-w-0 leading-tight">
           <p className="text-[clamp(0.68rem,2.6vw,0.9rem)] font-black uppercase tracking-normal">
