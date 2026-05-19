@@ -14,7 +14,7 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   return (
-    <section className="relative isolate flex min-h-[calc(100svh-3.5rem-3.25rem)] w-full overflow-hidden bg-[#071f43] text-white sm:min-h-[calc(100svh-3.5rem-3.6rem)] lg:min-h-[calc(100svh-3.5rem-4.2rem)]">
+    <section className="relative isolate flex h-[calc(100svh-3.5rem-3.25rem)] max-h-[calc(100svh-3.5rem-3.25rem)] w-full overflow-hidden bg-[#071f43] text-white sm:h-[calc(100svh-3.5rem-3.6rem)] sm:max-h-[calc(100svh-3.5rem-3.6rem)] lg:h-[calc(100svh-3.5rem-4.2rem)] lg:max-h-[calc(100svh-3.5rem-4.2rem)]">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(0,119,204,0.46),transparent_34%),linear-gradient(135deg,#061936_0%,#0b2f5b_48%,#061936_100%)]" />
       <div className="absolute inset-x-0 bottom-0 h-28 bg-linear-to-t from-[#031226] to-transparent" />
 
