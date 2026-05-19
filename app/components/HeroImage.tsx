@@ -16,7 +16,7 @@ export default function HeroImage() {
         <div className="pointer-events-none absolute bottom-0 left-0 top-[60%] z-10 w-[clamp(1rem,5vw,2.5rem)] bg-linear-to-r from-[#071f43]/72 via-[#071f43]/28 to-transparent blur-[1px]" />
         <div className="pointer-events-none absolute bottom-0 right-0 top-[60%] z-10 w-[clamp(1rem,5vw,2.5rem)] bg-linear-to-l from-[#071f43]/72 via-[#071f43]/28 to-transparent blur-[1px]" />
 
-        <p className="pointer-events-none absolute left-[4%] top-[clamp(3.5rem,15vh,8rem)] z-20 text-left text-[clamp(1.15rem,5.4vw,2rem)] font-black leading-[1.08] tracking-normal text-white drop-shadow-[0_0.35rem_0.7rem_rgba(0,0,0,0.42)] sm:left-[-8%] sm:top-[24%] sm:text-[clamp(1.6rem,4.8vw,2.7rem)] md:left-[-18%] md:top-[30%] md:text-[clamp(1.55rem,3.6vw,2.45rem)] lg:left-[calc(clamp(5rem,10vw,11rem)*-1)] lg:top-[clamp(5rem,14vh,9rem)] lg:text-[clamp(1.9rem,2.7vw,3.3rem)]">
+        <p className="pointer-events-none absolute left-[4%] top-[clamp(3.5rem,15vh,8rem)] z-20 text-left text-[clamp(1.15rem,5.4vw,2rem)] font-black leading-[1.08] tracking-normal text-white drop-shadow-[0_0.35rem_0.7rem_rgba(0,0,0,0.42)] sm:left-[-8%] sm:top-[clamp(6.5rem,20vh,9rem)] sm:text-[clamp(1.6rem,4.8vw,2.7rem)] md:left-[-18%] md:top-[clamp(7.5rem,22vh,11rem)] md:text-[clamp(1.55rem,3.6vw,2.45rem)] lg:left-[calc(clamp(5rem,10vw,11rem)*-1)] lg:top-[clamp(5rem,14vh,9rem)] lg:text-[clamp(1.9rem,2.7vw,3.3rem)]">
           Troy works for
           <span className="block text-[#FFCC33]">YOU</span>
         </p>
