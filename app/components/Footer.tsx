@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { FaFacebook, FaInstagram, FaYoutube, FaTiktok } from "react-icons/fa6";
 
 export default function Footer() {
+  const year = new Date().getFullYear();
   const socialLinks = [
     {
       name: "Facebook",
@@ -30,46 +31,44 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[#B2C9A3] text-gray-900 mt-auto border-t-4 border-[#FFCC33]">
-      <div className="container mx-auto px-3 py-2">
-        <div className="text-center">
-          <p className="text-[11px] leading-snug sm:text-sm sm:leading-normal font-semibold">
-            Paid for by Troy Albers, Democrat, for United States House of Representatives - Florida's 3rd District.
+    <footer className="relative mt-auto bg-[#031936] text-white before:absolute before:inset-x-0 before:-top-0.5 before:h-0.5 before:bg-[#FFCC33]">
+      <div className="mx-auto flex min-h-[3.25rem] w-full max-w-7xl items-center justify-between gap-3 px-[clamp(0.75rem,2.8vw,2rem)] py-1.5">
+        <div className="min-w-0 leading-tight">
+          <p className="text-[clamp(0.68rem,2.6vw,0.9rem)] font-black uppercase tracking-normal">
+            PAID FOR BY ALBERS FOR CONGRESS
           </p>
+          <p className="hidden text-[clamp(0.62rem,0.8vw,0.76rem)] text-white/78 sm:block">
+            Troy Albers, Democrat, for United States House of Representatives - Florida's 3rd District.
+          </p>
+        </div>
 
-          {/* Social Media Icons */}
-          <div className="mt-2 mb-2 flex justify-center items-center gap-4">
-            {socialLinks.map((social) => {
-              const IconComponent = social.icon;
-              return (
-                <a
-                  key={social.name}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.ariaLabel}
-                  className="text-blue-900 hover:text-[#FFCC33] transition-all duration-200 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#FFCC33] focus:ring-offset-2 focus:ring-offset-[#B2C9A3] rounded hover:[filter:drop-shadow(0_0_1px_rgb(30_58_138))_drop-shadow(0_0_1px_rgb(30_58_138))]"
-                >
-                  <IconComponent className="w-6 h-6 sm:w-7 sm:h-7" aria-hidden="true" />
-                </a>
-              );
-            })}
-          </div>
+        <div className="hidden shrink-0 items-center gap-3 lg:flex">
+          {socialLinks.map((social) => {
+            const IconComponent = social.icon;
+            return (
+              <a
+                key={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.ariaLabel}
+                className="rounded text-white/86 transition-colors hover:text-[#FFCC33] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FFCC33] focus-visible:ring-offset-2 focus-visible:ring-offset-[#031936]"
+              >
+                <IconComponent className="h-4 w-4 xl:h-5 xl:w-5" aria-hidden="true" />
+              </a>
+            );
+          })}
 
-          <div className="mt-1 flex flex-wrap justify-center items-center gap-x-3 gap-y-0.5 text-[10px] sm:text-xs text-gray-700">
-            <Link
-              to="/accessibility-statement"
-              className="text-blue-900 hover:text-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-[#FFCC33] focus:ring-offset-2 focus:ring-offset-[#B2C9A3] rounded underline font-medium"
-            >
-              Accessibility
-            </Link>
+          <Link
+            to="/accessibility-statement"
+            className="rounded text-xs font-semibold text-white/86 underline transition-colors hover:text-[#FFCC33] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FFCC33] focus-visible:ring-offset-2 focus-visible:ring-offset-[#031936]"
+          >
+            Accessibility
+          </Link>
 
-            <span aria-hidden="true">•</span>
-
-            <span>
-              &copy; {new Date().getFullYear()} Troy Albers for Congress
-            </span>
-          </div>
+          <span className="text-xs text-white/66">
+            &copy; {year} Troy Albers for Congress
+          </span>
         </div>
       </div>
     </footer>
