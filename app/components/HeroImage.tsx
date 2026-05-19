@@ -4,7 +4,7 @@ import { Link } from "react-router";
 export default function HeroImage() {
   return (
     <div className="relative flex h-full min-h-0 w-full items-end justify-center overflow-visible sm:justify-end lg:max-w-[min(48vw,820px)]">
-      <div className="relative flex h-[calc((100svh-3.5rem-3.25rem)*0.75)] w-fit max-w-none -translate-x-[clamp(0.75rem,4vw,1.5rem)] items-end justify-center sm:h-[calc((100svh-3.5rem-3.6rem)*0.75)] sm:translate-x-[clamp(1rem,4vw,4.5rem)] md:h-[calc((100svh-3.5rem-3.6rem)*0.75)] lg:h-[calc((100svh-3.5rem-4.2rem)*0.75)] lg:translate-x-0 xl:h-[calc((100svh-3.5rem-4.2rem)*0.75)]">
+      <div className="relative flex h-[calc((100svh-3.5rem-3.25rem)*0.85)] w-fit max-w-none -translate-x-[clamp(0.75rem,4vw,1.5rem)] items-end justify-center sm:h-[calc((100svh-3.5rem-3.6rem)*0.85)] sm:translate-x-[clamp(1rem,4vw,4.5rem)] md:h-[calc((100svh-3.5rem-3.6rem)*0.85)] lg:h-[calc((100svh-3.5rem-4.2rem)*0.85)] lg:translate-x-0 xl:h-[calc((100svh-3.5rem-4.2rem)*0.85)]">
         <div className="pointer-events-none absolute -bottom-8 right-[-10%] h-[80%] w-[84%] rounded-full bg-[#031226]/45 blur-3xl" />
 
         <img
