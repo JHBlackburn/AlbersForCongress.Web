@@ -4,7 +4,7 @@ import { Link } from "react-router";
 export default function HeroImage() {
   return (
     <div className="relative flex h-full min-h-0 w-full items-end justify-center overflow-visible lg:max-w-[min(48vw,820px)] lg:justify-end">
-      <div className="relative flex w-screen max-w-none items-end justify-center lg:h-[min(calc(100svh-8.1rem),48rem)] lg:w-fit xl:h-[min(calc(100svh-7.6rem),52rem)]">
+      <div className="relative flex w-screen max-w-none -translate-x-[clamp(0.75rem,4vw,1.5rem)] items-end justify-center lg:h-[min(calc(100svh-8.1rem),48rem)] lg:w-fit lg:translate-x-0 xl:h-[min(calc(100svh-7.6rem),52rem)]">
         <div className="pointer-events-none absolute -bottom-8 right-[-10%] h-[80%] w-[84%] rounded-full bg-[#031226]/45 blur-3xl" />
 
         <img
