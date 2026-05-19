@@ -34,7 +34,7 @@ export default function Footer() {
 
   if (isHome) {
     return (
-      <footer className="mt-auto border-t border-white/10 bg-[#031936] text-white">
+      <footer className="mt-auto border-t-2 border-[#FFCC33] bg-[#031936] text-white">
         <div className="mx-auto flex min-h-[3.25rem] w-full max-w-7xl items-center justify-between gap-3 px-[clamp(0.75rem,2.8vw,2rem)] py-1.5">
           <div className="min-w-0 leading-tight">
             <p className="text-[clamp(0.68rem,2.6vw,0.9rem)] font-black uppercase tracking-normal">
@@ -79,7 +79,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="mt-auto border-t-4 border-[#FFCC33] bg-[#031936] text-white">
+    <footer className="mt-auto border-t-2 border-[#FFCC33] bg-[#031936] text-white">
       <div className="container mx-auto px-3 py-2">
         <div className="text-center">
           <p className="text-[11px] leading-snug font-semibold uppercase sm:text-sm sm:leading-normal">

@@ -51,7 +51,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body className="min-h-dvh flex flex-col">
         <Navigation />
 
-        <main className="grow bg-linear-to-br from-blue-900 to-blue-700">
+        <main className="grow bg-[#071f43] bg-[radial-gradient(circle_at_82%_18%,rgba(0,119,204,0.46),transparent_34%),linear-gradient(135deg,#061936_0%,#0b2f5b_48%,#061936_100%)]">
           {children}
         </main>
 
