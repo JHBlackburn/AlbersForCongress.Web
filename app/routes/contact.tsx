@@ -4,10 +4,8 @@ import type { Route } from "./+types/contact";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import {
-  FiMapPin,
   FiPhone,
   FiMail,
-  FiClock,
   FiChevronDown,
   FiChevronUp,
 } from "react-icons/fi";
@@ -15,12 +13,12 @@ import {
 export function meta({}: Route.MetaArgs) {
   return [
     {
-      title: "Contact Troy Albers for Congress | Gainesville Campaign Office",
+      title: "Contact Troy Albers for Congress",
     },
     {
       name: "description",
       content:
-        "Visit our campaign office in Gainesville or reach out today to volunteer, learn more, or get involved. Troy Albers is a local candidate with a real physical office in Gainesville, FL, in the heart of Florida's 3rd Congressional District.",
+        "Reach out today to volunteer, learn more, or get involved with Troy Albers for Congress in Florida's 3rd Congressional District.",
     },
   ];
 }
@@ -160,11 +158,7 @@ export default function Contact() {
             Get in Touch with Troy Albers for Congress
           </h1>
           <p className="text-xl md:text-2xl text-white/90 leading-relaxed max-w-3xl mx-auto">
-            Visit our campaign office in Gainesville or reach out today to
-            volunteer, learn more, or get involved.
-          </p>
-          <p className="text-lg text-[#FFCC33] font-semibold mt-4">
-            Local office • Real address • Here to serve you
+            Reach out today to volunteer, learn more, or get involved.
           </p>
         </motion.section>
 
@@ -177,30 +171,7 @@ export default function Contact() {
           variants={staggerContainer}
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            {/* Physical Address */}
-            <motion.div
-              className="bg-white/10 backdrop-blur-sm border-l-4 border-[#FFCC33] p-6 rounded-lg"
-              variants={fadeInUp}
-            >
-              <div className="flex items-start gap-4">
-                <FiMapPin
-                  className="w-8 h-8 text-[#FFCC33] shrink-0 mt-1"
-                  aria-hidden="true"
-                />
-                <div>
-                  <h3 className="text-xl font-bold text-white mb-2">
-                    Campaign Office
-                  </h3>
-                  <p className="text-white/90 text-lg">
-                    201 SE 2nd Ave, Suite 208
-                    <br />
-                    Gainesville, FL 32601
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Phone Numbers */}
+            {/* Phone */}
             <motion.div
               className="bg-white/10 backdrop-blur-sm border-l-4 border-[#FFCC33] p-6 rounded-lg"
               variants={fadeInUp}
@@ -213,20 +184,11 @@ export default function Contact() {
                 <div>
                   <h3 className="text-xl font-bold text-white mb-2">Phone</h3>
                   <p className="text-white/90 text-lg">
-                    <strong>Office:</strong>{" "}
                     <a
-                      href="tel:3527926215"
+                      href="tel:3527567882"
                       className="hover:text-[#FFCC33] transition-colors"
                     >
-                      (352) 792-6215
-                    </a>
-                    <br />
-                    <strong>Cell:</strong>{" "}
-                    <a
-                      href="tel:3257567882"
-                      className="hover:text-[#FFCC33] transition-colors"
-                    >
-                      (325) 756-7882
+                      352 756 7882
                     </a>
                   </p>
                 </div>
@@ -263,57 +225,7 @@ export default function Contact() {
               </div>
             </motion.div>
 
-            {/* Hours */}
-            <motion.div
-              className="bg-white/10 backdrop-blur-sm border-l-4 border-[#FFCC33] p-6 rounded-lg"
-              variants={fadeInUp}
-            >
-              <div className="flex items-start gap-4">
-                <FiClock
-                  className="w-8 h-8 text-[#FFCC33] shrink-0 mt-1"
-                  aria-hidden="true"
-                />
-                <div>
-                  <h3 className="text-xl font-bold text-white mb-2">
-                    Office Hours
-                  </h3>
-                  <p className="text-white/90 text-lg">
-                    Monday – Friday
-                    <br />
-                    9:00 AM – 5:00 PM ET
-                  </p>
-                </div>
-              </div>
-            </motion.div>
           </div>
-        </motion.section>
-
-        {/* Google Map Section */}
-        <motion.section
-          className="mb-16 relative w-full h-[60vh] sm:h-[70vh] lg:h-[80vh] overflow-hidden rounded-xl shadow-2xl"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeInUp}
-        >
-          <iframe
-            title="Troy Albers for Congress Campaign Office Location Map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3466.736195127753!2d-82.32577!3d29.650833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e8a33f6b0f1f5f%3A0x1234567890abcdef!2s201%20SE%202nd%20Ave%2C%20Gainesville%2C%20FL%2032601!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            className="absolute inset-0 w-full h-full border-0"
-          ></iframe>
-
-          {/* Optional: Overlay image - you can add a campaign office photo here */}
-          {/* <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-10 border-4 border-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-700 ease-out hover:w-[85%] hover:h-[85%] origin-top-right w-40 sm:w-56 lg:w-64">
-            <img
-              src="/campaign-office.jpg"
-              alt="Troy Albers Campaign Office"
-              className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-[1.02]"
-              loading="lazy"
-            />
-          </div> */}
         </motion.section>
 
         {/* District Coverage Section */}
@@ -455,7 +367,7 @@ export default function Contact() {
             {/* Mobile CTA */}
             <div className="flex md:hidden flex-col sm:flex-row justify-center gap-4">
               <a
-                href="tel:3527926215"
+                href="tel:3527567882"
                 className="inline-flex items-center justify-center gap-2 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 font-bold text-lg px-6 py-3 rounded-lg shadow-xl transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
               >
                 <FiPhone className="w-5 h-5" aria-hidden="true" />
@@ -486,9 +398,9 @@ export default function Contact() {
         {/* Floating Mobile CTA (Sticky) */}
         <div className="md:hidden fixed bottom-6 right-6 z-50">
           <a
-            href="tel:3527926215"
+            href="tel:3527567882"
             className="flex items-center justify-center w-16 h-16 bg-[#FFCC33] hover:bg-[#E8B923] text-blue-900 rounded-full shadow-2xl transition-all duration-200 transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
-            aria-label="Call campaign office"
+            aria-label="Call Troy Albers for Congress"
           >
             <FiPhone className="w-7 h-7" aria-hidden="true" />
           </a>
