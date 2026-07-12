@@ -118,10 +118,10 @@ const WordScrollAnimation = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-start justify-center xl:justify-start w-full gap-2 text-left font-black tracking-[-2px] leading-none">
+    <div className="flex flex-col items-start justify-center xl:justify-start w-full gap-[clamp(0.15rem,0.8vh,0.6rem)] text-left font-black tracking-normal leading-none">
       {/* Line 1 – static "Hell" */}
       <motion.div
-        className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl pb-2 xl:pb-4 whitespace-nowrap"
+        className="text-[clamp(2.9rem,11.5vw,8.7rem)] lg:text-[clamp(4.25rem,8vw,9rem)] pb-[clamp(0.15rem,0.6vh,0.55rem)] whitespace-nowrap leading-[0.86]"
         style={{ color: '#FFCC33' }}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -142,11 +142,11 @@ const WordScrollAnimation = () => {
       </motion.div> */}
 
       {/* Line 3 – the cycling / final word */}
-      <div className="relative w-full flex items-start justify-start h-14 sm:h-18 md:h-22 lg:h-26 overflow-visible">
+      <div className="relative w-full flex items-start justify-start h-[clamp(2.8rem,11vw,8.1rem)] lg:h-[clamp(4rem,8vw,8.6rem)] overflow-visible">
         <AnimatePresence mode="sync">
           <motion.div
             key={thirdWord}
-            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-white absolute top-0 left-0 whitespace-nowrap"
+            className="text-[clamp(2.9rem,11.5vw,8.7rem)] lg:text-[clamp(4.25rem,8vw,9rem)] leading-[0.86] text-white absolute top-0 left-0 whitespace-nowrap"
             // style={{ color: '#003087' }} // Navy / dark blue
             variants={wordVariants}
             initial="initial"
