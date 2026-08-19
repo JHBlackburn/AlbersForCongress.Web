@@ -5,6 +5,19 @@
     "**/.client/**/*",
     ".react-router/types/**/*"
   ],
+  "exclude": [
+    "app/routes/about.tsx",
+    "app/routes/accessibility-statement.tsx",
+    "app/routes/contact.tsx",
+    "app/routes/donate.tsx",
+    "app/routes/events.tsx",
+    "app/routes/get-involved.tsx",
+    "app/routes/home.tsx",
+    "app/routes/issues.tsx",
+    "app/routes/issues/local.tsx",
+    "app/routes/issues/national.tsx",
+    "app/routes/volunteer.tsx"
+  ],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "types": ["node", "vite/client"],
