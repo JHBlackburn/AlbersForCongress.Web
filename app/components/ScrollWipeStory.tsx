@@ -232,7 +232,7 @@ function getStoryTiming(
     introScrollVh,
     betweenScrollVh,
     outroScrollVh,
-  }: Pick<ScrollWipeStoryProps, "introScrollVh" | "betweenScrollVh" | "outroScrollVh">
+  }: Pick<Required<ScrollWipeStoryProps>, "introScrollVh" | "betweenScrollVh" | "outroScrollVh">
 ): ScrollWipeStoryTiming {
   const captionDropVh = betweenScrollVh * 0.4;
   const captionFadeVh = betweenScrollVh * 0.2;
