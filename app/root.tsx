@@ -7,13 +7,16 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import { retirementMessage, throwGone } from "./retirement";
+import RetiredPage from "./components/RetiredPage";
+import { retirementHeaders, retirementTitle } from "./retirement";
 
 export const links: Route.LinksFunction = () => [];
 
-export function loader() {
-  throwGone();
-}
+export const meta: Route.MetaFunction = () => [
+  { title: retirementTitle },
+];
+
+export const headers: Route.HeadersFunction = () => retirementHeaders;
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -42,17 +45,5 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   const status = isRouteErrorResponse(error) ? error.status : 410;
   const statusText = isRouteErrorResponse(error) ? error.statusText : "Gone";
 
-  return (
-    <section className="max-w-xl text-center">
-      <p className="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-400">
-        {status} {statusText || "Gone"}
-      </p>
-      <h1 className="mt-4 text-3xl font-semibold text-white">
-        Campaign Website Retired
-      </h1>
-      <p className="mt-4 text-base leading-7 text-neutral-300">
-        {retirementMessage}
-      </p>
-    </section>
-  );
+  return <RetiredPage status={status} statusText={statusText || "Gone"} />;
 }
