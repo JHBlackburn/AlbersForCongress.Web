@@ -1,5 +1,16 @@
-import { throwGone } from "../retirement";
+import { data } from "react-router";
+
+import RetiredPage from "../components/RetiredPage";
+import { retirementHeaders } from "../retirement";
 
 export function loader() {
-  throwGone();
+  return data(null, {
+    status: 410,
+    statusText: "Gone",
+    headers: retirementHeaders,
+  });
+}
+
+export default function RetiredCatchAll() {
+  return <RetiredPage />;
 }
